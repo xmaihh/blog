@@ -1,14 +1,18 @@
 ---
+
 title: Android6.0授予预置APK的权限
 date: 2018-07-28 17:02:40
 categories: Android Framework
 tags: [Android]
 toc: false
 description: If you're prepared to adapt and learn, you can transform.
+
 ---
+
 对我们系统中存在的应用进行默认权限设置,达到默认开启应用权限无需申请权限弹框的目的
 方法1
 修改`\frameworks\base\services\core\java\com\android\server\pm\PackageManagerService.java`，但CTS会有问题
+
 ```
  private void grantPermissionsLPw(PackageParser.Package pkg, boolean replace,
             String packageOfInterest) {
@@ -22,22 +26,22 @@ description: If you're prepared to adapt and learn, you can transform.
         // runtime permissions except for the case an app targeting Lollipop MR1
         // being upgraded to target a newer SDK, in which case dangerous permissions
         // are transformed from install time to runtime ones.
- 
+
         final PackageSetting ps = (PackageSetting) pkg.mExtras;
         if (ps == null) {
             return;
         }
- 
+
         PermissionsState permissionsState = ps.getPermissionsState();
         PermissionsState origPermissions = permissionsState;
- 
+
         final int[] currentUserIds = UserManagerService.getInstance().getUserIds();
- 
+
         boolean runtimePermissionsRevoked = false;
         int[] changedRuntimePermissionUserIds = EMPTY_INT_ARRAY;
- 
+
         boolean changedInstallPermission = false;
- 
+
         if (replace) {
             ps.installPermissionsFixed = false;
             if (!ps.isSharedUser()) {
@@ -56,18 +60,18 @@ description: If you're prepared to adapt and learn, you can transform.
                 }
             }
         }
- 
+
         permissionsState.setGlobalGids(mGlobalGids);
- 
+
         final int N = pkg.requestedPermissions.size();
         for (int i=0; i<N; i++) {
             final String name = pkg.requestedPermissions.get(i);
             final BasePermission bp = mSettings.mPermissions.get(name);
- 
+
             if (DEBUG_INSTALL) {
                 Log.i(TAG, "Package " + pkg.packageName + " checking " + name + ": " + bp);
             }
- 
+
             if (bp == null || bp.packageSetting == null) {
                 if (packageOfInterest == null || packageOfInterest.equals(pkg.packageName)) {
                     Slog.w(TAG, "Unknown permission " + name
@@ -75,11 +79,11 @@ description: If you're prepared to adapt and learn, you can transform.
                 }
                 continue;
             }
- 
+
             final String perm = bp.name;
             boolean allowedSig = false;
             int grant = GRANT_DENIED;
- 
+
             // Keep track of app op permissions.
             if ((bp.protectionLevel & PermissionInfo.PROTECTION_FLAG_APPOP) != 0) {
                 ArraySet<String> pkgs = mAppOpPermissionPackages.get(bp.name);
@@ -89,14 +93,14 @@ description: If you're prepared to adapt and learn, you can transform.
                 }
                 pkgs.add(pkg.packageName);
             }
- 
+
             final int level = bp.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
             switch (level) {
                 case PermissionInfo.PROTECTION_NORMAL: {
                     // For all apps normal permissions are install time ones.
                     grant = GRANT_INSTALL;
                 } break;
- 
+
                 case PermissionInfo.PROTECTION_DANGEROUS: {
                     if (pkg.applicationInfo.targetSdkVersion <= Build.VERSION_CODES.LOLLIPOP_MR1){
                         // For legacy apps dangerous permissions are install time ones.
@@ -116,7 +120,7 @@ description: If you're prepared to adapt and learn, you can transform.
                         grant = GRANT_RUNTIME;
                     }
                 } break;
- 
+
                 case PermissionInfo.PROTECTION_SIGNATURE: {
                     // For all apps signature permissions are install time ones.
                     allowedSig = grantSignaturePermission(perm, pkg, bp, origPermissions);
@@ -125,11 +129,11 @@ description: If you're prepared to adapt and learn, you can transform.
                     }
                 } break;
             }
- 
+
             if (DEBUG_INSTALL) {
                 Log.i(TAG, "Package " + pkg.packageName + " granting " + perm);
             }
- 
+
             if (grant != GRANT_DENIED) {
                 if (!isSystemApp(ps) && ps.installPermissionsFixed) {
                     // If this is an existing, non-system package, then
@@ -143,7 +147,7 @@ description: If you're prepared to adapt and learn, you can transform.
                         }
                     }
                 }
- 
+
                 switch (grant) {
                     case GRANT_INSTALL: {
                         // Revoke this as runtime permission to handle the case of
@@ -166,7 +170,7 @@ description: If you're prepared to adapt and learn, you can transform.
                             changedInstallPermission = true;
                         }
                     } break;
- 
+
                     case GRANT_INSTALL_LEGACY: {
                         // Grant an install permission.
                         if (permissionsState.grantInstallPermission(bp) !=
@@ -174,7 +178,7 @@ description: If you're prepared to adapt and learn, you can transform.
                             changedInstallPermission = true;
                         }
                     } break;
- 
+
                     case GRANT_RUNTIME: {
                         // Grant previously granted runtime permissions.
                         for (int userId : UserManagerService.getInstance().getUserIds()) {
@@ -194,13 +198,13 @@ description: If you're prepared to adapt and learn, you can transform.
                             permissionsState.updatePermissionFlags(bp, userId, flags, flags);
                         }
                     } break;
- 
+
                     case GRANT_UPGRADE: {
                         // Grant runtime permissions for a previously held install permission.
                         PermissionState permissionState = origPermissions
                                 .getInstallPermissionState(bp.name);
                         final int flags = permissionState != null ? permissionState.getFlags() : 0;
- 
+
                         if (origPermissions.revokeInstallPermission(bp)
                                 != PermissionsState.PERMISSION_OPERATION_FAILURE) {
                             // We will be transferring the permission flags, so clear them.
@@ -208,7 +212,7 @@ description: If you're prepared to adapt and learn, you can transform.
                                     PackageManager.MASK_PERMISSION_FLAGS, 0);
                             changedInstallPermission = true;
                         }
- 
+
                         // If the permission is not to be promoted to runtime we ignore it and
                         // also its other flags as they are not applicable to install permissions.
                         if ((flags & PackageManager.FLAG_PERMISSION_REVOKE_ON_UPGRADE) == 0) {
@@ -225,7 +229,7 @@ description: If you're prepared to adapt and learn, you can transform.
                             }
                         }
                     } break;
- 
+
                     default: {
                         if (packageOfInterest == null
                                 || packageOfInterest.equals(pkg.packageName)) {
@@ -276,7 +280,7 @@ description: If you're prepared to adapt and learn, you can transform.
                 }
             }
         }
- 
+
         if ((changedInstallPermission || replace) && !ps.installPermissionsFixed &&
                 !isSystemApp(ps) || isUpdatedSystemApp(ps)){
             // This is the first that we have heard about this package, so the
@@ -292,16 +296,18 @@ description: If you're prepared to adapt and learn, you can transform.
         }
     } 
 ```
+
 方法2
 修改`frameworks/base/services/core/java/com/android/server/pm/DefaultPermissionGrantPolicy.java`
 举例，修改系统中应用存储空间权限
+
 ```
     private void grantDefaultSystemHandlerPermissions(int userId) {
         ...
         grantStoragePermissionsToCustomApp(userId)；// add 
         ...
     }
- 
+
 private void grantStoragePermissionsToCustomApp(int userId){
     final String []itemString = mService.mContext.getResources()
         .getStringArray(com.android.internal.R.array.storage_permission_custom_packagename);
@@ -313,12 +319,14 @@ private void grantStoragePermissionsToCustomApp(int userId){
     }
 }
 ```
+
 通过一个xml文件讲我们需要默认打开的应用列表
+
 ```
 <?xml version="1.0" encoding="utf-8"?>
- 
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
- 
+
 <string-array name="storage_permission_custom_packagename" translatable="false">
     <item>com.mediatek.datatransfer</item>
     <item>com.android.defcontainer</item>
