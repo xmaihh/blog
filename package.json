@@ -24,14 +24,12 @@
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^3.0.0",
     "hexo-renderer-pug": "^1.0.0",
-    "hexo-renderer-sass": "^0.4.0",
+    "hexo-renderer-sass": "github:cocowool/hexo-renderer-sass",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-theme-landscape": "^0.0.3",
     "hexo-wordcount": "^6.0.1",
+    "node-sass": "^7.0.1",
     "tar": "^6.1.11"
-  },
-  "devDependencies": {
-    "node-sass": "^7.0.1"
   }
 }
