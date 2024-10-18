@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Android颜色透明度计算 | 小麦</title><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/blog/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/blog/atom.xml"><script src="https://www.googletagmanager.com/gtag/js?id=G-R3NLYDC8PK" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R3NLYDC8PK');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "n85h4t74i7");
+</script><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Android颜色透明度计算</h1><a id="logo" href="/blog/.">小麦</a><p class="description">人生的大起大落来得太突然，搞得我直想尿尿...</p></div><div id="nav-menu"><a class="current" href="/blog/."><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/history/"><i class="fa fa-book"> 历史</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Android颜色透明度计算</h1><div class="post-meta">2019-04-24<span> | </span><span class="category"><a href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 540</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/blog/2019/04/24/android-yan-se-tou-ming-du-ji-suan/#vcomment"><span class="valine-comment-count" data-xid="/blog/2019/04/24/android-yan-se-tou-ming-du-ji-suan/"></span><span> 条评论</span></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E9%A2%9C%E8%89%B2%E9%80%8F%E6%98%8E%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text">Android颜色透明度计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android%E4%B8%AD%E9%A2%9C%E8%89%B2%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">Android中颜色简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="toc-number">1.2.</span> <span class="toc-text">不透明度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">计算方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.4.</span> <span class="toc-text">速查表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol></div></div><div class="post-content"><h1 id="Android颜色透明度计算"><a href="#Android颜色透明度计算" class="headerlink" title="Android颜色透明度计算"></a>Android颜色透明度计算</h1><h2 id="Android中颜色简介"><a href="#Android中颜色简介" class="headerlink" title="Android中颜色简介"></a>Android中颜色简介</h2><p>Android中的颜色值通常遵循RGB&#x2F;ARGB标准，使用时通常以<code>#</code>字符开头，以16进制表示。<br>其中RGB依次代表红色（Red）、绿色（Green）、蓝色（Blue）.<br>ARGB依次代表透明度(Alpha)、红色（Red）、绿色（Green）、蓝色（Blue） </p>
+<p>eg:#FF00CC99其中FF是透明度，00是红色值，CC是绿色值，99是蓝色值</p>
+<h2 id="不透明度"><a href="#不透明度" class="headerlink" title="不透明度"></a>不透明度</h2><p>透明度的范围是0-255，在计算机中，我们就用16进制(00-FF)表示，全透明就是00，完全不透明就是FF</p>
+<p>透明度和不透明度加起来等于1或者说100%</p>
+<h2 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h2><p>255 * 不透明度 -&gt; 转换成16进制数</p>
+<p>eg:30%不透明度也就是255*30%&#x3D;76.5，四舍五入77，然后利用计算器转为16进制为4D</p>
+<p>下面是代码计算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="type">float</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">255</span> * i * <span class="number">1.0f</span> / <span class="number">100f</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">alpha</span> <span class="operator">=</span> Math.round(temp);</span><br><span class="line">            <span class="type">String</span> <span class="variable">hexStr</span> <span class="operator">=</span> Integer.toHexString(alpha);</span><br><span class="line">            <span class="keyword">if</span> (hexStr.length() &lt; <span class="number">2</span>)</span><br><span class="line">                hexStr = <span class="string">&quot;0&quot;</span> + hexStr;</span><br><span class="line">            System.out.println(i + <span class="string">&quot;%, &quot;</span> + hexStr.toUpperCase());</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="速查表"><a href="#速查表" class="headerlink" title="速查表"></a>速查表</h2><table>
+<thead>
+<tr>
+<th>不透明度</th>
+<th>16进制表示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0%</td>
+<td>00</td>
+</tr>
+<tr>
+<td>1%</td>
+<td>03</td>
+</tr>
+<tr>
+<td>2%</td>
+<td>05</td>
+</tr>
+<tr>
+<td>3%</td>
+<td>08</td>
+</tr>
+<tr>
+<td>4%</td>
+<td>0A</td>
+</tr>
+<tr>
+<td>5%</td>
+<td>0D</td>
+</tr>
+<tr>
+<td>6%</td>
+<td>0F</td>
+</tr>
+<tr>
+<td>7%</td>
+<td>12</td>
+</tr>
+<tr>
+<td>8%</td>
+<td>14</td>
+</tr>
+<tr>
+<td>9%</td>
+<td>17</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>1A</td>
+</tr>
+<tr>
+<td>11%</td>
+<td>1C</td>
+</tr>
+<tr>
+<td>12%</td>
+<td>1F</td>
+</tr>
+<tr>
+<td>13%</td>
+<td>21</td>
+</tr>
+<tr>
+<td>14%</td>
+<td>24</td>
+</tr>
+<tr>
+<td>15%</td>
+<td>26</td>
+</tr>
+<tr>
+<td>16%</td>
+<td>29</td>
+</tr>
+<tr>
+<td>17%</td>
+<td>2B</td>
+</tr>
+<tr>
+<td>18%</td>
+<td>2E</td>
+</tr>
+<tr>
+<td>19%</td>
+<td>30</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>33</td>
+</tr>
+<tr>
+<td>21%</td>
+<td>36</td>
+</tr>
+<tr>
+<td>22%</td>
+<td>38</td>
+</tr>
+<tr>
+<td>23%</td>
+<td>3B</td>
+</tr>
+<tr>
+<td>24%</td>
+<td>3D</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>40</td>
+</tr>
+<tr>
+<td>26%</td>
+<td>42</td>
+</tr>
+<tr>
+<td>27%</td>
+<td>45</td>
+</tr>
+<tr>
+<td>28%</td>
+<td>47</td>
+</tr>
+<tr>
+<td>29%</td>
+<td>4A</td>
+</tr>
+<tr>
+<td>30%</td>
+<td>4D</td>
+</tr>
+<tr>
+<td>31%</td>
+<td>4F</td>
+</tr>
+<tr>
+<td>32%</td>
+<td>52</td>
+</tr>
+<tr>
+<td>33%</td>
+<td>54</td>
+</tr>
+<tr>
+<td>34%</td>
+<td>57</td>
+</tr>
+<tr>
+<td>35%</td>
+<td>59</td>
+</tr>
+<tr>
+<td>36%</td>
+<td>5C</td>
+</tr>
+<tr>
+<td>37%</td>
+<td>5E</td>
+</tr>
+<tr>
+<td>38%</td>
+<td>61</td>
+</tr>
+<tr>
+<td>39%</td>
+<td>63</td>
+</tr>
+<tr>
+<td>40%</td>
+<td>66</td>
+</tr>
+<tr>
+<td>41%</td>
+<td>69</td>
+</tr>
+<tr>
+<td>42%</td>
+<td>6B</td>
+</tr>
+<tr>
+<td>43%</td>
+<td>6E</td>
+</tr>
+<tr>
+<td>44%</td>
+<td>70</td>
+</tr>
+<tr>
+<td>45%</td>
+<td>73</td>
+</tr>
+<tr>
+<td>46%</td>
+<td>75</td>
+</tr>
+<tr>
+<td>47%</td>
+<td>78</td>
+</tr>
+<tr>
+<td>48%</td>
+<td>7A</td>
+</tr>
+<tr>
+<td>49%</td>
+<td>7D</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>80</td>
+</tr>
+<tr>
+<td>51%</td>
+<td>82</td>
+</tr>
+<tr>
+<td>52%</td>
+<td>85</td>
+</tr>
+<tr>
+<td>53%</td>
+<td>87</td>
+</tr>
+<tr>
+<td>54%</td>
+<td>8A</td>
+</tr>
+<tr>
+<td>55%</td>
+<td>8C</td>
+</tr>
+<tr>
+<td>56%</td>
+<td>8F</td>
+</tr>
+<tr>
+<td>57%</td>
+<td>91</td>
+</tr>
+<tr>
+<td>58%</td>
+<td>94</td>
+</tr>
+<tr>
+<td>59%</td>
+<td>96</td>
+</tr>
+<tr>
+<td>60%</td>
+<td>99</td>
+</tr>
+<tr>
+<td>61%</td>
+<td>9C</td>
+</tr>
+<tr>
+<td>62%</td>
+<td>9E</td>
+</tr>
+<tr>
+<td>63%</td>
+<td>A1</td>
+</tr>
+<tr>
+<td>64%</td>
+<td>A3</td>
+</tr>
+<tr>
+<td>65%</td>
+<td>A6</td>
+</tr>
+<tr>
+<td>66%</td>
+<td>A8</td>
+</tr>
+<tr>
+<td>67%</td>
+<td>AB</td>
+</tr>
+<tr>
+<td>68%</td>
+<td>AD</td>
+</tr>
+<tr>
+<td>69%</td>
+<td>B0</td>
+</tr>
+<tr>
+<td>70%</td>
+<td>B3</td>
+</tr>
+<tr>
+<td>71%</td>
+<td>B5</td>
+</tr>
+<tr>
+<td>72%</td>
+<td>B8</td>
+</tr>
+<tr>
+<td>73%</td>
+<td>BA</td>
+</tr>
+<tr>
+<td>74%</td>
+<td>BD</td>
+</tr>
+<tr>
+<td>75%</td>
+<td>BF</td>
+</tr>
+<tr>
+<td>76%</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>77%</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>78%</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>79%</td>
+<td>C9</td>
+</tr>
+<tr>
+<td>80%</td>
+<td>CC</td>
+</tr>
+<tr>
+<td>81%</td>
+<td>CF</td>
+</tr>
+<tr>
+<td>82%</td>
+<td>D1</td>
+</tr>
+<tr>
+<td>83%</td>
+<td>D4</td>
+</tr>
+<tr>
+<td>84%</td>
+<td>D6</td>
+</tr>
+<tr>
+<td>85%</td>
+<td>D9</td>
+</tr>
+<tr>
+<td>86%</td>
+<td>DB</td>
+</tr>
+<tr>
+<td>87%</td>
+<td>DE</td>
+</tr>
+<tr>
+<td>88%</td>
+<td>E0</td>
+</tr>
+<tr>
+<td>89%</td>
+<td>E3</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>E6</td>
+</tr>
+<tr>
+<td>91%</td>
+<td>E8</td>
+</tr>
+<tr>
+<td>92%</td>
+<td>EB</td>
+</tr>
+<tr>
+<td>93%</td>
+<td>ED</td>
+</tr>
+<tr>
+<td>94%</td>
+<td>F0</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>F2</td>
+</tr>
+<tr>
+<td>96%</td>
+<td>F5</td>
+</tr>
+<tr>
+<td>97%</td>
+<td>F7</td>
+</tr>
+<tr>
+<td>98%</td>
+<td>FA</td>
+</tr>
+<tr>
+<td>99%</td>
+<td>FC</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>FF</td>
+</tr>
+</tbody></table>
+<p>eg:</p>
+<p>UI给出的颜色值为#000000，不透明度为40%。<br>那么结合上表，40%不透明度对应的16进制的值为66，那么最终颜色值就是#66000000</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangliblog/article/details/73248122">Android颜色透明度（不透明度）计算</a></p>
+</div><div class="post-copyright"><script type="text/javascript" src="/blog/js/copyright.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copyright.css?v=1.0.0"><p><span>本文标题：</span>Android颜色透明度计算</p><p><span>文章作者：</span>xmaihh</p><p><span>发布时间：</span>2019-04-24</p><p><span>最后更新：</span>2019-04-24</p><p><span>原始链接：</span><a href="/2019/04/24/android-yan-se-tou-ming-du-ji-suan/">https://xmaihh.github.io/blog/2019/04/24/android-yan-se-tou-ming-du-ji-suan/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://xmaihh.github.io/blog/2019/04/24/android-yan-se-tou-ming-du-ji-suan/"></i></span></p><p><span>版权声明：</span>采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">[CC BY-NC-SA 4.0许可协议]</a>进行许可</p></div><br><script type="text/javascript" src="/blog/js/share.js?v=1.0.0" async></script><a class="article-share-link" data-url="https://xmaihh.github.io/blog/2019/04/24/android-yan-se-tou-ming-du-ji-suan/" data-id="cm2e1ez3l002nf1q146h4clrj" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3awWojQQwE0Pz/T2dhTwuOnSqpO87Cm1PAeKbfBLrlkj4+4uvz7/Xv34/X46eP3319z8dPnz3l8IWHh4c3Wnqy6Bb8bFk55tka8mfh4eHh3eO1G3f73dfU9tNiPXh4eHhv5RXb8ejOyeGBh4eH93/xTh0G+aa/WQMeHh7ebV4ezuZFcMLII+DrWQseHh5eV/3WDbD3/n29v4eHh4c36qpvoodkKW3cUK8QDw8P7wLvdZA6OyRmBXo+aJU3w/Dw8PDu8WbDAfuXlTS98vGCA1k1Hh4eXnCf2WhUOw6Vx7iboYEvPsXDw8O7wDsVAcw2/fYlDn8G4OHh4R3l5VtwO1CVD2PlS2/HDvDw8PDu8ZJRp/2R0C569lK+CCPw8PDwLvDauLaNBjal86pdh4eHh3eNl5eqp8akZiV7Hhnj4eHh3eZtmkz7AjqPdPOmGh4eHt57eW2Am48UnDpCnj4XDw8P7wLvJ5v9szZbjv/muXh4eHiHeBtAW/62h8GsuMfDw8O7zWuL2tnrmLXHZm25b0pqPDw8vDUvudGsEZUfD/sj5Ona8PDw8C7z8jggj2tnRfP+WdEvBjw8PLwRbzNUmrya5M6z1ldxwODh4eEd5e2HrmbNrc24avGC8PDw8C7wNtt03o5qg4z8yCl+N+Dh4eEd5bXtpSRy3RTWmyhkeOHh4eGVvFno0JbIswGFdpwrinHx8PDwDvHaQ2I/VLqJPIpBLjw8PLyjvM/yaseh9i+ojXe/aIDh4eHhHeXNDoN9zrGJhm+sBw8PD69dz2z4KR9FbQ+b19t9G1jg4eHh3eNttu9NvNsOKCT/Hjw8PLzfyUu29Rns1KvEw8PD+w28tqm/j4ZbGB4eHt5P8tpxqPwAaOOM/LlRCY6Hh4d3gXeqZdU2yfYF96wcx8PDw1vw/gDjQivwpw7XJgAAAABJRU5ErkJggg==">分享</a><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AndroidStudio/" rel="tag">AndroidStudio</a></li></ul></div><div class="post-nav"><a class="pre" href="/blog/2019/04/26/androidstudio-huo-qu-sha1-ma/">AndroidStudio获取sha1码</a><a class="next" href="/blog/2019/04/16/ubuntu18-04-2lts-xia-jie-jue-dia-wu-fa-shu-ru-zhong-wen-wen-ti/">Ubuntu18.04.2LTS下解決Dia无法输入中文问题</a></div><div class="nofancybox" id="vcomment"></div><script src="https://unpkg.com/valine/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'WyoZPeMWzhLWRYAeA5ueZwiI-MdYXbMMI',
+  appKey:'2n4nqRtMlbjNwRNodC3rPRQI',
+  serverURLs:'https://wyozpemw.api.lncldglobal.com',
+  placeholder:'Just so so',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/blog/img/avatar.svg"/></a><p>亲自部署 亲自指挥</p><a class="info-icon" href="https://github.com/xmaihh" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/blog/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/Android/" style="font-size: 15px;">Android</a> <a href="/blog/tags/ADB/" style="font-size: 15px;">ADB</a> <a href="/blog/tags/ANR/" style="font-size: 15px;">ANR</a> <a href="/blog/tags/BLE/" style="font-size: 15px;">BLE</a> <a href="/blog/tags/Lottie/" style="font-size: 15px;">Lottie</a> <a href="/blog/tags/OTA/" style="font-size: 15px;">OTA</a> <a href="/blog/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/blog/tags/Logcat/" style="font-size: 15px;">Logcat</a> <a href="/blog/tags/AndroidStudio/" style="font-size: 15px;">AndroidStudio</a> <a href="/blog/tags/Jni/" style="font-size: 15px;">Jni</a> <a href="/blog/tags/Serialport/" style="font-size: 15px;">Serialport</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/BT/" style="font-size: 15px;">BT</a> <a href="/blog/tags/RS232/" style="font-size: 15px;">RS232</a> <a href="/blog/tags/Archlinux/" style="font-size: 15px;">Archlinux</a> <a href="/blog/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/blog/tags/ArkUI/" style="font-size: 15px;">ArkUI</a> <a href="/blog/tags/Harmony/" style="font-size: 15px;">Harmony</a> <a href="/blog/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/blog/tags/Cloudflare/" style="font-size: 15px;">Cloudflare</a> <a href="/blog/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blog/tags/docker-compose/" style="font-size: 15px;">docker-compose</a> <a href="/blog/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/blog/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/blog/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/blog/tags/Frp/" style="font-size: 15px;">Frp</a> <a href="/blog/tags/Github-Actions/" style="font-size: 15px;">Github Actions</a> <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/CI-CD/" style="font-size: 15px;">CI/CD</a> <a href="/blog/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/blog/tags/Portainer/" style="font-size: 15px;">Portainer</a> <a href="/blog/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/blog/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/blog/tags/ArchLinux/" style="font-size: 15px;">ArchLinux</a> <a href="/blog/tags/Pixel8/" style="font-size: 15px;">Pixel8</a> <a href="/blog/tags/Magisk/" style="font-size: 15px;">Magisk</a> <a href="/blog/tags/Python/" style="font-size: 15px;">Python</a> <a href="/blog/tags/RecyclerView/" style="font-size: 15px;">RecyclerView</a> <a href="/blog/tags/Gdrive/" style="font-size: 15px;">Gdrive</a> <a href="/blog/tags/ZeroTier/" style="font-size: 15px;">ZeroTier</a> <a href="/blog/tags/Watchdog/" style="font-size: 15px;">Watchdog</a> <a href="/blog/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/blog/tags/Git/" style="font-size: 15px;">Git</a> <a href="/blog/tags/Github/" style="font-size: 15px;">Github</a> <a href="/blog/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/blog/tags/Proxy/" style="font-size: 15px;">Proxy</a> <a href="/blog/tags/Sqlite/" style="font-size: 15px;">Sqlite</a> <a href="/blog/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/blog/tags/Tailscale/" style="font-size: 15px;">Tailscale</a> <a href="/blog/tags/weixin/" style="font-size: 15px;">weixin</a> <a href="/blog/tags/Openwrt/" style="font-size: 15px;">Openwrt</a> <a href="/blog/tags/npm/" style="font-size: 15px;">npm</a> <a href="/blog/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/blog/tags/DoH/" style="font-size: 15px;">DoH</a> <a href="/blog/tags/Design-pattern/" style="font-size: 15px;">Design pattern</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 15px;">Raspberry Pi</a> <a href="/blog/tags/VLC/" style="font-size: 15px;">VLC</a> <a href="/blog/tags/CRC/" style="font-size: 15px;">CRC</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">让Follow认证我的Hexo博客订阅源</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">Portainer重置admin登录密码</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">华硕路由器修改Hosts</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">Flutter使用intl_generator在Windows下报错Cannot open file, path = 'l10n-arb/intl_*.arb' (OS Error: 文件名、目录名或卷标语法不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">在Hexo中使用PlantUML</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">Flutter各个平台的构建产物</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/15/windows-xia-jin-wei-github-she-zhi-ssh-dai-li/">Windows下仅为 GitHub 设置SSH代理</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://quincyjiang.github.io/" title="瘟疫青年" target="_blank">瘟疫青年</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/blog/." rel="nofollow">小麦.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/blog/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/blog/css/search.css?v=1.0.0"><script type="text/javascript" src="/blog/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/blog/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="100,99,98" opacity="0.7" zIndex="-1" count="150" src="https://unpkg.com/canvas-nest.js/dist/canvas-nest.js"></script><script type="text/javascript" src="/blog/js/love.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/blog/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/smartresize.js?v=1.0.0"></script></div></body></html>

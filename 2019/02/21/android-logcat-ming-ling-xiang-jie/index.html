@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Android logcat命令详解 | 小麦</title><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/blog/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/blog/atom.xml"><script src="https://www.googletagmanager.com/gtag/js?id=G-R3NLYDC8PK" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R3NLYDC8PK');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "n85h4t74i7");
+</script><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Android logcat命令详解</h1><a id="logo" href="/blog/.">小麦</a><p class="description">人生的大起大落来得太突然，搞得我直想尿尿...</p></div><div id="nav-menu"><a class="current" href="/blog/."><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/history/"><i class="fa fa-book"> 历史</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Android logcat命令详解</h1><div class="post-meta">2019-02-21<span> | </span><span class="category"><a href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.3k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 5</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/blog/2019/02/21/android-logcat-ming-ling-xiang-jie/#vcomment"><span class="valine-comment-count" data-xid="/blog/2019/02/21/android-logcat-ming-ling-xiang-jie/"></span><span> 条评论</span></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-Log%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">Android Log系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-logcat%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">Android logcat介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#android-util-Log"><span class="toc-number">2.1.</span> <span class="toc-text">android.util.Log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logcat%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">2.2.</span> <span class="toc-text">logcat缓冲区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.2.1.</span> <span class="toc-text">缓冲区介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">缓冲区模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%BC%93%E5%86%B2%E5%8C%BA%E5%91%BD%E4%BB%A4"><span class="toc-number">2.2.3.</span> <span class="toc-text">获取缓冲区命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.2.4.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logcat%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">logcat命令参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">2.3.1.</span> <span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logcat%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">2.4.</span> <span class="toc-text">logcat格式化输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">2.5.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#logcat%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">3.</span> <span class="toc-text">logcat优先级</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol></div></div><div class="post-content"><h1 id="Android-Log系统"><a href="#Android-Log系统" class="headerlink" title="Android Log系统"></a>Android Log系统</h1><p>Android提供了一个灵活的logging系统，允许应用程序和系统组件等整个系统记录logging信息，它是独立于Linux Kernel的一个logging系统，kernel是通过<code>pr_info</code>、<code>printk</code>等存储，通过<code>dmesg</code>或<code>cat /proc/kmsg</code>获取。不过，Android logging 系统也是将信息存在内核缓存区。其结构如下：<br><img src="https://i.loli.net/2019/02/21/5c6e43fee4322.png"></p>
+<p>Logging system由如下几部分组成：</p>
+<ul>
+<li>实现loging信息存储的kernel驱动和缓存区</li>
+<li>C，C++和Java 类添加与读取log</li>
+<li>一个单独浏览log信息的程序（logcat）</li>
+<li>能够查看和过滤来自主机的log信息（通过Android Studio 或者 DDMS）</li>
+</ul>
+<h1 id="Android-logcat介绍"><a href="#Android-logcat介绍" class="headerlink" title="Android logcat介绍"></a>Android logcat介绍</h1><p>logcat是android中的一个命令行工具，可以用于得到程序的log信息</p>
+<h2 id="android-util-Log"><a href="#android-util-Log" class="headerlink" title="android.util.Log"></a><a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/util/Log">android.util.Log</a></h2><p>通常，我们使用android.util.Log类来打印日志消息，通过Logcat来查看打印的日志<br>Log类提供的方法，优先级按照从高到低的顺序如下:</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Log.e(String,String)(error)</td>
+<td>显示错误信息</td>
+</tr>
+<tr>
+<td>Log.w(String,String)(waning)</td>
+<td>显示警告信息</td>
+</tr>
+<tr>
+<td>Log.i(String,String)(information)</td>
+<td>显示一般信息</td>
+</tr>
+<tr>
+<td>Log.d(String,String)(debug)</td>
+<td>显示调试信息</td>
+</tr>
+<tr>
+<td>Log.v(String,String) (vervbose)</td>
+<td>显示全部信息</td>
+</tr>
+</tbody></table>
+<p>e.g.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过代码打印log</span></span><br><span class="line"><span class="keyword">Log</span>.<span class="built_in">d</span>(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;LogCollectorThread is create&quot;</span>);</span><br><span class="line"></span><br><span class="line"> ...</span><br><span class="line"><span class="comment">// adb获取log</span></span><br><span class="line"><span class="keyword">shell</span>@android:/$ adb logcat</span><br></pre></td></tr></table></figure>
+
+<p>adb logcat 输出的日志:</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D/:MainActivity: LogCollectorThread <span class="keyword">is</span> <span class="keyword">create</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="logcat缓冲区"><a href="#logcat缓冲区" class="headerlink" title="logcat缓冲区"></a>logcat缓冲区</h2><h3 id="缓冲区介绍"><a href="#缓冲区介绍" class="headerlink" title="缓冲区介绍"></a>缓冲区介绍</h3><p>android log输出量巨大，特别是通信系统的log，因此，android把log输出到不同的缓冲区中，目前定义了四个log缓冲区：</p>
+<ol>
+<li>Radio：输出通信系统的log</li>
+<li>System：输出系统组件的log</li>
+<li>Event：输出event模块的log</li>
+<li>Main：所有java层的log，遗迹不属于上面3层的log<br>缓冲区主要给系统组件使用，一般的应用不需要关心，应用的log都输出到main缓冲区中<br>默认log输出（不指定缓冲区的情况下）是输出System和Main缓冲区的log</li>
+</ol>
+<h3 id="缓冲区模型"><a href="#缓冲区模型" class="headerlink" title="缓冲区模型"></a>缓冲区模型</h3><p><img src="https://i.loli.net/2019/02/21/5c6e4e93a1230.png"></p>
+<h3 id="获取缓冲区命令"><a href="#获取缓冲区命令" class="headerlink" title="获取缓冲区命令"></a>获取缓冲区命令</h3><table>
+<thead>
+<tr>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-b&lt;buffer&gt;</code></td>
+<td>加载一个可使用的日志缓冲区提供查看，默认值是<code>main</code></td>
+</tr>
+</tbody></table>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adb logcat –<span class="selector-tag">b</span> radio</span><br><span class="line"></span><br><span class="line">adb logcat –<span class="selector-tag">b</span> system</span><br><span class="line"></span><br><span class="line">adb logcat –<span class="selector-tag">b</span> events</span><br><span class="line"></span><br><span class="line">adb logcat –<span class="selector-tag">b</span> <span class="selector-tag">main</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="logcat命令参数"><a href="#logcat命令参数" class="headerlink" title="logcat命令参数"></a>logcat命令参数</h2><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><table>
+<thead>
+<tr>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-b &lt;buffer&gt;</code></td>
+<td>加载一个可使用的日志缓冲区供查看，比如event和radio。默认值是main  具体查看<a target="_blank" rel="noopener" href="https://developer.android.com/studio/command-line/logcat#alternativeBuffers">Viewing Alternative Log Buffers</a>.</td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>清除缓冲区中的全部日志并退出（清除完后可以使用-g查看缓冲区）</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>将缓冲区的log转存到屏幕中然后退出</td>
+</tr>
+<tr>
+<td><code>-f &lt;filename&gt;</code></td>
+<td>将log输出到指定的文件中&lt;文件名&gt;.默认为标准输出（stdout）</td>
+</tr>
+<tr>
+<td><code>-g</code></td>
+<td>打印日志缓冲区的大小并退出</td>
+</tr>
+<tr>
+<td><code>-n &lt;count&gt;</code></td>
+<td>设置日志的最大数目<code>&lt;count&gt;</code>，默认值是4，需要和<code>-r</code>选项一起使用</td>
+</tr>
+<tr>
+<td><code>-r &lt;kbytes&gt;</code></td>
+<td>没<code>&lt;kbytes&gt;</code>时输出日志，默认值是16，需要和<code>-f</code>选项一起使用</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>设置过滤器</td>
+</tr>
+<tr>
+<td><code>-v &lt;format&gt;</code></td>
+<td>设置输出格式的日志消息。默认是短暂的格式。支持的格式列表 参看<a target="_blank" rel="noopener" href="https://developer.android.com/studio/command-line/logcat#outputFormat">Controlling Log Output Format</a></td>
+</tr>
+</tbody></table>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将缓冲区的log打印到屏幕并退出</span></span><br><span class="line">adb logcat -d </span><br><span class="line"><span class="comment">//清除缓冲区log（testCase运行前可以先清除一下）</span></span><br><span class="line">adb logcat -c</span><br><span class="line"><span class="comment">//打印缓冲区大小并退出</span></span><br><span class="line">adb logcat -<span class="selector-tag">g</span></span><br><span class="line"><span class="comment">//输出log</span></span><br><span class="line">adb logcat -f /sdcard/log<span class="selector-class">.txt</span> -n <span class="number">10</span> -<span class="attribute">r</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="logcat格式化输出"><a href="#logcat格式化输出" class="headerlink" title="logcat格式化输出"></a>logcat格式化输出</h2><p>日志消息包含一个元数据字段，除了标签和优先级，您可以修改输出显示一个特定的元数据字段格式的消息。为此，您使用-v选项来指定一个支持的输出格式。一下为支持的格式：</p>
+<table>
+<thead>
+<tr>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>brief</code></td>
+<td>显示优先级&#x2F;标记和过程的PID发出的消息（默认格式）</td>
+</tr>
+<tr>
+<td><code>process</code></td>
+<td>只显示PID</td>
+</tr>
+<tr>
+<td><code>tag</code></td>
+<td>只显示优先级&#x2F;标记</td>
+</tr>
+<tr>
+<td><code>raw</code></td>
+<td>显示原始的日志消息，没有其他元数据字段</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>调用显示日期、时间、优先级&#x2F;标签和过程的PID发出消息</td>
+</tr>
+<tr>
+<td><code>threadtime</code></td>
+<td>调用显示日期、时间、优先级、标签遗迹PID TID线程发出的消息</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>显示所有元数据字段与空白行和单独的消息</td>
+</tr>
+</tbody></table>
+<p>当logcat开始，指定想要输出格式<code>-v</code>选项：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[adb]</span> logcat <span class="selector-attr">[-v &lt;format&gt;]</span></span><br><span class="line">adb logcat –v thread</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>只能指定一个输出格式<code>-v</code></p>
+</blockquote>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><p><img src="https://i.loli.net/2019/02/21/5c6e571e84ea1.png"></p>
+<h1 id="logcat优先级"><a href="#logcat优先级" class="headerlink" title="logcat优先级"></a>logcat优先级</h1><p>优先级使用字符标识，一下优先级从低到高:</p>
+<ul>
+<li>V –Verbose(最低优先级)</li>
+<li>D – Debug</li>
+<li>I – Info</li>
+<li>W – Warning</li>
+<li>E – Error</li>
+<li>F – Fatal</li>
+<li>S – Silent</li>
+</ul>
+<p>为了减少不想要日志的输出，可以建立一个过滤器<br>过滤语法：<code>tag：priority</code></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">//</span> 过滤<span class="variable">TAG</span>为<span class="variable">ActivityManager</span>输出级别大于<span class="built_in">I</span>的日志与<span class="variable">TAG</span>为<span class="variable">MyApp</span>输出级别大于<span class="built_in">D</span>的日志</span><br><span class="line"></span><br><span class="line"><span class="variable">adb</span> <span class="variable">logcat</span> <span class="variable">ActivityManager</span><span class="operator">:</span><span class="built_in">I</span>  <span class="variable">My</span> <span class="variable">App</span><span class="operator">:</span><span class="built_in">D</span> <span class="operator">*:</span><span class="variable">S</span></span><br><span class="line"></span><br><span class="line"> <span class="operator">...</span></span><br><span class="line"><span class="operator">//</span> 设置过滤级别为<span class="variable">W</span>以上</span><br><span class="line"><span class="variable">adb</span> <span class="variable">logcat</span> <span class="operator">*:</span><span class="variable">W</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://elinux.org/Android_Logging_System">https://elinux.org/Android_Logging_System</a><br><a target="_blank" rel="noopener" href="https://developer.android.com/studio/command-line/logcat">https://developer.android.com/studio/command-line/logcat</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/JianXu/p/5468839.html">https://www.cnblogs.com/JianXu/p/5468839.html</a></p>
+</div><div class="post-copyright"><script type="text/javascript" src="/blog/js/copyright.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copyright.css?v=1.0.0"><p><span>本文标题：</span>Android logcat命令详解</p><p><span>文章作者：</span>xmaihh</p><p><span>发布时间：</span>2019-02-21</p><p><span>最后更新：</span>2019-02-21</p><p><span>原始链接：</span><a href="/2019/02/21/android-logcat-ming-ling-xiang-jie/">https://xmaihh.github.io/blog/2019/02/21/android-logcat-ming-ling-xiang-jie/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://xmaihh.github.io/blog/2019/02/21/android-logcat-ming-ling-xiang-jie/"></i></span></p><p><span>版权声明：</span>采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">[CC BY-NC-SA 4.0许可协议]</a>进行许可</p></div><br><script type="text/javascript" src="/blog/js/share.js?v=1.0.0" async></script><a class="article-share-link" data-url="https://xmaihh.github.io/blog/2019/02/21/android-logcat-ming-ling-xiang-jie/" data-id="cm2e1ez36000xf1q15ltc8yrd" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvklEQVR42u3awWojQQwEUP//T2dhTwGvnSqpO8nCm5MJ9qRfG6blkh6P+Pr4e31+/fkvz+98fv/snh9P1+PGhYeHhzda+qtr9u9ffTbflFf3ydeMh4eHd5uXPLjbBbUb8f4+s0/h4eHh/SyvPQCSBbVbg4eHh/c/8vIiOymL29IZDw8P7/fw8sf6JnrYhBTXsxY8PDy8mDdrgP3s6+v9PTw8PLxRV7197CZHwr4ZVqwTDw8P7wJvXxAn1KSFNhtfiEIKPDw8vMu8TQt/FmfMRgeKYVY8PDy8o7x2QbMB07Z5thli+EcxjYeHh3eUl5SqsyVujoe88RYdEnh4eHhHebORphzQxhCz0dji3MPDw8Nb8zb99834fh4Wt+X7cCYCDw8Pr+S1AcS9HW3bb1GcgYeHh3eU1xa1bdNrFsLOCuU6jMDDw8Nb85ISNh87GC5odFAV+TQeHh7eBV7b9NoX1rMDKdpEPDw8vAu8/EG8afnf+4/F0CoeHh7eUV4+FlDcLr7zvj1WfId4eHh4h3ht8ZqPjW5i33ac6+U78fDw8I7ykkf8HpOX1LMtjmJcPDw8vKO82WGQh7mzNlsSZ0RDV3h4eHgXeHVLvmykbRpds8gDDw8P7zYvWdD3jEzNwoiXXwYeHh7et/Bm7fxZXNsGFklRHv1iwMPDw1vwZsFBPgqwCYj3M6h4eHh4N3izcLZtR23Yq6ErPDw8vMvjqnkBHbXtg3h3hm/DETw8PLyzvE2hvHnEt0Ht7G54eHh4N3ibH//teEF7RrWtNTw8PLzv5M3K3NkS38cKbZRcdPnw8PDwLvBmzfu2oZX04jbHzOPsbAIeHh7eUV4b6ebLmsUfXyQueHh4eD/E+2Jua7E1s5HZ6BTAw8PDu8bLw4i25X8qaW7XhoeHh3eP1zbA2rHR2aN/M1iw6u/h4eHhveP9AVFifuM70vrOAAAAAElFTkSuQmCC">分享</a><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Logcat/" rel="tag">Logcat</a></li></ul></div><div class="post-nav"><a class="pre" href="/blog/2019/02/22/fragment-yi-chang-android-view-inflateexception-binary-xml-file-line-7-error-inflating-class-fragment/">Fragment异常：android.view.InflateException: Binary XML file line #7: Error inflating class fragment</a><a class="next" href="/blog/2019/02/20/ding-zhi-kai-guan-bao-cun-logcat-he-kmsg-ri-zhi-shu-chu-dao-wen-jian/">定制开关保存LOGCAT和KMSG日志输出到文件</a></div><div class="nofancybox" id="vcomment"></div><script src="https://unpkg.com/valine/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'WyoZPeMWzhLWRYAeA5ueZwiI-MdYXbMMI',
+  appKey:'2n4nqRtMlbjNwRNodC3rPRQI',
+  serverURLs:'https://wyozpemw.api.lncldglobal.com',
+  placeholder:'Just so so',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/blog/img/avatar.svg"/></a><p>亲自部署 亲自指挥</p><a class="info-icon" href="https://github.com/xmaihh" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/blog/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/Android/" style="font-size: 15px;">Android</a> <a href="/blog/tags/ADB/" style="font-size: 15px;">ADB</a> <a href="/blog/tags/ANR/" style="font-size: 15px;">ANR</a> <a href="/blog/tags/BLE/" style="font-size: 15px;">BLE</a> <a href="/blog/tags/Lottie/" style="font-size: 15px;">Lottie</a> <a href="/blog/tags/OTA/" style="font-size: 15px;">OTA</a> <a href="/blog/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/blog/tags/Logcat/" style="font-size: 15px;">Logcat</a> <a href="/blog/tags/AndroidStudio/" style="font-size: 15px;">AndroidStudio</a> <a href="/blog/tags/Jni/" style="font-size: 15px;">Jni</a> <a href="/blog/tags/Serialport/" style="font-size: 15px;">Serialport</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/BT/" style="font-size: 15px;">BT</a> <a href="/blog/tags/RS232/" style="font-size: 15px;">RS232</a> <a href="/blog/tags/Archlinux/" style="font-size: 15px;">Archlinux</a> <a href="/blog/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/blog/tags/ArkUI/" style="font-size: 15px;">ArkUI</a> <a href="/blog/tags/Harmony/" style="font-size: 15px;">Harmony</a> <a href="/blog/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/blog/tags/Cloudflare/" style="font-size: 15px;">Cloudflare</a> <a href="/blog/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blog/tags/docker-compose/" style="font-size: 15px;">docker-compose</a> <a href="/blog/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/blog/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/blog/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/blog/tags/Frp/" style="font-size: 15px;">Frp</a> <a href="/blog/tags/Github-Actions/" style="font-size: 15px;">Github Actions</a> <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/CI-CD/" style="font-size: 15px;">CI/CD</a> <a href="/blog/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/blog/tags/Portainer/" style="font-size: 15px;">Portainer</a> <a href="/blog/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/blog/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/blog/tags/ArchLinux/" style="font-size: 15px;">ArchLinux</a> <a href="/blog/tags/Pixel8/" style="font-size: 15px;">Pixel8</a> <a href="/blog/tags/Magisk/" style="font-size: 15px;">Magisk</a> <a href="/blog/tags/Python/" style="font-size: 15px;">Python</a> <a href="/blog/tags/RecyclerView/" style="font-size: 15px;">RecyclerView</a> <a href="/blog/tags/Gdrive/" style="font-size: 15px;">Gdrive</a> <a href="/blog/tags/ZeroTier/" style="font-size: 15px;">ZeroTier</a> <a href="/blog/tags/Watchdog/" style="font-size: 15px;">Watchdog</a> <a href="/blog/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/blog/tags/Git/" style="font-size: 15px;">Git</a> <a href="/blog/tags/Github/" style="font-size: 15px;">Github</a> <a href="/blog/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/blog/tags/Proxy/" style="font-size: 15px;">Proxy</a> <a href="/blog/tags/Sqlite/" style="font-size: 15px;">Sqlite</a> <a href="/blog/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/blog/tags/Tailscale/" style="font-size: 15px;">Tailscale</a> <a href="/blog/tags/weixin/" style="font-size: 15px;">weixin</a> <a href="/blog/tags/Openwrt/" style="font-size: 15px;">Openwrt</a> <a href="/blog/tags/npm/" style="font-size: 15px;">npm</a> <a href="/blog/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/blog/tags/DoH/" style="font-size: 15px;">DoH</a> <a href="/blog/tags/Design-pattern/" style="font-size: 15px;">Design pattern</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 15px;">Raspberry Pi</a> <a href="/blog/tags/VLC/" style="font-size: 15px;">VLC</a> <a href="/blog/tags/CRC/" style="font-size: 15px;">CRC</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">让Follow认证我的Hexo博客订阅源</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">Portainer重置admin登录密码</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">华硕路由器修改Hosts</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">Flutter使用intl_generator在Windows下报错Cannot open file, path = 'l10n-arb/intl_*.arb' (OS Error: 文件名、目录名或卷标语法不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">在Hexo中使用PlantUML</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">Flutter各个平台的构建产物</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/15/windows-xia-jin-wei-github-she-zhi-ssh-dai-li/">Windows下仅为 GitHub 设置SSH代理</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://quincyjiang.github.io/" title="瘟疫青年" target="_blank">瘟疫青年</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/blog/." rel="nofollow">小麦.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/blog/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/blog/css/search.css?v=1.0.0"><script type="text/javascript" src="/blog/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/blog/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="100,99,98" opacity="0.7" zIndex="-1" count="150" src="https://unpkg.com/canvas-nest.js/dist/canvas-nest.js"></script><script type="text/javascript" src="/blog/js/love.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/blog/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/smartresize.js?v=1.0.0"></script></div></body></html>

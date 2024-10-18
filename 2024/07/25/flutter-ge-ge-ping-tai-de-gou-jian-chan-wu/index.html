@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Flutter各个平台的构建产物 | 小麦</title><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/blog/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/blog/atom.xml"><script src="https://www.googletagmanager.com/gtag/js?id=G-R3NLYDC8PK" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R3NLYDC8PK');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "n85h4t74i7");
+</script><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Flutter各个平台的构建产物</h1><a id="logo" href="/blog/.">小麦</a><p class="description">人生的大起大落来得太突然，搞得我直想尿尿...</p></div><div id="nav-menu"><a class="current" href="/blog/."><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/history/"><i class="fa fa-book"> 历史</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Flutter各个平台的构建产物</h1><div class="post-meta">2024-07-25<span> | </span><span class="category"><a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2.3k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 9</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/#vcomment"><span class="valine-comment-count" data-xid="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/"></span><span> 条评论</span></a><div class="post-content"><p>在 Flutter 中创建一个新项目，同时支持 Android、iOS、macOS、Windows 和 Linux 平台，假设你已经安装了 Flutter SDK 和必要的开发工具（如 Android Studio、Xcode 等）。</p>
+<h1 id="安装-Flutter-SDK"><a href="#安装-Flutter-SDK" class="headerlink" title="安装 Flutter SDK"></a>安装 Flutter SDK</h1><p>按照 <a target="_blank" rel="noopener" href="https://flutter.dev/docs/get-started/install"><strong>Flutter 官网</strong></a> 下载并按照指南进行安装。</p>
+<h1 id="创建新项目"><a href="#创建新项目" class="headerlink" title="创建新项目"></a>创建新项目</h1><p>打开终端或命令提示符，使用以下命令创建一个新的 Flutter 项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create my_flutter_app</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会创建一个名为 <code>my_flutter_app</code> 的新目录，其中包含一个支持 <strong>Android</strong> 和 <strong>iOS</strong> 的 Flutter 项目的初始模板。</p>
+<h1 id="启用桌面支持"><a href="#启用桌面支持" class="headerlink" title="启用桌面支持"></a>启用桌面支持</h1><p>默认情况下，Flutter 支持 Android 和 iOS。如果你想要为 macOS、Windows 和 Linux 添加支持，你需要为每个桌面平台启用支持。运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my_flutter_app</span><br><span class="line">flutter config --enable-windows-desktop</span><br><span class="line">flutter config --enable-macos-desktop</span><br><span class="line">flutter config --enable-linux-desktop</span><br></pre></td></tr></table></figure>
+
+<p>这些命令会启用桌面平台的支持。在你启用桌面支持之后，你的项目目录中将包括针对每个桌面平台的特定代码和资源。</p>
+<h1 id="运行和构建应用"><a href="#运行和构建应用" class="headerlink" title="运行和构建应用"></a>运行和构建应用</h1><p>现在你可以尝试在各个平台上运行你的应用了。使用以下命令来运行对应平台的应用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flutter run -d windows  <span class="comment"># 运行 Windows 应用</span></span><br><span class="line">flutter run -d macos    <span class="comment"># 运行 macOS 应用</span></span><br><span class="line">flutter run -d linux    <span class="comment"># 运行 Linux 应用</span></span><br><span class="line">flutter run -d android  <span class="comment"># 运行 Android 应用</span></span><br><span class="line">flutter run -d ios      <span class="comment"># 运行 iOS 应用</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="各个平台的构建产物"><a href="#各个平台的构建产物" class="headerlink" title="各个平台的构建产物"></a>各个平台的构建产物</h1><p><code>flutter build</code> 命令是用于构建和编译 Flutter 应用程序的重要工具。它可以将您的 Flutter 项目编译成可以在不同平台上运行的二进制文件或包。</p>
+<p>在 Flutter 中，当你使用 <code>flutter build</code> 命令构建项目时，每个平台的构建产物（build artifacts）将会被存放在项目目录下特定的位置。</p>
+<ol>
+<li>基本语法: flutter build &lt;平台&gt;</li>
+<li>支持的平台:<ul>
+<li>apk: 构建 Android APK 文件</li>
+<li>appbundle: 构建 Android App Bundle</li>
+<li>ios: 构建 iOS 应用</li>
+<li>web: 构建 Web 应用</li>
+<li>windows: 构建 Windows 应用</li>
+<li>macos: 构建 macOS 应用</li>
+<li>linux: 构建 Linux 应用</li>
+</ul>
+</li>
+<li>常用选项:<ul>
+<li>–release: 构建发布版本(<strong>默认</strong>)</li>
+<li>–debug: 构建调试版本</li>
+<li>–profile: 构建性能分析版本</li>
+<li>–split-debug-info: 分离调试信息</li>
+<li>–obfuscate: 混淆代码</li>
+<li>–target-platform: 指定目标平台架构</li>
+</ul>
+</li>
+<li>示例:<ul>
+<li>构建 Android APK: flutter build apk</li>
+<li>构建 iOS 应用: flutter build ios</li>
+<li>构建 Web 应用: flutter build web</li>
+</ul>
+</li>
+<li>特殊用法:<ul>
+<li>flutter build aar: 构建 Android Archive (AAR) 文件,用于将 Flutter 模块集成到现有 Android 项目中</li>
+<li>flutter build bundle: 构建 Flutter 资源包,通常用于自定义构建过程</li>
+</ul>
+</li>
+<li>构建过程: build 命令会执行以下步骤:<ul>
+<li>解析项目依赖</li>
+<li>编译 Dart 代码</li>
+<li>生成平台特定的代码</li>
+<li>打包资源文件</li>
+<li>生成最终的二进制文件或包</li>
+</ul>
+</li>
+<li>注意事项:<ul>
+<li>确保在项目根目录下运行命令</li>
+<li>不同平台可能需要额外的设置或工具(如 iOS 需要 Xcode)</li>
+<li>构建时间可能较长,特别是首次构建</li>
+</ul>
+</li>
+<li>优化技巧:<ul>
+<li>使用 –split-debug-info 和 –obfuscate 选项可以减小应用大小并提高安全性</li>
+<li>定期清理构建缓存(flutter clean)可以解决一些构建问题</li>
+</ul>
+</li>
+</ol>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a><strong>Android</strong></h2><p><strong>基本命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build apk</span><br></pre></td></tr></table></figure>
+
+<p>对于 Android，构建产物默认位于：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">project</span> directory&gt;<span class="regexp">/build/</span>app<span class="regexp">/outputs/</span>flutter-apk/</span><br></pre></td></tr></table></figure>
+
+<p>在这个目录下，你可以找到 APK 文件（如 <code>app-release.apk</code>），这是发布到 Android 设备的文件。</p>
+<p><strong>构建不同架构的 APK</strong></p>
+<p>默认情况下，<code>flutter build apk</code> 会生成一个包含 <code>armeabi-v7a</code> 和 <code>arm64-v8a</code>（32位和64位 ARM 架构）的 APK。如果你需要为其他架构（如 x86）构建 APK 或者想要减小 APK 文件大小，你可以使用 <code>--split-per-abi</code> 选项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build apk --split-per-abi</span><br></pre></td></tr></table></figure>
+
+<p>这将生成针对每个支持的 ABI 的单独 APK 文件，通常用于减少每个 APK 的大小，使其更适合特定设备类型。</p>
+<p>构建完成后，APK 文件默认位于以下路径：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">project</span> root]<span class="regexp">/build/</span>app<span class="regexp">/outputs/</span>flutter-apk/</span><br></pre></td></tr></table></figure>
+
+<p>在这个目录下，你会找到生成的 APK 文件，如：</p>
+<ul>
+<li><code>app-release.apk</code>：未分割 ABI 的发布版本 APK。</li>
+<li><code>app-armeabi-v7a-release.apk</code>：仅包含 <code>armeabi-v7a</code> 架构的发布版本 APK。</li>
+<li><code>app-arm64-v8a-release.apk</code>：仅包含 <code>arm64-v8a</code> 架构的发布版本 APK。</li>
+</ul>
+<p>这些文件可以直接用于安装或分发。如果你使用的是 <code>--debug</code> 或 <code>--profile</code> 选项，相应的文件名也会反映出来（例如 <code>app-debug.apk</code>）。</p>
+<p><strong>Android App Bundle</strong><br>在 Flutter 中，构建一个 Android App Bundle (.aab 文件) 是一个常见的需求，特别是当你需要通过 Google Play 发布你的应用时。Android App Bundle 是 Google 推荐的发布格式，因为它允许 Google Play 根据用户的设备配置动态地生成并提供优化的 APK 包，从而减小应用的下载和安装大小。</p>
+<p>要构建 Android App Bundle，你可以使用以下 Flutter 命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build appbundle</span><br></pre></td></tr></table></figure>
+
+<p>构建完成后，App Bundle 文件默认位于以下路径：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">project</span> root]<span class="regexp">/build/</span>app<span class="regexp">/outputs/</span>bundle<span class="regexp">/release/</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个目录下，你会找到生成的 <code>.aab</code> 文件，通常命名为 <code>app-release.aab</code>。</p>
+<p><strong>发布到 Google Play</strong></p>
+<p>生成的 <code>.aab</code> 文件是准备好上传到 Google Play 的。上传 App Bundle 而不是 APK 有几个好处：</p>
+<ol>
+<li><strong>大小优化</strong>：Google Play 会根据每个用户的设备生成并提供最适合的 APK，这通常会减少应用的下载和安装大小。</li>
+<li><strong>简化的版本管理</strong>：你只需上传一个 <code>.aab</code> 文件，Google Play 会处理不同设备所需的各种 APK 分发。</li>
+<li><strong>按需加载</strong>：你可以配置你的应用以按需加载资源和功能，进一步减少初始下载的大小。</li>
+</ol>
+<p><strong>注意事项</strong></p>
+<p>确保在构建 App Bundle 之前，你的应用满足所有必要的 Google Play 要求，包括但不限于适当的 <code>AndroidManifest.xml</code> 配置、API 级别要求和权限声明。此外，如果你的应用使用了特定的硬件或软件功能，确保这些功能在 <code>AndroidManifest.xml</code> 中正确声明。</p>
+<h2 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a><strong>iOS</strong></h2><p><strong>基本命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build ios</span><br></pre></td></tr></table></figure>
+
+
+<p>对于 iOS，构建产物位于：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">project</span> directory&gt;<span class="regexp">/build/i</span>os<span class="regexp">/iphoneos/</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个目录中，你会找到一个 <code>.app</code> 目录，这是实际的应用程序包，通常用于模拟器或真实设备的测试。如果你使用 Xcode 进行归档，归档产物将会在 Xcode 的 Organizer 中。</p>
+<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a><strong>macOS</strong></h2><p><strong>基本命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build macos</span><br></pre></td></tr></table></figure>
+
+
+<p>对于 macOS，构建产物位于：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">project</span> directory&gt;<span class="regexp">/build/m</span>acos<span class="regexp">/Build/</span>Products<span class="regexp">/Release/</span></span><br></pre></td></tr></table></figure>
+
+<p>这里你可以找到 <code>.app</code> 应用程序包，这是可以直接运行的 macOS 应用。</p>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a><strong>Windows</strong></h2><p><strong>基本命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build windows</span><br></pre></td></tr></table></figure>
+
+
+<p>对于 Windows，构建产物位于：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">project</span> directory&gt;<span class="regexp">/build/</span>windows<span class="regexp">/x64/</span>runner<span class="regexp">/Release/</span></span><br></pre></td></tr></table></figure>
+
+<p>或者是 <code>Debug</code> 文件夹，取决于你构建的是发布版还是调试版。在这个目录下，你会找到 <code>.exe</code> 文件及其相关的依赖文件。</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a><strong>Linux</strong></h2><p><strong>基本命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build linux</span><br></pre></td></tr></table></figure>
+
+
+<p>对于 Linux，构建产物位于：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">project</span> directory&gt;<span class="regexp">/build/</span>linux<span class="regexp">/x64/</span>release<span class="regexp">/bundle/</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个路径中：</p>
+<ul>
+<li><strong>[project root]</strong> 是你的 Flutter 项目的根目录。</li>
+<li><strong>x64</strong> 表示目标架构，目前 Flutter 支持的是 x64（64位）。</li>
+<li><strong>release</strong> 是构建类型，这里是发布版本。如果你构建的是调试版本，这里会是 <code>debug</code>。</li>
+<li><strong>bundle</strong> 目录包含了可执行文件和所有必需的依赖文件，这是最终的发布包。</li>
+</ul>
+<p>在 <code>bundle</code> 目录内，你会找到一个可执行文件（通常以你的项目名命名），以及可能的一些资源文件和库文件。这个可执行文件就是你可以直接运行的 Linux 应用程序。</p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a><strong>Web</strong></h2><p><strong>基本命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build web</span><br></pre></td></tr></table></figure>
+
+
+<p>对于 Web 平台，构建产物位于：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">project</span> directory&gt;<span class="regexp">/build/</span>web/</span><br></pre></td></tr></table></figure>
+
+<p>这个目录包含了所有部署到 Web 服务器的静态文件，如 HTML、JavaScript 和 CSS 文件。</p>
+<p>确保在构建前选择正确的构建配置（如 Debug 或 Release），因为这将影响构建产物的性能和大小。</p>
+<p>在这个 <code>web</code> 目录中，你会找到以下类型的文件和目录：</p>
+<ul>
+<li>**<code>index.html</code>**：这是你的应用的入口文件。如果你使用了 <code>--base-href</code> 选项，<code>&lt;base&gt;</code> 标签的 <code>href</code> 属性将被设置到你指定的路径。</li>
+<li>**<code>main.dart.js</code>**：这是你的 Dart 代码编译成 JavaScript 后的文件，是运行你的 Flutter 应用的核心。</li>
+<li>**<code>assets/</code>**：包含所有静态资源，如图片、字体以及其他从 Dart 代码中引用的文件。</li>
+<li>**<code>favicon.png</code>**：网站的图标文件。</li>
+<li><strong>其他 JavaScript 和源映射文件</strong>：例如，用于调试的 <code>.map</code> 文件等。</li>
+</ul>
+<p><strong>部署</strong></p>
+<p>当你准备将你的 Flutter Web 应用部署到服务器时，你需要将整个 <code>build/web</code> 目录的内容上传到你的服务器。确保服务器的配置能正确处理你的应用，特别是如果你设置了基本路径（如使用了 <code>--base-href</code>）。</p>
+<p><strong>本地测试</strong></p>
+<p>在部署之前，你可以在本地设置一个 HTTP 服务器来测试这些文件，确保一切按预期工作。你可以使用 Python 的 <code>http.server</code> 模块，或者 Node.js 的 <code>http-server</code>，或者任何其他能够提供静态文件服务的工具。</p>
+<p>例如，使用 Python 的简单 HTTP 服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [project root]/build/web</span><br><span class="line">python -m http.server 8000</span><br></pre></td></tr></table></figure>
+
+<p>然后在浏览器中访问 <code>http://localhost:8000</code> 来查看你的应用。</p>
+<p>确保在实际的生产环境中使用专业的 Web 服务器，如 Nginx 或 Apache，以提供更好的性能和安全性。</p>
+</div><div class="post-copyright"><script type="text/javascript" src="/blog/js/copyright.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copyright.css?v=1.0.0"><p><span>本文标题：</span>Flutter各个平台的构建产物</p><p><span>文章作者：</span>xmaihh</p><p><span>发布时间：</span>2024-07-25</p><p><span>最后更新：</span>2024-07-25</p><p><span>原始链接：</span><a href="/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">https://xmaihh.github.io/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://xmaihh.github.io/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/"></i></span></p><p><span>版权声明：</span>采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">[CC BY-NC-SA 4.0许可协议]</a>进行许可</p></div><br><script type="text/javascript" src="/blog/js/share.js?v=1.0.0" async></script><a class="article-share-link" data-url="https://xmaihh.github.io/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/" data-id="cm2e1ez3u003if1q1244u3jkg" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3bQZLCMAwEQP7/6ex1q4AwkqyCQ+dEscS4fXCMNPt4xNf173p+//kzz+8nY15vrvtxDlx4eHh4g6nfD33/lfevk3vnC/FiBDw8PLw13rtB718n71QfEtXl+2DBw8PD+zHe/aZ8fwhOjsi9YzoeHh7er/F6v/3zkasPCTw8PLxv8aol1Cu+8ql/udaCh4eHF/Py7f53Xq/09/Dw8PDGXfVkw00293mYoDlbPDw8vAXepJzai0zlx9/ecRkPDw9vm3e/rU8A8wJxtQDxYkw8PDy8NV4eLT0VOZ2XgKNlwsPDw1vg5dQJssf+8DugeuzGw8PDO8TrFQsOrOXgYF2IveLh4eGt8Zo3B9R8KavRrmgcPDw8vAXe/FDb+4eBfKKjiD8eHh7eAi+PN+VBq16pN3k8VB9OeHh4eHu88pNkIZI1ObI3ixF4eHh4Y141SjVpaCWlh+pD6EOtBQ8PD+8Qr1qKzQsNk1LCYq0FDw8P71CdM9+Oe4fv6uaeNMYKoSs8PDy8BV7epM+bWNUtvtpai0JaeHh4eAu8XoGgGg5IFqsXsSovFh4eHt6YN4lY9Q7cG9GBqBiBh4eHt8DrFQXyqfeKCzk+qrXg4eHhjXnVYutkE0+WLy8Ql+eAh4eHt8zLm0y9r59HrMpLhoeHh3eU15tuHmCtYvIQWPMwjYeHh3eUl9zWa03lY+ZF5AiJh4eHt8brHV7zBlU15HrsM3h4eHhHP3MVr2qsqtro6rXH3v4VDw8Pb4FX3cSrJYMquBcg6D2W8PDw8Ca8XtxqVCCIj8gJe5Qsw8PDwxvwesGm3kKcKmcUHgx4eHh4X+XlLbHe5CYxAjw8PLzf5OVts3zSyRG8GS/Aw8PDW+NVG1oJuHrvJC4Qha7w8PDwDvEmP/ir7f9ekbc6Ph4eHt4a7w9Cn3Oo+h+pEAAAAABJRU5ErkJggg==">分享</a><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Flutter/" rel="tag">Flutter</a></li></ul></div><div class="post-nav"><a class="pre" href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a><a class="next" href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></div><div class="nofancybox" id="vcomment"></div><script src="https://unpkg.com/valine/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'WyoZPeMWzhLWRYAeA5ueZwiI-MdYXbMMI',
+  appKey:'2n4nqRtMlbjNwRNodC3rPRQI',
+  serverURLs:'https://wyozpemw.api.lncldglobal.com',
+  placeholder:'Just so so',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/blog/img/avatar.svg"/></a><p>亲自部署 亲自指挥</p><a class="info-icon" href="https://github.com/xmaihh" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/blog/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/Android/" style="font-size: 15px;">Android</a> <a href="/blog/tags/ADB/" style="font-size: 15px;">ADB</a> <a href="/blog/tags/ANR/" style="font-size: 15px;">ANR</a> <a href="/blog/tags/BLE/" style="font-size: 15px;">BLE</a> <a href="/blog/tags/Lottie/" style="font-size: 15px;">Lottie</a> <a href="/blog/tags/OTA/" style="font-size: 15px;">OTA</a> <a href="/blog/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/blog/tags/Logcat/" style="font-size: 15px;">Logcat</a> <a href="/blog/tags/AndroidStudio/" style="font-size: 15px;">AndroidStudio</a> <a href="/blog/tags/Jni/" style="font-size: 15px;">Jni</a> <a href="/blog/tags/Serialport/" style="font-size: 15px;">Serialport</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/BT/" style="font-size: 15px;">BT</a> <a href="/blog/tags/RS232/" style="font-size: 15px;">RS232</a> <a href="/blog/tags/Archlinux/" style="font-size: 15px;">Archlinux</a> <a href="/blog/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/blog/tags/ArkUI/" style="font-size: 15px;">ArkUI</a> <a href="/blog/tags/Harmony/" style="font-size: 15px;">Harmony</a> <a href="/blog/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/blog/tags/Cloudflare/" style="font-size: 15px;">Cloudflare</a> <a href="/blog/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blog/tags/docker-compose/" style="font-size: 15px;">docker-compose</a> <a href="/blog/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/blog/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/blog/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/blog/tags/Frp/" style="font-size: 15px;">Frp</a> <a href="/blog/tags/Github-Actions/" style="font-size: 15px;">Github Actions</a> <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/CI-CD/" style="font-size: 15px;">CI/CD</a> <a href="/blog/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/blog/tags/Portainer/" style="font-size: 15px;">Portainer</a> <a href="/blog/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/blog/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/blog/tags/ArchLinux/" style="font-size: 15px;">ArchLinux</a> <a href="/blog/tags/Pixel8/" style="font-size: 15px;">Pixel8</a> <a href="/blog/tags/Magisk/" style="font-size: 15px;">Magisk</a> <a href="/blog/tags/Python/" style="font-size: 15px;">Python</a> <a href="/blog/tags/RecyclerView/" style="font-size: 15px;">RecyclerView</a> <a href="/blog/tags/Gdrive/" style="font-size: 15px;">Gdrive</a> <a href="/blog/tags/ZeroTier/" style="font-size: 15px;">ZeroTier</a> <a href="/blog/tags/Watchdog/" style="font-size: 15px;">Watchdog</a> <a href="/blog/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/blog/tags/Git/" style="font-size: 15px;">Git</a> <a href="/blog/tags/Github/" style="font-size: 15px;">Github</a> <a href="/blog/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/blog/tags/Proxy/" style="font-size: 15px;">Proxy</a> <a href="/blog/tags/Sqlite/" style="font-size: 15px;">Sqlite</a> <a href="/blog/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/blog/tags/Tailscale/" style="font-size: 15px;">Tailscale</a> <a href="/blog/tags/weixin/" style="font-size: 15px;">weixin</a> <a href="/blog/tags/Openwrt/" style="font-size: 15px;">Openwrt</a> <a href="/blog/tags/npm/" style="font-size: 15px;">npm</a> <a href="/blog/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/blog/tags/DoH/" style="font-size: 15px;">DoH</a> <a href="/blog/tags/Design-pattern/" style="font-size: 15px;">Design pattern</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 15px;">Raspberry Pi</a> <a href="/blog/tags/VLC/" style="font-size: 15px;">VLC</a> <a href="/blog/tags/CRC/" style="font-size: 15px;">CRC</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">让Follow认证我的Hexo博客订阅源</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">Portainer重置admin登录密码</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">华硕路由器修改Hosts</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">Flutter使用intl_generator在Windows下报错Cannot open file, path = 'l10n-arb/intl_*.arb' (OS Error: 文件名、目录名或卷标语法不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">在Hexo中使用PlantUML</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">Flutter各个平台的构建产物</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/15/windows-xia-jin-wei-github-she-zhi-ssh-dai-li/">Windows下仅为 GitHub 设置SSH代理</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://quincyjiang.github.io/" title="瘟疫青年" target="_blank">瘟疫青年</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/blog/." rel="nofollow">小麦.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/blog/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/blog/css/search.css?v=1.0.0"><script type="text/javascript" src="/blog/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/blog/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="100,99,98" opacity="0.7" zIndex="-1" count="150" src="https://unpkg.com/canvas-nest.js/dist/canvas-nest.js"></script><script type="text/javascript" src="/blog/js/love.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/blog/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/smartresize.js?v=1.0.0"></script></div></body></html>

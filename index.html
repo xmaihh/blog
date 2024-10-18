@@ -1,0 +1,614 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>小麦 | 人生的大起大落来得太突然，搞得我直想尿尿...</title><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/blog/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/blog/atom.xml"><script src="https://www.googletagmanager.com/gtag/js?id=G-R3NLYDC8PK" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R3NLYDC8PK');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "n85h4t74i7");
+</script><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">小麦</h1><a id="logo" href="/blog/.">小麦</a><p class="description">人生的大起大落来得太突然，搞得我直想尿尿...</p></div><div id="nav-menu"><a class="current" href="/blog/."><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/history/"><i class="fa fa-book"> 历史</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></h1><div class="post-meta">2024-10-17</div><div class="post-content">WebSub（前身为 PubSubHubbub）是一种能够实时通知内容更新的协议。它基于发布者&#x2F;订阅者模式，即发布者发布内容更新，订阅者接收这些更新。
+
+发布者 &#x3D; 博客网站
+
+订阅者 &#x3D; 使用 Feed 解析器的读者
+
+中转 &#x3D; WebSub
+
+
+WebSub 的主要目的是提供实时的变化通知，改善了客户端以任意时间间...</div><p class="readmore"><a href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">让Follow认证我的Hexo博客订阅源</a></h1><div class="post-meta">2024-10-16</div><div class="post-content">首先在Follow添加订阅源 :https://xmaihh.github.io/blog/atom.xml
+
+添加订阅源之后，在Follow上获得需要认证的代码
+
+
+我使用hexo-generator-feed插件来生成 RSS订阅源,详细配置选项请参考官方文档
+修改根目录下的_config.yml:
+
+原理是：修改自定义模板，使用该模板文件将用于生成 f...</div><p class="readmore"><a href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">Portainer重置admin登录密码</a></h1><div class="post-meta">2024-09-10</div><div class="post-content"> 参考Portainer官网解决方法：https://docs.portainer.io/advanced/reset-admin
+停止Portainer容器先用docker ps -a查看所有容器，找到Portainer对应信息
+1docker stop &quot;id-portainer-container&quot;
+
+找到Portainer容器的d...</div><p class="readmore"><a href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">华硕路由器修改Hosts</a></h1><div class="post-meta">2024-08-02</div><div class="post-content">
+前提条件：
+
+启用 SSH
+SSH 用户名密码和登陆路由器后台的帐号密码一致
+
+打开华硕的 SSH 功能，具体路径是路由管理页面的 高级设置 -&gt; 系统管理 -&gt; 系统设置 -&gt; 服务 -&gt; 启用SSH。
+通过 SSH 连接路由器后，修改 /etc/hosts 文件即可实现修改 hosts 功能。
+但是会发现修改后的 hosts 仅...</div><p class="readmore"><a href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">Flutter使用intl_generator在Windows下报错Cannot open file, path = 'l10n-arb/intl_*.arb' (OS Error: 文件名、目录名或卷标语法不正确</a></h1><div class="post-meta">2024-07-30</div><div class="post-content">使用intl_generator 包从代码中提取要国际化的字符串到单独的arb文件和根据arb文件生成对应语言的dart代码
+详细教程：https://book.flutterchina.club/chapter13/intl.html
+在Windows的PowerShell环境下执行：
+1dart run intl_generator:generate_f...</div><p class="readmore"><a href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">在Hexo中使用PlantUML</a></h1><div class="post-meta">2024-07-26</div><div class="post-content">PlantUML是一个通用性很强的工具，可以快速、直接地创建各种图表。用来画组件图、部署图、状态图、时序图、甘特图等UML以及非UML图。
+线上版 https://www.planttext.com/
+Hexo PlantUML插件hexo-tag-plantuml安装:
+1npm install hexo-tag-plantuml --save
+
+编辑He...</div><p class="readmore"><a href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a></h1><div class="post-meta">2024-07-26</div><div class="post-content">在这个Flutter项目 https://github.com/xmaihh/FlutterHub  中使用Github Actions自动化构建（Android、iOS、Web、Linux、Windows、macOS）应用并发布到Release。
+1234567891011121314151617181920212223242526272829303132...</div><p class="readmore"><a href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">Flutter各个平台的构建产物</a></h1><div class="post-meta">2024-07-25</div><div class="post-content">在 Flutter 中创建一个新项目，同时支持 Android、iOS、macOS、Windows 和 Linux 平台，假设你已经安装了 Flutter SDK 和必要的开发工具（如 Android Studio、Xcode 等）。
+安装 Flutter SDK按照 Flutter 官网 下载并按照指南进行安装。
+创建新项目打开终端或命令提示符，使用以下命...</div><p class="readmore"><a href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></h1><div class="post-meta">2024-07-24</div><div class="post-content">在使用Flutter管理APP版本时，打开pubspec.yaml只看到一个version字段，例如：version: 1.0.0+1。
+我们在使用原生iOS或者Android开发的时候,我们会在info.plist中设置version和build或是在build.gradle中设置versionName和versionCode,他们分别表示APP的版本和构...</div><p class="readmore"><a href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/15/windows-xia-jin-wei-github-she-zhi-ssh-dai-li/">Windows下仅为 GitHub 设置SSH代理</a></h1><div class="post-meta">2024-07-15</div><div class="post-content"> 在测试Windows 10的PowerShell下 ssh -T git@github.com命令时，老是报超时。
+1ssh -t git@github.com ssh: connect to host github.com port 22: connection timed out
+
+git 代理设置 git config --global http.h...</div><p class="readmore"><a href="/blog/2024/07/15/windows-xia-jin-wei-github-she-zhi-ssh-dai-li/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/10/github-actions-zi-dong-hua-bu-shu-hexo-dao-github-pages/">GitHub Actions 自动化部署 Hexo 到Github pages</a></h1><div class="post-meta">2024-07-10</div><div class="post-content">好久没写Blog了，准确来说，好久没发布Blog了。由于电脑环境的变化，之前的的环境都找不到了，懒得修，这次切换到自动化部署，以后专心写markdown。
+环境在 GitHub 建好两个仓库，
+
+私有仓库，存放Blog源码仓库
+
+公开仓库：存放Github Pages仓库：username.github.io 仓库
+
+
+Blog源码仓库私有化是一些主题配置有...</div><p class="readmore"><a href="/blog/2024/07/10/github-actions-zi-dong-hua-bu-shu-hexo-dao-github-pages/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/10/cloudflare-tunnel-shi-xian-nei-wang-chuan-tou-de-shi-yong-fang-fa/">Cloudflare Tunnel(实现内网穿透)的使用方法</a></h1><div class="post-meta">2024-07-10</div><div class="post-content">Cloudflare Tunnel提供了一种安全的方法来连接你的网络服务到 Cloudflare 网络，而不需要开放服务器的端口到公网上，或者在 DNS 上直接暴露服务器的 IP 地址。这种方式能够帮助越过 DNS 阻断，并增强服务的安全性。
+由于服务的真实 IP 地址不会在 DNS 查询中直接暴露，Cloudflare Tunnel 可以帮助绕过基于 DN...</div><p class="readmore"><a href="/blog/2024/07/10/cloudflare-tunnel-shi-xian-nei-wang-chuan-tou-de-shi-yong-fang-fa/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/09/frp-nei-wang-chuan-tou-fu-wu-duan-ke-hu-duan-pei-zhi/">Frp内网穿透服务端+客户端配置</a></h1><div class="post-meta">2024-07-09</div><div class="post-content">工作环境
+具备公网 IP 的云服务器（Ubuntu22.04）
+黑群晖DS918+
+Google Chrome 126.0.6478.127
+Frp v0.58.1
+SSH工具
+
+FRP (Fast Reverse Proxy) 是一款高性能的内网穿透工具，https://github.com/fatedier/frp
+FRP 分为两部分：frps（FRP ...</div><p class="readmore"><a href="/blog/2024/07/09/frp-nei-wang-chuan-tou-fu-wu-duan-ke-hu-duan-pei-zhi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/07/06/ru-he-zai-sudo-ming-ling-zhong-bao-liu-te-ding-huan-jing-bian-liang/">如何在 sudo 命令中保留特定环境变量</a></h1><div class="post-meta">2024-07-06</div><div class="post-content">今天在Ubuntu中执行npm install -g hexo-cli时，死活执行不成功。明明设置了当前用户的代理，哪怕在root和普通用户的环境变量中都设了代理，都不行，
+我当前用户的**~&#x2F;.bashrc**是设置好了代理的：
+1234# set proxyexport http_proxy=http://proxy.example.com:8...</div><p class="readmore"><a href="/blog/2024/07/06/ru-he-zai-sudo-ming-ling-zhong-bao-liu-te-ding-huan-jing-bian-liang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/06/27/pixel8-bao-liu-magisk-jin-xing-ota-sheng-ji/">Pixel8保留Magisk进行OTA升级</a></h1><div class="post-meta">2024-06-27</div><div class="post-content">Pixel8保留Magisk进行OTA升级每月月初谷歌都会推送系统更新（OTA），更新的时候，会检测验证system分区是否完整，如果被修改，则会导致OTA失败，手机可能变“砖”。刷Magisk时修改了boot.img这个system分区的文件，所以刷Magisk后不能直接安装OTA更新。
+确认 A&#x2F;B 系统分区支持状态A&#x2F;B 系统分区是...</div><p class="readmore"><a href="/blog/2024/06/27/pixel8-bao-liu-magisk-jin-xing-ota-sheng-ji/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/06/18/shi-yong-tailscale-zi-jian-derp-zu-jian-si-you-ju-yu-wang/">使用Tailscale+自建DERP组建私有局域网</a></h1><div class="post-meta">2024-06-18</div><div class="post-content">Tailscale属于一种虚拟组网工具，基于WireGuard。
+注册Tailscale帐号Tailscale官网 https://tailscale.com/
+下载客户端Tailscale客户端 https://tailscale.com/download/
+
+安装并完成登录
+连接起来一旦你的设备都装上了Tailscale，它们就像是在一个无形的网里，只属...</div><p class="readmore"><a href="/blog/2024/06/18/shi-yong-tailscale-zi-jian-derp-zu-jian-si-you-ju-yu-wang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/04/19/linux-zhong-an-zhuang-pei-zhi-docker-guan-li-qi-portainer-portainer-sheng-ji-ban-ben/">Linux中安装配置docker管理器Portainer&amp;Portainer升级版本</a></h1><div class="post-meta">2024-04-19</div><div class="post-content">单机部署123$ docker pull portainer/portainer-ce$ docker volume create portainer_data$ docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/dock...</div><p class="readmore"><a href="/blog/2024/04/19/linux-zhong-an-zhuang-pei-zhi-docker-guan-li-qi-portainer-portainer-sheng-ji-ban-ben/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/03/24/android-zhong-xia-zai-wen-jian-dao-sd-qia-de-download-wen-jian-jia/">Android中下载文件到SD卡的Download文件夹</a></h1><div class="post-meta">2024-03-24</div><div class="post-content">存储空间应用保存数据的方式：
+
+应用专属存储空间：存储仅供应用使用的文件，可以存储到内部存储卷中的专属目录或外部存储空间中的其他专属目录。使用内部存储空间中的目录保存其他应用不应访问的敏感信息。
+共享存储：存储您的应用打算与其他应用共享的文件，包括媒体、文档和其他文件。
+偏好设置：以键值对形式通过SharePreference存储私有原始数据。
+数据库：使用...</div><p class="readmore"><a href="/blog/2024/03/24/android-zhong-xia-zai-wen-jian-dao-sd-qia-de-download-wen-jian-jia/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/01/18/shi-yong-github-actions-bian-yi-python-xiang-mu-zi-dong-hua-gou-jian-exe/">使用 Github Actions 编译Python项目自动化构建 exe</a></h1><div class="post-meta">2024-01-18</div><div class="post-content">GitHub Actions 是 GitHub 的持续集成服务。
+在这个Python项目 https://github.com/xmaihh/CSVFilter  中使用Github Actions自动化构建exe并发布到Release。
+pyinstaller使用问题参考**PyInstaller-Perfect-Build-Method**
+在每个工作流...</div><p class="readmore"><a href="/blog/2024/01/18/shi-yong-github-actions-bian-yi-python-xiang-mu-zi-dong-hua-gou-jian-exe/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2024/01/09/linux-xia-ru-he-geng-hao-di-shi-yong/">linux下如何更好地使用</a></h1><div class="post-meta">2024-01-09</div><div class="post-content">[TOC]
+常规安全更新通过 unattended-upgrades，可以使 Ubuntu 系统自动进行常规的安全相关更新，使系统一直保持 security。
+12sudo apt install unattended-upgradessudo dpkg-reconfigure unattended-upgrades
+
+
+
+更改SSH端口默认情况下，SSH ...</div><p class="readmore"><a href="/blog/2024/01/09/linux-xia-ru-he-geng-hao-di-shi-yong/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2023/12/30/arkui-ets-kai-fa-wen-ti-hui-zong/">ArkUI（eTS）开发问题汇总</a></h1><div class="post-meta">2023-12-30</div><div class="post-content">Q1.aboutToAppear和onAppear的区别?aboutToAppear：是被@Component修饰自定义组件的生命周期方法，函数在创建自定义组件的新实例后，在执行其build函数之前执行。
+onAppear：是每个组件的属性方法，在该组件显示时触发此回调。
+eTS里面object类型有办法更新吗?12345678lis:Array&lt;ob...</div><p class="readmore"><a href="/blog/2023/12/30/arkui-ets-kai-fa-wen-ti-hui-zong/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2023/12/21/recyclerview-de-shi-yong-zong-jie-yi-ji-chang-jian-wen-ti-jie-jue-fang-an/">RecyclerView的使用总结以及常见问题解决方案</a></h1><div class="post-meta">2023-12-21</div><div class="post-content">RecyclerView的使用总结以及常见问题解决方案Q1：RecyclerView设置数据不显示这个往往是因为你没有设置LayoutManger。 没有LayoutManger的话RecycleView是无法布局的，即是无法展示数据,下面是RecycleView布局的源码:
+123456789101112void dispatchLayout() &#12...</div><p class="readmore"><a href="/blog/2023/12/21/recyclerview-de-shi-yong-zong-jie-yi-ji-chang-jian-wen-ti-jie-jue-fang-an/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2023/12/06/ru-he-pei-zhi-docker-tong-guo-dai-li-fu-wu-qi-la-qu-jing-xiang/">如何配置docker通过代理服务器拉取镜像</a></h1><div class="post-meta">2023-12-06</div><div class="post-content">如何配置docker通过代理服务器拉取镜像如果 docker 所在的环境是通过代理服务器和互联网连通的，那么需要一番配置才能让 docker 正常从外网正常拉取镜像。然而仅仅通过配置环境变量的方法是不够的。本文结合已有文档，介绍如何配置代理服务器能使docker正常拉取镜像。
+问题现象如果不配置代理服务器就直接拉镜像，docker 会直接尝试连接镜像仓库，并...</div><p class="readmore"><a href="/blog/2023/12/06/ru-he-pei-zhi-docker-tong-guo-dai-li-fu-wu-qi-la-qu-jing-xiang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2023/10/06/mei-lin-merlin-gu-jian-de-lu-you-qi-zhong-an-zhuang-opkg/">梅林(Merlin)固件的路由器中安装opkg</a></h1><div class="post-meta">2023-10-06</div><div class="post-content">创建软件安装目录123cd /jffsmkdir /jffs/optln -nsf /jffs/opt /tmp/opt
+
+安装opkg梅林固件自带一个entware.sh的安装脚本，但是要求必须插上一个ext4等linux文件系统的U盘。这里下载的这个安装脚本不需要插u盘。没有U盘，也懒得试了，直接脚本吧。
+版本1:
+12wget http://qnapw...</div><p class="readmore"><a href="/blog/2023/10/06/mei-lin-merlin-gu-jian-de-lu-you-qi-zhong-an-zhuang-opkg/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2022/10/09/bian-yi-vlc-for-android/">编译VLC for Android</a></h1><div class="post-meta">2022-10-09</div><div class="post-content">本页介绍在 Linux 上 编译VLC for Android 。
+要求
+您必须在 Linux（或 OSX，如果您知道自己在做什么）上构建。
+
+必须安装以下软件包：
+
+GNU 自动工具：autoconf、libtool、automake和make（又名gmake）
+…及其依赖项：m4和gawk，mawk或nawk，
+GNU C 和 C++ 编译器又名gcc和...</div><p class="readmore"><a href="/blog/2022/10/09/bian-yi-vlc-for-android/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2022/06/23/androidstudio-de-markdown-bu-yu-lan/">AndroidStudio的MarkDown不预览</a></h1><div class="post-meta">2022-06-23</div><div class="post-content">Markdown Editor 插件后提示Your environment does not support JCEF, cannot use Markdown Editor
+解决：在idea中按快捷键CTRL+SHIFT+A,打开动作指令窗口, 或者双击Shift在最上方选择Action, 在输入框中输入Choose Boot Java Runtime f...</div><p class="readmore"><a href="/blog/2022/06/23/androidstudio-de-markdown-bu-yu-lan/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2022/06/09/shu-mei-pai-4-ubuntu-server20.04.4lts-pei-zhi-xfce-zhuo-mian-huan-jing-he-tightvnc-fu-wu-qi/">树莓派4-Ubuntu-Server20.04.4LTS配置xfce桌面环境和TightVNC服务器</a></h1><div class="post-meta">2022-06-09</div><div class="post-content">步骤1 – 安装桌面环境和VNC服务器默认情况下，Ubuntu Server 20.04没有安装图形桌面环境或VNC服务器，所以我们首先安装它们。具体来说，我们将为最新的Xfce桌面环境和官方Ubuntu存储库中提供的TightVNC软件包安装软件包。
+在您的服务器上，更新您的包列表：
+1sudo apt update
+
+现在在您的服务器上安装Xfce桌面环...</div><p class="readmore"><a href="/blog/2022/06/09/shu-mei-pai-4-ubuntu-server20.04.4lts-pei-zhi-xfce-zhuo-mian-huan-jing-he-tightvnc-fu-wu-qi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2022/03/01/ru-he-zai-macos-shi-yong-dns-over-https-doh/">如何在macOS使用DNS over Https(DoH)</a></h1><div class="post-meta">2022-03-01</div><div class="post-content">安装HomeBrewHomeBrew官方推荐快速安装Homebrew
+1/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+
+安装cloudflared用Homebrew快速安装cloudflar...</div><p class="readmore"><a href="/blog/2022/03/01/ru-he-zai-macos-shi-yong-dns-over-https-doh/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2022/01/19/android5-0-yi-xia-yin-yong-svg-beng-kui-de-jie-jue-fang-an/">Android5.0以下引用SVG崩溃的解决方案</a></h1><div class="post-meta">2022-01-19</div><div class="post-content">1、xml里面引用在根布局加上：xmlns:app=http://schemas.android.com/apk/res-auto
+然后：
+app:srcCompat=&quot;@drawable/ic_backspace&quot; /&gt;
+2、在代码里面设置123ImageView img.setDrawableR.drawable.ic_back...</div><p class="readmore"><a href="/blog/2022/01/19/android5-0-yi-xia-yin-yong-svg-beng-kui-de-jie-jue-fang-an/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2021/07/23/shi-yong-github-actions-bian-yi-flutter-xiang-mu-zi-dong-hua-gou-jian/">使用 Github Actions 编译Flutter项目自动化构建</a></h1><div class="post-meta">2021-07-23</div><div class="post-content">在 Flutter 配置 Github Action，打开项目的根目录中设置一个新的目录和文件 .github/workflows/deploy.yml
+这是此次要实现的GitHub Actions的大致工作流程:
+1234567891011121314151617+----------------+         +------------------+...</div><p class="readmore"><a href="/blog/2021/07/23/shi-yong-github-actions-bian-yi-flutter-xiang-mu-zi-dong-hua-gou-jian/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2021/06/18/ubuntu-zhi-xing-sudo-apt-get-update-shi-bao-cuo-could-not-resolve-mirrors.cloud.aliyuncs.com/">ubuntu执行sudo apt-get update时报错Could not resolve 'mirrors.cloud.aliyuncs.com'</a></h1><div class="post-meta">2021-06-18</div><div class="post-content">解决办法：ubuntu换源
+可选择的国内源
+1234567891011# 阿里源http://mirrors.aliyun.com/ubuntu/# 中科大源https://mirrors.ustc.edu.cn/ubuntu/# 163源http://mirrors.163.com/ubuntu/# 清华源https://mirrors.tuna.tsin...</div><p class="readmore"><a href="/blog/2021/06/18/ubuntu-zhi-xing-sudo-apt-get-update-shi-bao-cuo-could-not-resolve-mirrors.cloud.aliyuncs.com/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2021/06/18/ylgy-jie-kou-fen-xi/">ylgy接口分析</a></h1><div class="post-meta">2021-06-18</div><div class="post-content">&#x2F;羊了个羊1暂无描述
+接口状态
+开发中
+
+接口URL
+https://cat-match.easygame2021.com/sheep/v1/game/game_over?rank_score=1&amp;rank_state=1&amp;rank_time=547&amp;rank_role=1&amp;skin=1
+
+请求方式
+GET
+
+Con...</div><p class="readmore"><a href="/blog/2021/06/18/ylgy-jie-kou-fen-xi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2021/01/10/ben-bo-ke-de-yi-xie-cha-jian-he-shi-yong-fang-fa/">本博客的一些插件和使用方法</a></h1><div class="post-meta">2021-01-10</div><div class="post-content">在这里把本博客的一些觉得有意思的插件和配置整理出来，作为自己的备忘录，同时也方便新手配置和学习。
+本博客使用的hexo主题为maupassant，正如他的口号所言，大道至简。
+maupassant详细的基本配置信息，请参见此链接：https://www.haomwei.com/technology/maupassant-hexo.html，我们不必再次重复造...</div><p class="readmore"><a href="/blog/2021/01/10/ben-bo-ke-de-yi-xie-cha-jian-he-shi-yong-fang-fa/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2020/10/10/docker-kuai-su-bu-shu-mastodon/">Docker快速部署Mastodon</a></h1><div class="post-meta">2020-10-10</div><div class="post-content">Docker快速部署Mastodon安装需要的软件包12apt -y updateapt -y install curl git nginx python-certbot-nginx
+
+安装docker
+12curl -sSL https://get.docker.com/ | shsystemctl enable --now nginx docker
+
+安...</div><p class="readmore"><a href="/blog/2020/10/10/docker-kuai-su-bu-shu-mastodon/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2020/07/30/solved-dial-tcp-lookup-api.cloudflare.com-on-127.0.0.53-read-udp-xxxx-timeout/">(SOLVED)dial tcp lookup xxx on 1270053 read udp xxxx timeout</a></h1><div class="post-meta">2020-07-30</div><div class="post-content">[SOLVED]dial tcp: lookup api.cloudflare.com on 127.0.0.53:53: read udp 127.0.0.1:39199-&gt;127.0.0.53:53: i&#x2F;o timeout
+DNS指向了127.0.0.53
+解决办法：
+Ubuntu修改DNS
+
+永久修改dns
+临时修改dns
+
+决定系统...</div><p class="readmore"><a href="/blog/2020/07/30/solved-dial-tcp-lookup-api.cloudflare.com-on-127.0.0.53-read-udp-xxxx-timeout/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2020/04/27/yun-xing-flutter-doctor-shi-chu-cuo-huo-zhe-chang-shi-jian-wu-xiang-ying/">(SOLVED)运行flutter doctor时出错或者长时间无响应</a></h1><div class="post-meta">2020-04-27</div><div class="post-content">问题：运行 flutter doctor 时出错或者长时间无响应
+在命令行中，pub 支持 http_proxy 和 https_proxy 环境变量。您可以按如下方式设置代理服务器环境变量。
+On Linux&#x2F;macOS:
+1export https_proxy=hostname:port
+
+On Windows Command Prompt:
+...</div><p class="readmore"><a href="/blog/2020/04/27/yun-xing-flutter-doctor-shi-chu-cuo-huo-zhe-chang-shi-jian-wu-xiang-ying/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2020/01/30/android-she-bei-lian-jie-dao-rs232-wai-wei-she-bei-de-bu-tong-fang-shi/">Android设备连接到RS232外围设备的不同方式</a></h1><div class="post-meta">2020-01-30</div><div class="post-content">介绍这描述了可用于将 Android 设备连接到 RS232 外围设备的不同方式。
+解决方案
+解决方案 1
+优点
+无需外部API，Android SDK提供类BluetoothSocket
+无需修改硬件
+支持硬件流控
+
+
+缺点
+蓝牙耗电
+高延迟
+低带宽
+
+
+应用程序接口
+安卓开发工具包
+
+
+
+解决方案 2
+优点
+
+USB 到 RS232 适配器便宜且容易找到...</div><p class="readmore"><a href="/blog/2020/01/30/android-she-bei-lian-jie-dao-rs232-wai-wei-she-bei-de-bu-tong-fang-shi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/12/26/yuan-cheng-lian-jie-ju-yu-wang-nei-de-android-mo-ni-qi/">远程连接局域网内的Android模拟器</a></h1><div class="post-meta">2019-12-26</div><div class="post-content">本文主要介绍如何远程连接位于局域网内的 Android 模拟器进行调试。我们知道 Android 模拟器十分耗费资源，如果这时候有一台空余的机器，可以单独运行一个 Android 模拟器，然后再远程连接到该模拟器，从而能够减轻工作机的负担。
+原理:使用 SSH 进行端口映射
+１.在空余机器打开Android模拟器，并打开Terminal终端，输入adb de...</div><p class="readmore"><a href="/blog/2019/12/26/yuan-cheng-lian-jie-ju-yu-wang-nei-de-android-mo-ni-qi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/12/24/shi-yong-kotlin-bian-xie-android-zi-ding-yi-view/">使用Kotlin编写Android自定义View</a></h1><div class="post-meta">2019-12-24</div><div class="post-content">使用 Kotlin 编写 Android 自定义 View前言由于 Kotlin 的构造函数与 Java 的构造函数在样子上十分不同, 导致使用 Kotlin 编写 Android 自定义 View 时会遇到一些困难.
+在本篇中将记录我对此的一些学习心得.
+构造函数Kotlin 自定义 View 的构造函数写法有两种, 我们分别来看.
+Android 的自定...</div><p class="readmore"><a href="/blog/2019/12/24/shi-yong-kotlin-bian-xie-android-zi-ding-yi-view/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/12/11/java-zhong-double-zhuan-int-lei-xing-an-si-she-wu-ru-qu-zheng/">Java中double转int类型按四舍五入取整</a></h1><div class="post-meta">2019-12-11</div><div class="post-content">Java中的double转int类型，小数点后面抹零，只取小数点前的整数所以被踩了丢失精度的坑，后续在将小数的double转换成为int的时候，一定要注意，小数点后面的部分是自动抹去的。例如：
+123456public static void main(String[] args) &#123;		double d =1.76;				System.out....</div><p class="readmore"><a href="/blog/2019/12/11/java-zhong-double-zhuan-int-lei-xing-an-si-she-wu-ru-qu-zheng/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/">Java位运算(移位、与、或、异或、非)</a></h1><div class="post-meta">2019-11-05</div><div class="post-content">Java的位运算符：左移（&lt;&lt;）、右移（&gt;&gt;）、无符号右移（&gt;&gt;&gt;）、与（&amp;）、异或（|）、非（~）除了 非(~) 是一元操作符外，其他都是二元操作符。
+
+
+
+运算符
+运算
+说明
+
+
+
+&lt;&lt;
+左移
+空位补0,被移除的高位丢失
+
+
+&gt;&gt;
+右移
+被移位的二进制最高位是0,右移后，空缺位补0...</div><p class="readmore"><a href="/blog/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/10/20/xiao-cheng-xu-kai-fa-de-nei-rong-an-quan-shen-he/">小程序开发的内容安全审核</a></h1><div class="post-meta">2019-10-20</div><div class="post-content">最近做一个带图片和文字发布的微信小程序，当时心里犯嘀咕，没有自我审查估摸着上不了。果不其然微信小程序提交代码审核的时候，审核不通过，提示如下:为避免您的小程序被滥用，请你完善内容审核机制，如调用小程序内容安全API，或使用其他技术、人工审核手段，过滤色情、违法等有害信息，保障发布内容的安全。得，去到后台一看，审核员测试了一个词xxx给显示出来了，直接导致小程...</div><p class="readmore"><a href="/blog/2019/10/20/xiao-cheng-xu-kai-fa-de-nei-rong-an-quan-shen-he/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/10/13/flutter-kai-fa-zhong-de-ye-mian-tiao-zhuan-he-chuan-zhi/">Flutter开发中的页面跳转和传值</a></h1><div class="post-meta">2019-10-13</div><div class="post-content">在Android原生开发中,页面跳转用Intent类实现
+12Intent intent =new Intent(MainActivity.this,SecondActivity.class);startActivity(intent);
+而在安卓原生开发中，页面传值有多种方法，常见的可以用intent、Bundle、自定义类、静态变量等等来传值。Flutt...</div><p class="readmore"><a href="/blog/2019/10/13/flutter-kai-fa-zhong-de-ye-mian-tiao-zhuan-he-chuan-zhi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/09/17/shu-mei-pai-4-ubuntu18.04.2lts-xia-pei-zhi-wifi-yu-ssh-lian-jie/">树莓派4-Ubuntu18.04.2LTS下配置WiFi与SSH连接</a></h1><div class="post-meta">2019-09-17</div><div class="post-content">准备环境
+Raspberry Pi 4
+SD卡，读卡器
+电源适配器
+
+开始下载安装到SD卡树莓派系统官方镜像下载：·Raspberry Pi Raspbian
+下载Etcher工具，把镜像烧写到SD卡里面去工具的操作很简单的三个步骤:选择镜像 –&gt; 选择SD卡 –&gt; 烧写!
+
+环境配置出于安全考虑，SSH在raspbian中默认disabled。...</div><p class="readmore"><a href="/blog/2019/09/17/shu-mei-pai-4-ubuntu18.04.2lts-xia-pei-zhi-wifi-yu-ssh-lian-jie/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/07/31/androidstudio-kuai-su-sheng-cheng-jni-tou-wen-jian/">AndroidStudio快速生成jni头文件</a></h1><div class="post-meta">2019-07-31</div><div class="post-content">依次打开Settings–&gt;Tools–&gt;External Tools–&gt;点击加号创建一个快速生成jni头文件的工具
+
+1231. Program: javah  2. Parameters: -v -jni -d $ModuleFileDir$/src/main/cpp $FileClass$  3. Working directory:...</div><p class="readmore"><a href="/blog/2019/07/31/androidstudio-kuai-su-sheng-cheng-jni-tou-wen-jian/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/07/30/android-lu-yin/">Android录音</a></h1><div class="post-meta">2019-07-30</div><div class="post-content">介绍 Android 中录音功能的实现录音方法Android 中的录音主要有两种方式 MediaRecorder 和 AudioRecord
+
+MediaRecorder（基于文件）
+  可以录制音、视频；
+  封装了录制、编码、压缩、线程等功能，直接生成可播放的音频文件；
+  优点：封装度高，操作简单
+  缺点：编码格式有限，.aac  .amr  .3g...</div><p class="readmore"><a href="/blog/2019/07/30/android-lu-yin/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/07/19/ubuntu18-04-2lts-xia-wireshark-bao-cuo-permission-denied/">Ubuntu18.04.2LTS下Wireshark报错Permission denied</a></h1><div class="post-meta">2019-07-19</div><div class="post-content">安装Wireshark1$ sudo apt-get install wireshark
+打开Wireshark，报错提示权限不足。
+1Couldn’t run /usr/bin/dumpcap in child process: Permission denied
+
+解决方案1234567891011$ sudo apt-get install libca...</div><p class="readmore"><a href="/blog/2019/07/19/ubuntu18-04-2lts-xia-wireshark-bao-cuo-permission-denied/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/07/10/ubuntu18-04-2lts-pei-zhi-vnc-frp-nei-wang-chuan-tou-shi-xian-zhuo-mian-yuan-cheng-fang-wen/">Ubuntu18.04.2LTS配置vnc+frp内网穿透实现桌面远程访问</a></h1><div class="post-meta">2019-07-10</div><div class="post-content">之前使用Teamviewer来远程电脑，更新之后老是提示被商用，无奈，寻求其他方案如anyDesk、向日葵远程控制、splashtop、VNC。
+frp项目地址：https://github.com/fatedier/frpfrp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp,http 和 https协议。VNC，全称为Virtual ...</div><p class="readmore"><a href="/blog/2019/07/10/ubuntu18-04-2lts-pei-zhi-vnc-frp-nei-wang-chuan-tou-shi-xian-zhuo-mian-yuan-cheng-fang-wen/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/06/18/mysql-zi-fu-zhuan-yi-chu-li-fang-fa/">MySQL字符转义处理方法</a></h1><div class="post-meta">2019-06-18</div><div class="post-content">MySQL转义字符
+
+
+
+
+
+
+
+
+\0
+ASCII 0(NUL)字符
+
+
+
+&#39;
+ASCII 39 单引号(‘’’)
+
+
+
+&quot;
+ASCII 34 双引号(‘“’)
+
+
+
+\b
+ASCII 8 退格符
+
+
+
+\n
+ASCII 10 换行符
+
+
+
+\r
+ASCII 13 回车符
+
+
+
+\t
+ASCII 9 制表符(TAB)
+
+
+
+\Z
+ASCI...</div><p class="readmore"><a href="/blog/2019/06/18/mysql-zi-fu-zhuan-yi-chu-li-fang-fa/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/06/05/linux-yu-windows-wen-jian-xian-shi-luan-ma/">Linux与Windows文件显示乱码</a></h1><div class="post-meta">2019-06-05</div><div class="post-content">问题从Windows内拷贝一个txt文件到Linux下打开显示乱码
+
+Windows下默认使用GB2312编码
+
+Linux下默认使用UTF-8编码
+
+
+＃　解决办法
+使用Linux下的iconv命令改变文件的编码
+  test.txt由GB2312转换成UTF-8
+1iconv　 -f 　GB2312　 -t　 UTF-8　 test.txt　 -o 　t...</div><p class="readmore"><a href="/blog/2019/06/05/linux-yu-windows-wen-jian-xian-shi-luan-ma/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/05/17/ubuntu18-04-2lts-an-zhuang-mysql/">Ubuntu18.04.2LTS安装MySQL</a></h1><div class="post-meta">2019-05-17</div><div class="post-content">MySQL是一个开源数据库管理系统，通常作为流行的LAMP （Linux，Apache，MySQL，PHP &#x2F; Python &#x2F; Perl）的一部分进行安装。 它使用关系数据库和SQL（结构化查询语言）来管理其数据。
+环境
+Ubuntu 18.04.2 LTS
+MySQL 5.7.26
+MySQL Workbench (可视化＊可选)
+
+...</div><p class="readmore"><a href="/blog/2019/05/17/ubuntu18-04-2lts-an-zhuang-mysql/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/05/16/golang-jiao-cha-bian-yi/">Golang交叉编译</a></h1><div class="post-meta">2019-05-16</div><div class="post-content">Golang交叉编译，一个平台环境下生成其他平台的可执行程序。
+
+GOOS：目标平台的操作系统（darwin、freebsd、linux、windows） 
+GOARCH：目标平台的体系架构（386、amd64、arm） 
+CGO_ENABLED:  开启&#x2F;禁止C与Go混编(0,1)
+
+Mac 下编译 Linux 和 Windows 64位可执行程...</div><p class="readmore"><a href="/blog/2019/05/16/golang-jiao-cha-bian-yi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/05/14/ubuntu18-04-2lts-an-zhuang-wei-xin-web-kai-fa-gong-ju-wine/">Ubuntu18.04.2LTS安装微信web开发工具(wine)</a></h1><div class="post-meta">2019-05-14</div><div class="post-content">当我打开微信小程序开发者工具下载页
+额，没有Linux版本。好吧，自力更生。
+Linux微信web开发者工具安装环境
+Wine
+Linux微信web开发者工具
+
+注意事项
+# -要求使用root权限直接以root用户使用命令或对执行的命令使用linux sudo
+$ -要求给定的linux命令作为常规非特权用户执行
+
+如果您之前安装过来自其他仓库的 Wine...</div><p class="readmore"><a href="/blog/2019/05/14/ubuntu18-04-2lts-an-zhuang-wei-xin-web-kai-fa-gong-ju-wine/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/05/10/ubuntu18-04-2lts-jie-jue-kvm-permision-denied-bao-cuo/">Ubuntu18.04.2LTS解决KVM permision denied报错</a></h1><div class="post-meta">2019-05-10</div><div class="post-content">我在尝试在Ubuntu18.04.2LTS的AndroidStudio上运行Android Virtual Device(AVD) 时，遇到这个报错：/dev/kvm device: permission denied。
+
+解决：
+
+Install qemu-kvm
+
+1$ sudo apt install qemu-kvm
+
+
+添加当前用户到kvm组
+
+1...</div><p class="readmore"><a href="/blog/2019/05/10/ubuntu18-04-2lts-jie-jue-kvm-permision-denied-bao-cuo/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/04/30/android-sdk-kai-fa/">Android-SDK开发</a></h1><div class="post-meta">2019-04-30</div><div class="post-content">SDK简介SDK(Software Development Kit)，广泛意义上的 SDK 一般都是为特定的软件包、软件框架、硬件平台、操作系统等建立应用程序时所使用的开发工具的集合（系统 SDK）。而狭义上的 SDK（应用 SDK） 则是基于系统 SDK 进行开发的新的、独立于具体业务且完成特定功能的一组工具的集合。通常情况下，SDK 在应用程序中是作为特...</div><p class="readmore"><a href="/blog/2019/04/30/android-sdk-kai-fa/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/04/26/androidstudio-huo-qu-sha1-ma/">AndroidStudio获取sha1码</a></h1><div class="post-meta">2019-04-26</div><div class="post-content">在使用百度地图API时，需要获取项目的sha1码，在AndroidStudio3.3版本获取方法如下：
+
+双击执行SigningReport任务后，在Run窗口即可看到生成的SHA1和MD5码，如图所示。
+
+</div><p class="readmore"><a href="/blog/2019/04/26/androidstudio-huo-qu-sha1-ma/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/04/24/android-yan-se-tou-ming-du-ji-suan/">Android颜色透明度计算</a></h1><div class="post-meta">2019-04-24</div><div class="post-content">Android颜色透明度计算Android中颜色简介Android中的颜色值通常遵循RGB&#x2F;ARGB标准，使用时通常以#字符开头，以16进制表示。其中RGB依次代表红色（Red）、绿色（Green）、蓝色（Blue）.ARGB依次代表透明度(Alpha)、红色（Red）、绿色（Green）、蓝色（Blue） 
+eg:#FF00CC99其中FF是透明...</div><p class="readmore"><a href="/blog/2019/04/24/android-yan-se-tou-ming-du-ji-suan/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/04/16/ubuntu18-04-2lts-xia-jie-jue-dia-wu-fa-shu-ru-zhong-wen-wen-ti/">Ubuntu18.04.2LTS下解決Dia无法输入中文问题</a></h1><div class="post-meta">2019-04-16</div><div class="post-content">Dia是一款和MS Visio类似的绘制流程图、UML图、电路图、网络、数据库等结构化图形的工具，支持Mac OS X  、Linux 、Windows   。
+
+官网地址Dia Diagram Editor
+开源地址:github
+
+注意事项
+# -要求使用root权限直接以root用户使用命令或对执行的命令使用linux sudo
+$ -要求给定的lin...</div><p class="readmore"><a href="/blog/2019/04/16/ubuntu18-04-2lts-xia-jie-jue-dia-wu-fa-shu-ru-zhong-wen-wen-ti/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/04/10/android-lottie-dong-hua-de-shi-yong/">Android Lottie动画的使用</a></h1><div class="post-meta">2019-04-10</div><div class="post-content">Lottie是一个用于Android，iOS，Web和Windows的库，用于解析使用Bodymovin导出为json的Adobe After Effects动画，并在移动设备和网络上呈现它们！
+
+介绍下Android的使用
+github地址 ： lottie-android
+官方文档：airbnb.io&#x2F;lottie
+动画json下载：https...</div><p class="readmore"><a href="/blog/2019/04/10/android-lottie-dong-hua-de-shi-yong/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/04/02/ubuntu18-04-2lts-an-zhuang-zerotier-shi-xian-nei-wang-chuan-tou/">Ubuntu18.04.2LTS安装ZeroTier实现内网穿透</a></h1><div class="post-meta">2019-04-02</div><div class="post-content">ZeroTier官网 https:&#x2F;www.zerotier.com
+github地址  https://github.com/zerotier/ZeroTierOne
+ZeroTier在计算机和任何其他计算机之间设置VPN隧道组成一个局域网中，该网内设备自由访问，可完全免费使用多达100台设备。
+注意事项
+# -要求使用root权限直接以root...</div><p class="readmore"><a href="/blog/2019/04/02/ubuntu18-04-2lts-an-zhuang-zerotier-shi-xian-nei-wang-chuan-tou/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/04/01/ubuntu18-04-2lts-an-zhuang-beyond-compare4/">Ubuntu18.04.2LTS安装Beyond-Compare4</a></h1><div class="post-meta">2019-04-01</div><div class="post-content">Ubuntu18.04.2LTS安装Beyond-Compare4 Beyond Compare是一套非常实用的文件及文件夹对比工具，不仅可以快速比较出两个文件夹的不同之处，还可以详细的比较文件之间的内容差异。
+说明
+Ubuntu18.04.2LTS(64位)
+Beyond-Compare4
+
+注意事项
+# -要求使用root权限直接以root用户使用命令或...</div><p class="readmore"><a href="/blog/2019/04/01/ubuntu18-04-2lts-an-zhuang-beyond-compare4/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/28/ubuntu18-04-2lts-shi-yong-gdrive-tong-bu-wen-jian-zi-dong-bei-fen-hexo-yuan-wen-jian/">Ubuntu18.04.2LTS使用Gdrive同步文件、自动备份Hexo源文件</a></h1><div class="post-meta">2019-03-28</div><div class="post-content">Gdrive项目地址
+Gdrive是一个命令行操作Google云端硬盘账户的操作工具
+准备工作
+Google Drive账号
+Ubuntu18.04.2LTS
+
+注意事项
+# -要求使用root权限直接以root用户使用命令或对执行的命令使用linux sudo
+$ -要求给定的linux命令作为常规非特权用户执行
+
+安装Gdrive该工具的官方GitHub...</div><p class="readmore"><a href="/blog/2019/03/28/ubuntu18-04-2lts-shi-yong-gdrive-tong-bu-wen-jian-zi-dong-bei-fen-hexo-yuan-wen-jian/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/27/python-xiang-mu-sheng-cheng-yi-lai-requirements-txt-de-liang-chong-fang-fa/">Python项目生成依赖requirements.txt的两种方法</a></h1><div class="post-meta">2019-03-27</div><div class="post-content">为什么要有requirements.txtrequirements.txt保存Python项目所依赖的类库。Python提供通过requirements.txt文件来进行项目中依赖的三方库进行整体安装导入。
+requirements.txt文件的格式：
+12requests==1.2.0Flask==0.10.1
+
+注意事项
+# -要求使用root权限直接以...</div><p class="readmore"><a href="/blog/2019/03/27/python-xiang-mu-sheng-cheng-yi-lai-requirements-txt-de-liang-chong-fang-fa/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/27/ubuntu18-04-2lts-an-zhuang-vmware-workstation/">Ubuntu18.04.2LTS安装VMware Workstation</a></h1><div class="post-meta">2019-03-27</div><div class="post-content">Ubuntu18.04.2LTS安装VMware Workstation操作系统与软件版本
+Ubuntu18.04.2LTS bionic 
+VMware Workstation 14PRO或更高版本
+
+注意事项
+# -要求使用root权限直接以root用户使用命令或对执行的命令使用linux sudo
+$ -要求给定的linux命令作为常规非特权用户执行
+...</div><p class="readmore"><a href="/blog/2019/03/27/ubuntu18-04-2lts-an-zhuang-vmware-workstation/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/17/ubuntu18-04-2lts-xiu-gai-zhu-wen-jian-jia-ming-cheng-wei-ying-wen/">Ubuntu18.04.2LTS修改主文件夾名稱爲英文</a></h1><div class="post-meta">2019-03-17</div><div class="post-content">Ubuntu18.04.2LTS修改主文件夾名稱爲英文方法1：先重命名中文文件夾，然後
+编辑~&#x2F;.config&#x2F;user-dirs.dirs文件
+1$ vim ~/.config/user-dirs.dirs
+
+修改文件內容爲：
+12345678XDG_DESKTOP_DIR=&quot;$HOME/Desktop&quot;XDG_DO...</div><p class="readmore"><a href="/blog/2019/03/17/ubuntu18-04-2lts-xiu-gai-zhu-wen-jian-jia-ming-cheng-wei-ying-wen/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/15/ubuntu18-04-2lts-an-zhuang-oraclejavajdk-8/">Ubuntu18.04.2LTS安装Oracle Java JDK 8</a></h1><div class="post-meta">2019-03-15</div><div class="post-content">Ubuntu18.04.2LTS安装Oracle Java JDK 8Webupd8 Team维护一个PPA存储库，其中包含适用于所有当前Ubuntu版本的Oracle Java 8安装程序脚本。
+1.打开终端并运行命令添加PPA：1sudo add-apt-repository ppa:webupd8team/java
+
+输入密码（输入时不会显示星号），然...</div><p class="readmore"><a href="/blog/2019/03/15/ubuntu18-04-2lts-an-zhuang-oraclejavajdk-8/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/14/ubuntu18-04-2lts-an-zhuang-pei-zhi-mei-hua/">Ubuntu18.04.2LTS安装、配置、美化</a></h1><div class="post-meta">2019-03-14</div><div class="post-content">Ubuntu18.04.2LTS安装、配置、美化安装准备
+准备Ubuntu18.04镜像
+关闭Secure Boot
+
+硬盘分区硬盘一般分为IDE硬盘、SCSI硬盘和SATA硬盘三种。
+在Linux系统中，IDE接口的硬盘被称为hd，SCSI和SATA接口的硬盘则被称为sd，其中IDE硬盘基本上已经淘汰，现在市面上最常见的就是SATA接口的硬盘，第1块硬盘称...</div><p class="readmore"><a href="/blog/2019/03/14/ubuntu18-04-2lts-an-zhuang-pei-zhi-mei-hua/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/06/gao-zi-jie-yu-di-zi-jie-gao-di-zhi-yu-di-di-zhi-da-duan-mo-shi-yu-xiao-duan-mo-shi-wang-luo-zi-jie-shun-xu-yu-zhu-ji-zi-jie-shun-xu/">高字节与低字节、高地址与低地址、大端模式与小端模式、网络字节顺序与主机字节顺序</a></h1><div class="post-meta">2019-03-06</div><div class="post-content">
+字节序，顾名思义字节的顺序，再多说两句就是大于一个字节类型的数据在内存中的存放顺序(一个字节的数据当然就无需谈顺序的问题了)。
+低地址、高地址：内存地址可以对应十六进制的数值，值大的为高地址，否则为低地址。
+网络字节顺序NBO(Network Byte Order):按从高到低的顺序存储，在网络上使用统一的网络字节顺序，可以避免兼容性问题。
+主机字节顺序H...</div><p class="readmore"><a href="/blog/2019/03/06/gao-zi-jie-yu-di-zi-jie-gao-di-zhi-yu-di-di-zhi-da-duan-mo-shi-yu-xiao-duan-mo-shi-wang-luo-zi-jie-shun-xu-yu-zhu-ji-zi-jie-shun-xu/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/05/w-linker-libxxx-so-unused-dt-entry-type-0x6ffffffe-arg-0x5a4/">W/linker: libxxx.so: unused DT entry: type 0x6ffffffe arg 0x5a4</a></h1><div class="post-meta">2019-03-05</div><div class="post-content">我正在使用libserialport.so,在运行时，我收到以下警告:
+12W/linker: libserialport.so: unused DT entry: type 0x6ffffffe arg 0x5a4    libserialport.so: unused DT entry: type 0x6fffffff arg 0x1
+
+Q:What a...</div><p class="readmore"><a href="/blog/2019/03/05/w-linker-libxxx-so-unused-dt-entry-type-0x6ffffffe-arg-0x5a4/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/03/05/java-getextractedtext-dui-android-shang-de-fei-huo-dong-inputconnection-jing-gao/">java-getExtractedText对android上的非活动InputConnection警告</a></h1><div class="post-meta">2019-03-05</div><div class="post-content">我在logcat中获得以下警告
+1W/IInputConnectionWrapper: finishComposingText on inactive InputConnection
+
+一直找不到背后的原因,网上找到一个类似的问题，看到如下的logcat
+123456W/IInputConnectionWrapper(21214): getTextBefor...</div><p class="readmore"><a href="/blog/2019/03/05/java-getextractedtext-dui-android-shang-de-fei-huo-dong-inputconnection-jing-gao/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/02/26/yi-wen-android-nei-cun-xie-lou-de-ba-chong-dui-ying-jie-jue-ban-fa-xia/">[译文]Android内存泄漏的八种对应解决办法(下)</a></h1><div class="post-meta">2019-02-26</div><div class="post-content">在上一篇[译文]Android内存泄漏的八种可能(上)中，我们讨论了八种容易发生内存泄漏的代码。其中，尤其严重的是泄漏Activity对象，因为它占用了大量系统内存。不管内存泄漏的代码表现形式如何，其核心问题在于：
+
+在Activity生命周期之外仍持有其引用
+
+幸运的是，一旦泄漏发生且被定位到了，修复方法是相当简单的。
+Static Actitivitie...</div><p class="readmore"><a href="/blog/2019/02/26/yi-wen-android-nei-cun-xie-lou-de-ba-chong-dui-ying-jie-jue-ban-fa-xia/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/02/26/yi-wen-android-nei-cun-xie-lou-de-ba-chong-ke-neng-shang/">[译文]Android内存泄漏的八种可能(上)</a></h1><div class="post-meta">2019-02-26</div><div class="post-content">Java是垃圾回收语言的一种，其优点是开发者无需特意管理内存分配，降低了应用由于局部故障(segmentation fault)导致崩溃，同时防止未释放的内存把堆栈(heap)挤爆的可能，所以写出来的代码更为安全。
+不幸的是，在Java中仍存在很多容易导致内存泄漏的逻辑可能(logical leak)。如果不小心，你的Android应用很容易浪费掉未释放的内...</div><p class="readmore"><a href="/blog/2019/02/26/yi-wen-android-nei-cun-xie-lou-de-ba-chong-ke-neng-shang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/02/22/fragment-yi-chang-android-view-inflateexception-binary-xml-file-line-7-error-inflating-class-fragment/">Fragment异常：android.view.InflateException: Binary XML file line #7: Error inflating class fragment</a></h1><div class="post-meta">2019-02-22</div><div class="post-content">fragment是个很好的控件，但今天在静态使用fragment的时候，遇到个问题，错误信息如下:
+错误信息Caused by: android.view.InflateException: Binary XML file line #7: Error inflating class fragment
+123456789101112&lt;?xml vers...</div><p class="readmore"><a href="/blog/2019/02/22/fragment-yi-chang-android-view-inflateexception-binary-xml-file-line-7-error-inflating-class-fragment/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/02/21/android-logcat-ming-ling-xiang-jie/">Android logcat命令详解</a></h1><div class="post-meta">2019-02-21</div><div class="post-content">Android Log系统Android提供了一个灵活的logging系统，允许应用程序和系统组件等整个系统记录logging信息，它是独立于Linux Kernel的一个logging系统，kernel是通过pr_info、printk等存储，通过dmesg或cat /proc/kmsg获取。不过，Android logging 系统也是将信息存在内核缓存...</div><p class="readmore"><a href="/blog/2019/02/21/android-logcat-ming-ling-xiang-jie/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/02/20/ding-zhi-kai-guan-bao-cun-logcat-he-kmsg-ri-zhi-shu-chu-dao-wen-jian/">定制开关保存LOGCAT和KMSG日志输出到文件</a></h1><div class="post-meta">2019-02-20</div><div class="post-content">在 “设置” 应用中的开发者选项添加一个开关 保存Logcat和KMSG日志
+添加te文件由于SELinux的原因,需要在sepolicy下添加catlot.te
+123456789101112131415161718192021222324type catlog, domain;type catlog_exec, exec_type, file_type;...</div><p class="readmore"><a href="/blog/2019/02/20/ding-zhi-kai-guan-bao-cun-logcat-he-kmsg-ri-zhi-shu-chu-dao-wen-jian/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/01/17/debian-ubuntu-shi-qu-he-zi-dong-jiao-shi-she-zhi/">Debian/Ubuntu时区和自动较时设置</a></h1><div class="post-meta">2019-01-17</div><div class="post-content">NTP 是通过网络自动校时的一种 TCP&#x2F;IP 协议。Debian&#x2F;Ubuntu 中有两种方式实现时间同步：ntpdate 和 ntpd，前者为一天调整一次时间，后者 ntpd 为守护进程，可以持续不断地调整时间。个人推荐使用 ntpd，它实际占用资源是很小的。
+设置时区使用 tzconfig 或 tzselect 工具来设置时区
+1$ ...</div><p class="readmore"><a href="/blog/2019/01/17/debian-ubuntu-shi-qu-he-zi-dong-jiao-shi-she-zhi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2019/01/17/python3-unicodeencodeerror-ascii-codec-can-t-encode-character-xdc-in-position-6-ordinal-not-in-range-128/">Python3-UnicodeEncodeError:-'ascii'-codec-can't-encode-character-'Ü'-in-position-6:-ordinal-not-in-range(128)</a></h1><div class="post-meta">2019-01-17</div><div class="post-content">问题每次我尝试运行我的程序时都会返回错误，并且我的程序可以在其他应用程序中运行
+12345678Error:Traceback (most recent call last):File &quot;/sdcard/pythonP/ex95.py&quot;, line 16, in gols[f&quot;partida&#123;g&#125;&quot;...</div><p class="readmore"><a href="/blog/2019/01/17/python3-unicodeencodeerror-ascii-codec-can-t-encode-character-xdc-in-position-6-ordinal-not-in-range-128/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/12/25/shi-yong-gpg-jia-mi-github-commits/">使用GPG加密Github Commits</a></h1><div class="post-meta">2018-12-25</div><div class="post-content">GnuPG（简称 GPG），它是目前最流行、最好用的开源加密工具之一。GPG 有许多用途，比如对文件，邮件的加密。而本文要说的是，如何使用 GPG 来加密 Github Commits,从而保证提交的commit在传输的过程中没有被篡改。。在 Github 上查看一些项目的 Commits 时，偶尔会发现「This commit was signed wit...</div><p class="readmore"><a href="/blog/2018/12/25/shi-yong-gpg-jia-mi-github-commits/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/12/21/ubuntu16-04-sheng-ji-dao-18-04lts-ji-lu/">Ubuntu16.04升级到18.04LTS记录</a></h1><div class="post-meta">2018-12-21</div><div class="post-content">更新Ubuntu 16.04在升级之前，先更新当前的16.04至最新状态。建议升级之前更新&#x2F;升级所有已安装的软件包。
+首先更新APT源和软件包至最新
+1sudo apt update &amp;&amp; sudo apt dist-upgrade &amp;&amp; sudo apt autoremove
+
+安装和配置Ubuntu update...</div><p class="readmore"><a href="/blog/2018/12/21/ubuntu16-04-sheng-ji-dao-18-04lts-ji-lu/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/12/17/android-huo-de-dian-ji-ping-mu-de-wei-zhi-zuo-biao/">Android获得点击屏幕的位置坐标</a></h1><div class="post-meta">2018-12-17</div><div class="post-content">开发者选项获得点击屏幕的位置坐标在手机开发者选项中,打开指针位置,可以在屏幕上方获取当前点击位置的坐标点(x,y)
+1P:1/1  X:553  Y:1851  Xv:0:0  Yv:0:0 Prs:1.0  Size:0.13
+
+ 
+
+ 命令行窗口输入：adb shell input tap 553 1851实现点击效果
+通过adb shell getev...</div><p class="readmore"><a href="/blog/2018/12/17/android-huo-de-dian-ji-ping-mu-de-wei-zhi-zuo-biao/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/12/10/java-zhong-bit-de-cao-zuo-ji-qiao/">Java中bit的操作技巧</a></h1><div class="post-meta">2018-12-10</div><div class="post-content">Java中定义八种基本数据类型,最小到byte,然而最近在底层操作中遇到需要根据一个byte中的bit来操作,作此记录。
+基本数据类型
+byte b; 1字节（8位） （-128~127）（-2的7次方到2的7次方-1）
+short s; 2字节（16位） （-32768~32767）（-2的15次方到2的15次方-1）
+char c;2字节（16位）（C语...</div><p class="readmore"><a href="/blog/2018/12/10/java-zhong-bit-de-cao-zuo-ji-qiao/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/12/03/android-de-si-da-qi-dong-mo-shi/">Android的四大启动模式</a></h1><div class="post-meta">2018-12-03</div><div class="post-content">要点
+standard：标准模式
+singleTop：栈顶复用模式
+singleTask：栈内复用模式
+singleInstance：单一实例模式
+
+启动模式standard：标准模式系统默认模式。每次启动一个Activity都会重新创建一个新的实例，不管这个实例是否已经存在。在这个模式下，谁启动了Activity，那么这个Activity就运行在启动它的那...</div><p class="readmore"><a href="/blog/2018/12/03/android-de-si-da-qi-dong-mo-shi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/11/20/androidstudio-de-module-library-tian-jia-aar-de-pei-zhi/">AndroidStudio的module library添加aar的配置</a></h1><div class="post-meta">2018-11-20</div><div class="post-content">使用aar的步骤
+在app的build.gradle中加入配置一般来说,对/项目工程/app/build.gradle加入配置1234567891011android&#123;    ...    repositories &#123;        flatDir &#123;            dirs &#x27;libs&#x27;   // ...</div><p class="readmore"><a href="/blog/2018/11/20/androidstudio-de-module-library-tian-jia-aar-de-pei-zhi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/11/13/android-gong-cheng-zhong-assets-yu-raw-wen-jian-jia-de-qu-bie/">Android工程中assets与raw文件夹的区别</a></h1><div class="post-meta">2018-11-13</div><div class="post-content">  我们都知道Android工程中assets与raw文件夹都可以用来存放文件比如已经设计好的数据库文件可以选择放到assets中（当然你们也可以放到raw里 ），这样程序在打包时会原封不动的保存到apk包中，不会被编译成二进制。早期android2.3以前的版本有着assets和raw里资源文件不能超过1M的限制，当然现在已经没有这个限制了。
+res&#x...</div><p class="readmore"><a href="/blog/2018/11/13/android-gong-cheng-zhong-assets-yu-raw-wen-jian-jia-de-qu-bie/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/11/09/ru-he-zheng-que-xie-chu-dan-li-mo-shi/">如何正确写出单例模式</a></h1><div class="post-meta">2018-11-09</div><div class="post-content">单例模式算是设计模式中最容易理解，也是最容易手写代码的模式了吧。但是其中的坑却不少，所以也常作为面试题来考。本文主要对几种单例写法的整理，并分析其优缺点。很多都是一些老生常谈的问题，但如果你不知道如何创建一个线程安全的单例，不知道什么是双检锁，那这篇文章可能会帮助到你。
+懒汉式，线程不安全当被问到要实现一个单例模式时，很多人的第一反应是写出如下的代码，包括教...</div><p class="readmore"><a href="/blog/2018/11/09/ru-he-zheng-que-xie-chu-dan-li-mo-shi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/11/07/program-type-already-present-com-alibaba-android-arouter-routes-arouter/">Program type already present: com.alibaba.android.arouter.routes.ARouter</a></h1><div class="post-meta">2018-11-07</div><div class="post-content">今天在写东西的时候报了一个错误，这个是使用 alibaba 的路由框架 ARouter，进行模块间通信报才错。
+1Program type already present: com.alibaba.android.arouter.routes.ARouter
+意思是 Arouter 配置的路径的组路径已经存在了，举一个栗子：
+我们在中配置模块 A 中 A1 ...</div><p class="readmore"><a href="/blog/2018/11/07/program-type-already-present-com-alibaba-android-arouter-routes-arouter/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/10/26/sqlite-shu-ju-ku-shi-yong-bi-ji/">Sqlite数据库使用笔记</a></h1><div class="post-meta">2018-10-26</div><div class="post-content">sqlite的特点sqlite只支持库级锁，同时只能允许一个写操作。但SQLite尽量延迟申请X锁，直到数据块真正写盘时才申请X锁，非常巧妙而有效。
+
+注: 读锁(S锁）、写锁(X锁）
+
+Is SQLite threadsafe?  SQLite官网上的最权威的解答,答案是sqlite是线程安全的。
+sqlite的线程模式SQLite支持3种线程模式
+
+单线...</div><p class="readmore"><a href="/blog/2018/10/26/sqlite-shu-ju-ku-shi-yong-bi-ji/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/10/18/dong-shou-shi-xian-yi-ge-wei-xin-xiao-cheng-xu/">动手实现一个微信小程序</a></h1><div class="post-meta">2018-10-18</div><div class="post-content">开发环境
+微信小程序开发者工具 v1.02.1809260
+调试基础库 2.0.4
+
+实现功能
+上传一张图片检测图片中的人脸展示人脸属性信息，如年龄、性别、表情、美丑打分等。
+
+接口
+接口用到的百度AI开放平台的人脸检测与属性分析接口文档
+
+实现步骤
+本地选取一张图片
+获取图片base64编码
+获取百度开发api请求token
+请求人脸检测接口
+
+效果图
+p...</div><p class="readmore"><a href="/blog/2018/10/18/dong-shou-shi-xian-yi-ge-wei-xin-xiao-cheng-xu/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/10/13/pip-import-error-cannot-import-name-main-jie-jue-fang-an/">pip Import Error:cannot import name main解决方案</a></h1><div class="post-meta">2018-10-13</div><div class="post-content">在使用pip来进行安装操作时碰到这样的问题
+123456ubuntu@ubuntu:~$ pip install jrnlTraceback (most recent call last):  File &quot;/usr/bin/pip&quot;, line 9, in &lt;module&gt;    from pip import mainImp...</div><p class="readmore"><a href="/blog/2018/10/13/pip-import-error-cannot-import-name-main-jie-jue-fang-an/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/10/12/android-shi-jian-fen-fa-ji-zhi/">Android事件分发机制</a></h1><div class="post-meta">2018-10-12</div><div class="post-content">要点
+-&gt; dispatchTouchEvent()-&gt; onInterceptTouchEvent()-&gt; onTouchEvent()
+requestDisallowInterceptTouchEvent(boolean)
+onTouchEvent() –&gt; onTouchListener –&gt; onClickListene...</div><p class="readmore"><a href="/blog/2018/10/12/android-shi-jian-fen-fa-ji-zhi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/10/10/tong-xun-zheng-ge-shi-zhi-crc-xiao-yan/">通讯帧格式之CRC校验</a></h1><div class="post-meta">2018-10-10</div><div class="post-content">CRC即循环冗余校验码（Cyclic Redundancy Check 1  ）：是数据通信领域中最常用的一种查错校验码，其特征是信息字段和校验字段的长度可以任意选定。循环冗余检查（CRC）是一种数据传输检错功能，对数据进行多项式计算，并将得到的结果附在帧的后面，接收设备也执行类似的算法，以保证数据传输的正确性和完整性。CRC校验的原理即通信双方规定一个二进...</div><p class="readmore"><a href="/blog/2018/10/10/tong-xun-zheng-ge-shi-zhi-crc-xiao-yan/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/10/08/c-shu-ju-lei-xing-uint8-t-uint16-t-uint32-t-uint64-t-size-t-ssize-t/">C-数据类型uint8_t、uint16_t、uint32_t、uint64_t、size_t、ssize_t</a></h1><div class="post-meta">2018-10-08</div><div class="post-content">C语言6种基本数据类型
+整型：short、int、long
+浮点型：float、double
+字符类型：char
+
+typedef用来定义关键字或标识符的别名
+12typedef double wages;typedef wages salary;
+
+一般整形对应的*_t类型为：
+12341字节     uint8_t2字节     uint16_t4字节 ...</div><p class="readmore"><a href="/blog/2018/10/08/c-shu-ju-lei-xing-uint8-t-uint16-t-uint32-t-uint64-t-size-t-ssize-t/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/10/06/android-shi-tu-activiy-phonewindow-decorview-he-viewroot/">Android视图Activiy、PhoneWindow、DecorView和ViewRoot</a></h1><div class="post-meta">2018-10-06</div><div class="post-content">概念简介
+Activity : 控制生命周期和处理事件
+Window : 视图承载器
+DecorView : Android视图树的根节点视图,顶级View
+ViewRoot : 执行或传递所有View的绘制以及事件分发等交互Activity并不负责视图控制，它只是控制生命周期和处理事件，真正控制视图的是Window。一个Activity包含了一个Windo...</div><p class="readmore"><a href="/blog/2018/10/06/android-shi-tu-activiy-phonewindow-decorview-he-viewroot/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/09/30/yong-recyclerview-he-viewpager-shi-xian-galleryview-ke-wu-xian-zuo-hua-you-hua/">用RecyclerView和ViewPager实现GalleryView可无限左滑右滑</a></h1><div class="post-meta">2018-09-30</div><div class="post-content">GalleryViewDemo
+RecyclerView实现GalleryView
+ViewPager实现GalleryView
+
+
+导包12implementation &#x27;com.android.support:design:28.0.0&#x27;implementation &#x27;com.android.support:recycler...</div><p class="readmore"><a href="/blog/2018/09/30/yong-recyclerview-he-viewpager-shi-xian-galleryview-ke-wu-xian-zuo-hua-you-hua/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/09/19/android-jing-dian-lan-ya-kai-fa-jian-jie/">Android经典蓝牙开发简介</a></h1><div class="post-meta">2018-09-19</div><div class="post-content">If you're prepared to adapt and learn, you can transform.</div><p class="readmore"><a href="/blog/2018/09/19/android-jing-dian-lan-ya-kai-fa-jian-jie/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/09/12/jie-jue-module-li-diao-yong-aar-chu-xian-failed-to-resolve-de-wen-ti/">解决Module里调用aar出现failed to resolve的问题</a></h1><div class="post-meta">2018-09-12</div><div class="post-content">环境：AndroidStudio 3.1.4
+
+在Module的build.gradle添加在dependencies{}标签里1compile(name: &#x27;第三方aar库名称&#x27;, ext: &#x27;aar&#x27;)
+在android{}标签里12345repositories &#123;    flatDir &#123; ...</div><p class="readmore"><a href="/blog/2018/09/12/jie-jue-module-li-diao-yong-aar-chu-xian-failed-to-resolve-de-wen-ti/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/09/10/android-ble-lan-ya-zhi-central/">Android-BLE蓝牙之Central</a></h1><div class="post-meta">2018-09-10</div><div class="post-content">低功耗蓝牙(BLE)Android 4.3（API 18）以上才支持Android 5.0(API 21) 扫描蓝牙需要定位权限，否则扫描不到设备,实际使用时候发现 5.0不需要也可以扫描，Android 6.0(API 23)以上必须需要定位权限官方文档:https://developer.android.com/guide/topics/connecti...</div><p class="readmore"><a href="/blog/2018/09/10/android-ble-lan-ya-zhi-central/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/09/04/android-ble-lan-ya-zhi-peripheral/">Android BLE蓝牙之Peripheral</a></h1><div class="post-meta">2018-09-04</div><div class="post-content">Android 5.0（API 21）之前不能当成外设(蓝牙耳机、音响等)来使用，只能作为中心即主机并不是Android 5.0的系统就可以支持BLE Peripheral，这个和硬件也是有关系的,谷歌从ANdroid 5.0系统SDK已经开始支持check手机是否支持BLE Peripheral
+声明蓝牙开发权限123456&lt;uses-permiss...</div><p class="readmore"><a href="/blog/2018/09/04/android-ble-lan-ya-zhi-peripheral/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/09/02/android-ble-lan-ya-jian-jie/">Android BLE蓝牙简介</a></h1><div class="post-meta">2018-09-02</div><div class="post-content">简介android 从4.3系统开始可以连接BLE设备,iOS是从7.0版本开始支持BLEandroid 从5.0系统开始可以模拟设备发出BLE广播,这个新功能是对标于iOS系统的手机模拟iBeacon设备BLE设备之所以能被手机扫描到,是因为BLE设备在每隔一段时间广播一次,这个广播里面包含很多数据并不是Android L的系统就可以支持BLE Perip...</div><p class="readmore"><a href="/blog/2018/09/02/android-ble-lan-ya-jian-jie/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/08/23/android-chuan-kou-tong-xin/">Android串口通信</a></h1><div class="post-meta">2018-08-23</div><div class="post-content">开发环境：
+AndroidStudio3.1.4
+JDK_1.8.0_152_release
+Compile Sdk Version API28
+Gradle 4.4
+NDK 17.1.4828580
+
+Android与下位机通信，串口通信是比较常见的一种方案。Google官方提供了一个项目android-serialport-api用来读取和写入Linux...</div><p class="readmore"><a href="/blog/2018/08/23/android-chuan-kou-tong-xin/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/08/15/java-quan-zhan-kai-fa-ji-zhu-tu-pu/">Java全栈开发技术图谱</a></h1><div class="post-meta">2018-08-15</div><div class="post-content">常用模式与工具学习Java技术体系,设计模式,流行的框架与组件
+
+常见的设计模式,编码必备
+Spring5,做应用必不可少的最新框架
+MyBatis,玩数据库必不可少的组件
+
+常用设计模式
+Proxy代理模式
+Factory工厂模式
+Singleton单例模式
+Delegate委派模式
+Strategy策略模式
+Prototype原型模式
+Template模...</div><p class="readmore"><a href="/blog/2018/08/15/java-quan-zhan-kai-fa-ji-zhu-tu-pu/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/08/13/android-kai-fa-zhi-shi-dian-zong-jie/">Android开发知识点总结</a></h1><div class="post-meta">2018-08-13</div><div class="post-content">（一）Java一、HashMap和Hashtable区别？
+这个一定要去看源码！看源码！看源码！实在看不下去的可以上网看别人的分析。简单总结有几点：
+1.HashMap支持null Key和null Value；Hashtable不允许。这是因为HashMap对null进行了特殊处理，将null的hashCode值定为了0，从而将其存放在哈希表的第0个buc...</div><p class="readmore"><a href="/blog/2018/08/13/android-kai-fa-zhi-shi-dian-zong-jie/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/30/adb-lu-ping-ming-ling/">ADB录屏命令</a></h1><div class="post-meta">2018-07-30</div><div class="post-content">开始录制命令1adb shell screenrecord /sdcard/demo.mp4
+限制录制时间参数: –time-limit
+1adb shell screenrecord  --time-limit 10 /sdcard/demo.mp4
+说明:限制视频录制时间为10s,如果不限制,默认180s
+指定视频分辨率大小参数: –size
+1adb ...</div><p class="readmore"><a href="/blog/2018/07/30/adb-lu-ping-ming-ling/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/29/launcher-zhong-camera-tu-biao-de-xian-shi-yu-yin-cang/">Launcher中Camera图标的显示与隐藏</a></h1><div class="post-meta">2018-07-29</div><div class="post-content">在camera模块的源码中我们发现DisableCameraReceiver的这样一个类，是继承自BroadcastReceiver一个广播接收器，在AndroidManifest.xml中发现这个reciver的intent-filter为&lt;action android:name=&quot;android.intent.action.BOOT_CO...</div><p class="readmore"><a href="/blog/2018/07/29/launcher-zhong-camera-tu-biao-de-xian-shi-yu-yin-cang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/28/android6-0-shou-yu-yu-zhi-apk-de-quan-xian/">Android6.0授予预置APK的权限</a></h1><div class="post-meta">2018-07-28</div><div class="post-content">对我们系统中存在的应用进行默认权限设置,达到默认开启应用权限无需申请权限弹框的目的方法1修改\frameworks\base\services\core\java\com\android\server\pm\PackageManagerService.java，但CTS会有问题
+1234567891011121314151617181920212223242...</div><p class="readmore"><a href="/blog/2018/07/28/android6-0-shou-yu-yu-zhi-apk-de-quan-xian/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/27/c-c-yu-chu-li-zhi-ling-define-ifdef-ifndef-endif/">C/C++预处理指令#define,#ifdef,#ifndef,#endif...</a></h1><div class="post-meta">2018-07-27</div><div class="post-content">常见的预处理指令如下：
+#空指令，无任何效果
+#include包含一个源代码文件
+#define定义宏
+#undef取消已定义的宏
+#if如果给定条件为真，则编译下面代码
+#ifdef如果宏已经定义，则编译下面代码
+#ifndef如果宏没有定义，则编译下面代码
+#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码
+#endif结束一个#if...</div><p class="readmore"><a href="/blog/2018/07/27/c-c-yu-chu-li-zhi-ling-define-ifdef-ifndef-endif/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/26/kai-qi-gao-jing-du-ding-wei/">开启高精度定位</a></h1><div class="post-meta">2018-07-26</div><div class="post-content">三种定位模式
+
+Hight Accuracy
+
+Battery Saving
+
+GPS Only 
+1234public static final int LOCATION_MODE_OFF = 0;public static final int LOCATION_MODE_SENSORS_ONLY = 1;public static final int L...</div><p class="readmore"><a href="/blog/2018/07/26/kai-qi-gao-jing-du-ding-wei/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/25/ding-zhi-vibrator-zhen-dong-qiang-du/">定制vibrator震动强度</a></h1><div class="post-meta">2018-07-25</div><div class="post-content">HapticFeedback震动反馈提到过/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindowManager.javaperformHapticFeedbackLw()函数默认的震动值由 如mVirtualKeyVibePattern &#x3D; getLongIn...</div><p class="readmore"><a href="/blog/2018/07/25/ding-zhi-vibrator-zhen-dong-qiang-du/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/24/android-ota-sheng-ji-liu-cheng-fen-xi/">Android OTA升级流程分析</a></h1><div class="post-meta">2018-07-24</div><div class="post-content">Android系统Recovery使用update.zip升级过程分析,update.zip包来源有两种，一个是OTA在线下载（一般下载到&#x2F;CACHE分区），一个是手动拷贝到T卡这里分析从update.zip拷贝到T卡后，弹出升级对话框分析：
+重启至recoverymNowButton按钮的监听事件里，会调用mService.rebootAndUp...</div><p class="readmore"><a href="/blog/2018/07/24/android-ota-sheng-ji-liu-cheng-fen-xi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/23/android-ota-sheng-ji-bao-zhi-zuo/">Android OTA升级包制作</a></h1><div class="post-meta">2018-07-23</div><div class="post-content">OTA（Over-the-AirTechnology）是指手机终端通过无线网络下载远程服务器上的升级包，对系统或应用进行升级的技术。OTA升级包（实质上是Recovery升级的ZIP包，OTA升级是基于Recovery的机制再加上下载ZIP包和ZIP包版本管理等功能实现）
+OTA升级包OTA完整包生成方法OTA完整包可用于T卡本地升级和OTA在线升级。OTA...</div><p class="readmore"><a href="/blog/2018/07/23/android-ota-sheng-ji-bao-zhi-zuo/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/22/on-lollipop-usbdevice-object-does-not-return-the-correct-number-of-usbinterface/">On Lollipop USBDevice object does not return the correct number of USBInterface</a></h1><div class="post-meta">2018-07-22</div><div class="post-content">https://issuetracker.google.com/issues/37032033
+此处修改
+12345678910111213141516171819diff --git a/frameworks/base/core/java/android/hardware/usb/UsbDevice.java b/frameworks/base/core/...</div><p class="readmore"><a href="/blog/2018/07/22/on-lollipop-usbdevice-object-does-not-return-the-correct-number-of-usbinterface/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/21/mo-ren-xi-tong-shu-ru-fa-wei-sou-gou-shu-ru-fa/">默认系统输入法为搜狗输入法</a></h1><div class="post-meta">2018-07-21</div><div class="post-content">默认搜狗输入法方法一
+frameworks\base\packages\SettingsProvider\res\values\defaults.xml 1234   &lt;!--create by chensy 默认搜狗输入法--&gt;&lt;!--&lt;string name=&quot;def_input_method&quot; transla...</div><p class="readmore"><a href="/blog/2018/07/21/mo-ren-xi-tong-shu-ru-fa-wei-sou-gou-shu-ru-fa/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/20/rk3288-make-otapackage-chu-cuo-wen-ti/">RK3288 make otapackage出错问题</a></h1><div class="post-meta">2018-07-20</div><div class="post-content">OTA完整包可用于T卡本地升级和OTA在线升级。OTA完整包包含完整的system、recovery.和 boot.img。编译 OTA 完整包必须在 android 系统编译(make –j4 和 ./mkimage.sh ota)完成后进行。编译 OTA 完整包命令如下：make otapackage
+编译日志
+123456789101112131415...</div><p class="readmore"><a href="/blog/2018/07/20/rk3288-make-otapackage-chu-cuo-wen-ti/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/19/mysql-error-1067-invalid-default-value-for-id/">Mysql ERROR 1067:Invalid default value for 'id'</a></h1><div class="post-meta">2018-07-19</div><div class="post-content">数据里面有张表的一个日期字段默认值为0000-00-00，导致现在的错误。根本原因是  SQL_MODE  设置值的问题首先用下面的命令看下sql_mode
+1show variables like &#x27;sql_mode&#x27;;
+结果中含有NO_ZERO_IN_DATE, NO_ZERO_DATE,去掉 sql_mode 中的 values: ...</div><p class="readmore"><a href="/blog/2018/07/19/mysql-error-1067-invalid-default-value-for-id/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/18/java-kai-fa-jie-kou/">Java开发接口</a></h1><div class="post-meta">2018-07-18</div><div class="post-content">开发环境
+JDK： v 10
+Tomcat ：v 9.0.6
+IntelliJ IDEA ：v 2017.3
+MySQL：v 5.7.19
+
+学习计划１. 环境搭建２. HelloWorld３. 创建数据库４. Servlet写接口５. Spring MVC写接口６. Spring+SpringMVC+MyBatis７. 云服务器部署
+１.环境搭建要求:１....</div><p class="readmore"><a href="/blog/2018/07/18/java-kai-fa-jie-kou/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/17/she-zhi-xian-shi-zi-ti-da-xiao-de-xiu-gai/">设置-显示-字体大小的修改</a></h1><div class="post-meta">2018-07-17</div><div class="post-content">Android系统中在Settings-&gt;Display-&gt;Font Size设置系统字体大小，默认的系统字体大小为Normal
+修改默认值代码路径:&#x2F;frameworks&#x2F;base&#x2F;core&#x2F;java&#x2F;android&#x2F;content&#x2F;res&#x2F;Configuratio...</div><p class="readmore"><a href="/blog/2018/07/17/she-zhi-xian-shi-zi-ti-da-xiao-de-xiu-gai/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/16/geng-gai-mo-ren-bi-zhi/">更改默认壁纸</a></h1><div class="post-meta">2018-07-16</div><div class="post-content">Android 5.0中homescreen的默认壁纸位置：
+frameworks&#x2F;base&#x2F;core&#x2F;res&#x2F;res&#x2F;drawable-nodpi&#x2F;default_wallpaper.jpg；可以在frameworks&#x2F;base&#x2F;core&#x2F;res目录下搜索defaul...</div><p class="readmore"><a href="/blog/2018/07/16/geng-gai-mo-ren-bi-zhi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/15/watchdog-ji-zhi/">Watchdog机制</a></h1><div class="post-meta">2018-07-15</div><div class="post-content">Watchdog的中文的“看门狗”，有保护的意思。最早引入Watchdog是在单片机系统中，由于单片机的工作环境容易受到外界磁场的干扰，导致程序“跑飞”，造成整个系统无法正常工作，因此，引入了一个“看门狗”，对单片机的运行状态进行实时监测，针对运行故障做一些保护处理，譬如让系统重启。这种Watchdog属于硬件层面，必须有硬件电路的支持Linux也引入了Wa...</div><p class="readmore"><a href="/blog/2018/07/15/watchdog-ji-zhi/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/14/anr-cheng-xu-wen-ti-fen-xi-zhi-dropbox/">ANR程序问题分析之dropbox</a></h1><div class="post-meta">2018-07-14</div><div class="post-content">从2.2开始增加了DropBox功能，增强Android的异常信息收集管理能力DropBox（简称DB）是系统进程中的一个服务，在system_server进程启动时创建，并且它没有运行在单独的线程中，而是运行在system_server的ServerThread线程中。我们可以将ServerThread称作system_server的主线程，ServerT...</div><p class="readmore"><a href="/blog/2018/07/14/anr-cheng-xu-wen-ti-fen-xi-zhi-dropbox/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/13/anr-cheng-xu-wen-ti-fen-xi-zhi-traces/">ANR程序问题分析之traces</a></h1><div class="post-meta">2018-07-13</div><div class="post-content">每次发生ANR，这个文件都会被清空，写入新的内容。如果想查看以前发生ANR的信息，可以去查看DB文件，也就是DropBox的中的日志跟踪功能，保存历史上发生的所有ANR的日志“&#x2F; data &#x2F; system &#x2F; dropbox”是DB指定的文件存放位置。日志保存的最长时间，默认是3天
+ANR的异常信息使用logcat命令查看会得...</div><p class="readmore"><a href="/blog/2018/07/13/anr-cheng-xu-wen-ti-fen-xi-zhi-traces/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/12/anr-cheng-xu-wu-xiang-ying-jian-jie/">ANR程序无响应简介</a></h1><div class="post-meta">2018-07-12</div><div class="post-content">ANR，英文全称为 Application Not Responding，即应用无响应。具体表现，弹出一个应用无响应的窗口，也可能不弹出直接闪退。
+ANR的类型ANR一般有三种类型：
+
+KeyDispatchTimeout(5 seconds) –主要类型 按键或触摸事件在特定时间内无响应定义参考：ActivityManagerService.java12/...</div><p class="readmore"><a href="/blog/2018/07/12/anr-cheng-xu-wu-xiang-ying-jian-jie/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/11/kong-zhi-ping-mu-di-bu-dao-hang-lan-de-xian-shi-yu-yin-cang/">控制屏幕底部导航栏的显示与隐藏</a></h1><div class="post-meta">2018-07-11</div><div class="post-content">导航栏（也就是屏幕底部的三个按钮,home,back,recentapp）是系统应用SystemUi.apk的一部分.我们可以在SystemUi.apk的源码中留下接口便于我们控制导航栏的显示和隐藏，我们可以通过广播的接收与发送的方式来实现这个接口。
+app-------&gt;发送广播（hide/show）
+
+SystemUi.apk--------&gt...</div><p class="readmore"><a href="/blog/2018/07/11/kong-zhi-ping-mu-di-bu-dao-hang-lan-de-xian-shi-yu-yin-cang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/10/archlinux-pacman-s-sudo-bu-cheng-gong/">[ArchLinux]pacman -S sudo不成功</a></h1><div class="post-meta">2018-07-10</div><div class="post-content">I want to install sudo. So I type in pacman -S sudo. But then I get the following errors:
+1234~$: pacman -S sudowarning: database file for &#x27;extra&#x27; does not existwarning: ...</div><p class="readmore"><a href="/blog/2018/07/10/archlinux-pacman-s-sudo-bu-cheng-gong/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/09/yin-cang-dian-chi-tu-biao/">隐藏电池图标</a></h1><div class="post-meta">2018-07-09</div><div class="post-content">删除小电池图标及百分比
+
+右上角百分比&#x2F;frameworks&#x2F;base&#x2F;packages&#x2F;SystemUI&#x2F;src&#x2F;com&#x2F;android&#x2F;systemui&#x2F;statusbar&#x2F;policy&#x2F;BatteryController.java1mBatte...</div><p class="readmore"><a href="/blog/2018/07/09/yin-cang-dian-chi-tu-biao/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/08/systemui-zhi-kuai-jie-she-zhi-qu-yu-qspanel/">SystemUI之快捷设置区域QSPanel</a></h1><div class="post-meta">2018-07-08</div><div class="post-content">SystemUI下拉之后的那些快捷设置菜单选项也是属于SystemUI的一种;它的加载也是随着PhoneStatusBar的加载而加载;&#x2F;frameworks&#x2F;base&#x2F;packages&#x2F;SystemUI&#x2F;src&#x2F;com&#x2F;android&#x2F;systemui&#x2F;statusb...</div><p class="readmore"><a href="/blog/2018/07/08/systemui-zhi-kuai-jie-she-zhi-qu-yu-qspanel/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/07/wu-xian-wang-luo-geng-duo-shan-chu-fei-xing-mo-shi-wang-luo-re-dian-gong-xiang-ru-kou/">无线网络-&gt;更多-&gt;删除飞行模式、网络热点共享入口</a></h1><div class="post-meta">2018-07-07</div><div class="post-content">删除飞行模式开关&#x2F;packages&#x2F;apps&#x2F;Settings&#x2F;src&#x2F;com&#x2F;android&#x2F;settings&#x2F;WirelessSettings.java
+onCreate（）方法里面
+1234/**add || true by chensy 隐藏飞行模式 */if (mPm....</div><p class="readmore"><a href="/blog/2018/07/07/wu-xian-wang-luo-geng-duo-shan-chu-fei-xing-mo-shi-wang-luo-re-dian-gong-xiang-ru-kou/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/06/she-bei-xian-shi-shan-chu-xiu-mian-she-bei-xuan-zhuan-tou-she-ping-mu-ru-kou/">设备-&gt;显示-&gt;删除休眠、设备旋转、投射屏幕入口</a></h1><div class="post-meta">2018-07-06</div><div class="post-content">删除休眠&#x2F;packages&#x2F;apps&#x2F;Settings&#x2F;src&#x2F;com&#x2F;android&#x2F;settings&#x2F;DisplaySettings.java
+在onCreate()方法里面
+123456789/** delete by chensy 删除休眠功能        mScree...</div><p class="readmore"><a href="/blog/2018/07/06/she-bei-xian-shi-shan-chu-xiu-mian-she-bei-xuan-zhuan-tou-she-ping-mu-ru-kou/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/05/hui-fu-chu-han-she-zhi-tian-jia-mi-ma-shu-ru/">恢复出厂设置添加密码输入</a></h1><div class="post-meta">2018-07-05</div><div class="post-content">恢复出厂设置需要添加密码输入才能点击恢复出厂设置
+自定义输入密码框123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778...</div><p class="readmore"><a href="/blog/2018/07/05/hui-fu-chu-han-she-zhi-tian-jia-mi-ma-shu-ru/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/04/jie-jue-bei-di-san-fang-ying-yong-qiang-zhi-shu-ping/">解决被第三方应用强制竖屏</a></h1><div class="post-meta">2018-07-04</div><div class="post-content">代码路径 frameworks\base\core\java\android\view\windowmanager.java
+12345678910/**        * Specific orientation value for a window.        * May be any of the same values allowed      ...</div><p class="readmore"><a href="/blog/2018/07/04/jie-jue-bei-di-san-fang-ying-yong-qiang-zhi-shu-ping/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/03/ping-bi-anr-dan-kuang/">屏蔽ANR弹框</a></h1><div class="post-meta">2018-07-03</div><div class="post-content">代码位置:
+frameworks\base\services\core\java\com\android\server\am中的ActivityManagerService
+修改位置
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484...</div><p class="readmore"><a href="/blog/2018/07/03/ping-bi-anr-dan-kuang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/02/zhuo-mian-yin-cang-zhi-ding-ying-yong-tu-biao/">桌面隐藏指定应用图标</a></h1><div class="post-meta">2018-07-02</div><div class="post-content">修改AndroidManifest.xml配置文件Launcher是根据应用清单文件里来显示图标
+1&lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;
+所以如果我们有应用的源码，可以直接将清单文件里的这句话去掉，应用便不会在桌面上显示了。
+修改AndroidM...</div><p class="readmore"><a href="/blog/2018/07/02/zhuo-mian-yin-cang-zhi-ding-ying-yong-tu-biao/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/07/01/she-zhi-mo-ren-yu-yan-shi-qu/">设置默认语言时区</a></h1><div class="post-meta">2018-07-01</div><div class="post-content">修改device\rockchip{product_name}\system.prop文件
+
+默认语言
+12ro.product.locale.language=zhro.product.locale.region=CN
+
+默认时区
+1persist.sys.timezone=Asia/Shanghai
+
+最终效果
+123456persist.sys.lan...</div><p class="readmore"><a href="/blog/2018/07/01/she-zhi-mo-ren-yu-yan-shi-qu/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/30/kai-fa-zhe-xuan-xiang-zhong-dong-hua-she-zhi-kai-guan/">开发者选项中动画设置开关</a></h1><div class="post-meta">2018-06-30</div><div class="post-content">简介开发者选项中动画设置：
+
+窗口动画缩放(Windos animation scale)
+过渡动画缩放(Transition animation scale)
+动画程序时长缩放(Animation duration scale)分别对应Window动画(非Activity窗口。比如，Dialog、toast、自定义浮窗、输入法等窗口)、Activity动画...</div><p class="readmore"><a href="/blog/2018/06/30/kai-fa-zhe-xuan-xiang-zhong-dong-hua-she-zhi-kai-guan/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/29/view-tian-jia-hong-mo-zhen-dong-fan-kui/">View添加触摸震动反馈</a></h1><div class="post-meta">2018-06-29</div><div class="post-content">所有的View设置可点击震动
+代码路径
+1/frameworks/base/core/java/android/view/View.java
+
+
+导包
+12import android.os.Vibrator;import android.provider.Settings;
+
+声明变量
+1private Vibrator mVibrator;
+
+获取服务在...</div><p class="readmore"><a href="/blog/2018/06/29/view-tian-jia-hong-mo-zhen-dong-fan-kui/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/28/qu-chu-wu-xian-wang-luo-gan-tan-hao/">去除无线网络感叹号</a></h1><div class="post-meta">2018-06-28</div><div class="post-content">执行adb命令
+1adb shell settings put global captive_portal_detection_enabled 0
+
+</div><p class="readmore"><a href="/blog/2018/06/28/qu-chu-wu-xian-wang-luo-gan-tan-hao/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/27/yu-zhi-xi-tong-ying-yong-cheng-xu/">预置系统应用程序</a></h1><div class="post-meta">2018-06-27</div><div class="post-content">我们需要在系统安装好之后首次启动系统就存在我们的应用程序，而不需要开机之后再次安装，这样就需要考虑进行预置APP（应用），预置还有一个作用，就是有的程序被卸载之后，在系统执行双清操作（清空数据，恢复出厂）之后是可以恢复的。对预置应用我们可以简单做个分类：按照是否可以卸载可以分为不可卸载的和可卸载的；可卸载的又可以分为恢复出厂设置时能恢复的和不能恢复的；按照有...</div><p class="readmore"><a href="/blog/2018/06/27/yu-zhi-xi-tong-ying-yong-cheng-xu/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/26/qu-chu-usb-quan-xian-dan-chuang/">去除USB权限弹窗</a></h1><div class="post-meta">2018-06-26</div><div class="post-content">在访问一个插入到Android系统的USB设备的时候往往是需要权限的，此时系统会弹出询问权限的对话框，而我们此时希望让它默认允许访问USB设备并且不希望用户看到这个对话框。我们在获取UsbManager和UsbDevice&#x2F;UsbAcessory之后，首先需要检查是否对这个USB设备&#x2F;附件有操作的权限，如果没有权限，则需要向系统申请（系统...</div><p class="readmore"><a href="/blog/2018/06/26/qu-chu-usb-quan-xian-dan-chuang/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/25/qu-chu-suo-ping-he-xiu-mian/">去除锁屏和休眠</a></h1><div class="post-meta">2018-06-25</div><div class="post-content">去除休眠
+frameworks&#x2F;base&#x2F;packages&#x2F;SettingsProvider&#x2F;res&#x2F;values&#x2F;defaults.xml1&lt;integer name=&quot;def_screen_off_timeout&quot;&gt;60000&lt;/integer&gt; 
+6...</div><p class="readmore"><a href="/blog/2018/06/25/qu-chu-suo-ping-he-xiu-mian/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/24/hapticfeedback-zhen-dong-fan-kui/">HapticFeedback震动反馈</a></h1><div class="post-meta">2018-06-24</div><div class="post-content">adb测试震动1234root@a # busybox find -name &quot;vibrator&quot;root@a # busybox find -name &quot;vibrator&quot;	./sys/devices/virtual/timed_output/vibrator	./sys/class/timed_output/vib...</div><p class="readmore"><a href="/blog/2018/06/24/hapticfeedback-zhen-dong-fan-kui/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/23/ding-zhi-android-kai-ji-dong-hua/">定制Android开机动画</a></h1><div class="post-meta">2018-06-23</div><div class="post-content">开机动画替换 Android 设备 system&#x2F;media&#x2F;bootanimation.zip 文件adb push bootanimation.zip &#x2F;sdcard&#x2F;bootanimation.zip
+123456# adb shell# su# mount -o remount,rw /system# cp /...</div><p class="readmore"><a href="/blog/2018/06/23/ding-zhi-android-kai-ji-dong-hua/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/22/fa-bu-hexo-blog-dao-github-pages/">发布Hexo Blog到Github Pages</a></h1><div class="post-meta">2018-06-22</div><div class="post-content">准备环境：
+安装Git
+
+安装Node.js
+
+安装hexo利用npm命令安装
+1npm install -g hexo-cli
+问题
+
+npm ERR! registry error parsing json 错误可能需要设置npm代理，执行命令
+1npm config set registry http://registry.npmjs.org/
+hex...</div><p class="readmore"><a href="/blog/2018/06/22/fa-bu-hexo-blog-dao-github-pages/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/blog/2018/06/21/hello-world/">Hello World</a></h1><div class="post-meta">2018-06-21</div><div class="post-content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask...</div><p class="readmore"><a href="/blog/2018/06/21/hello-world/">阅读全文</a></p></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/blog/img/avatar.svg"/></a><p>亲自部署 亲自指挥</p><a class="info-icon" href="https://github.com/xmaihh" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/blog/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/Android/" style="font-size: 15px;">Android</a> <a href="/blog/tags/ADB/" style="font-size: 15px;">ADB</a> <a href="/blog/tags/ANR/" style="font-size: 15px;">ANR</a> <a href="/blog/tags/BLE/" style="font-size: 15px;">BLE</a> <a href="/blog/tags/Lottie/" style="font-size: 15px;">Lottie</a> <a href="/blog/tags/OTA/" style="font-size: 15px;">OTA</a> <a href="/blog/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/blog/tags/Logcat/" style="font-size: 15px;">Logcat</a> <a href="/blog/tags/AndroidStudio/" style="font-size: 15px;">AndroidStudio</a> <a href="/blog/tags/Jni/" style="font-size: 15px;">Jni</a> <a href="/blog/tags/Serialport/" style="font-size: 15px;">Serialport</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/BT/" style="font-size: 15px;">BT</a> <a href="/blog/tags/RS232/" style="font-size: 15px;">RS232</a> <a href="/blog/tags/Archlinux/" style="font-size: 15px;">Archlinux</a> <a href="/blog/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/blog/tags/ArkUI/" style="font-size: 15px;">ArkUI</a> <a href="/blog/tags/Harmony/" style="font-size: 15px;">Harmony</a> <a href="/blog/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/blog/tags/Cloudflare/" style="font-size: 15px;">Cloudflare</a> <a href="/blog/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blog/tags/docker-compose/" style="font-size: 15px;">docker-compose</a> <a href="/blog/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/blog/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/blog/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/blog/tags/Frp/" style="font-size: 15px;">Frp</a> <a href="/blog/tags/Github-Actions/" style="font-size: 15px;">Github Actions</a> <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/CI-CD/" style="font-size: 15px;">CI/CD</a> <a href="/blog/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/blog/tags/Portainer/" style="font-size: 15px;">Portainer</a> <a href="/blog/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/blog/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/blog/tags/ArchLinux/" style="font-size: 15px;">ArchLinux</a> <a href="/blog/tags/Pixel8/" style="font-size: 15px;">Pixel8</a> <a href="/blog/tags/Magisk/" style="font-size: 15px;">Magisk</a> <a href="/blog/tags/Python/" style="font-size: 15px;">Python</a> <a href="/blog/tags/RecyclerView/" style="font-size: 15px;">RecyclerView</a> <a href="/blog/tags/Gdrive/" style="font-size: 15px;">Gdrive</a> <a href="/blog/tags/ZeroTier/" style="font-size: 15px;">ZeroTier</a> <a href="/blog/tags/Watchdog/" style="font-size: 15px;">Watchdog</a> <a href="/blog/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/blog/tags/Git/" style="font-size: 15px;">Git</a> <a href="/blog/tags/Github/" style="font-size: 15px;">Github</a> <a href="/blog/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/blog/tags/Proxy/" style="font-size: 15px;">Proxy</a> <a href="/blog/tags/Sqlite/" style="font-size: 15px;">Sqlite</a> <a href="/blog/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/blog/tags/Tailscale/" style="font-size: 15px;">Tailscale</a> <a href="/blog/tags/weixin/" style="font-size: 15px;">weixin</a> <a href="/blog/tags/Openwrt/" style="font-size: 15px;">Openwrt</a> <a href="/blog/tags/npm/" style="font-size: 15px;">npm</a> <a href="/blog/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/blog/tags/DoH/" style="font-size: 15px;">DoH</a> <a href="/blog/tags/Design-pattern/" style="font-size: 15px;">Design pattern</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 15px;">Raspberry Pi</a> <a href="/blog/tags/VLC/" style="font-size: 15px;">VLC</a> <a href="/blog/tags/CRC/" style="font-size: 15px;">CRC</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">让Follow认证我的Hexo博客订阅源</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">Portainer重置admin登录密码</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">华硕路由器修改Hosts</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">Flutter使用intl_generator在Windows下报错Cannot open file, path = 'l10n-arb/intl_*.arb' (OS Error: 文件名、目录名或卷标语法不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">在Hexo中使用PlantUML</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">Flutter各个平台的构建产物</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/15/windows-xia-jin-wei-github-she-zhi-ssh-dai-li/">Windows下仅为 GitHub 设置SSH代理</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://quincyjiang.github.io/" title="瘟疫青年" target="_blank">瘟疫青年</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/blog/." rel="nofollow">小麦.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/blog/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/blog/css/search.css?v=1.0.0"><script type="text/javascript" src="/blog/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/blog/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="100,99,98" opacity="0.7" zIndex="-1" count="150" src="https://unpkg.com/canvas-nest.js/dist/canvas-nest.js"></script><script type="text/javascript" src="/blog/js/love.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/blog/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/smartresize.js?v=1.0.0"></script></div></body></html>
