@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>树莓派 4B 安装 iStoreOS (OpenWrt) 并配置为旁路由 | 小麦</title><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/blog/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/blog/atom.xml"><script src="https://www.googletagmanager.com/gtag/js?id=G-R3NLYDC8PK" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R3NLYDC8PK');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "n85h4t74i7");
+</script><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">树莓派 4B 安装 iStoreOS (OpenWrt) 并配置为旁路由</h1><a id="logo" href="/blog/.">小麦</a><p class="description">人生的大起大落来得太突然，搞得我直想尿尿...</p></div><div id="nav-menu"><a class="current" href="/blog/."><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/history/"><i class="fa fa-book"> 历史</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">树莓派 4B 安装 iStoreOS (OpenWrt) 并配置为旁路由</h1><div class="post-meta">2025-08-11<span> | </span><span class="category"><a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.8k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 6</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/blog/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/#vcomment"><span class="valine-comment-count" data-xid="/blog/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/"></span><span> 条评论</span></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%95%9C%E5%83%8F%E7%83%A7%E5%86%99"><span class="toc-number">2.</span> <span class="toc-text">二、镜像烧写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A0%91%E8%8E%93%E6%B4%BE%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5%E5%8F%8A%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">三、树莓派硬件连接及首次启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%AE%BF%E9%97%AE-iStoreOS-%E7%9A%84%E6%8E%A7%E5%88%B6%E9%A1%B5%E9%9D%A2"><span class="toc-number">4.</span> <span class="toc-text">四、访问 iStoreOS 的控制页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">五、基本设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%85%8D%E7%BD%AE%E6%97%81%E8%B7%AF%E7%94%B1"><span class="toc-number">6.</span> <span class="toc-text">六、配置旁路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BD%91%E5%8F%A3%E8%AE%BE%E7%BD%AE"><span class="toc-number">6.1.</span> <span class="toc-text">1. 网口设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">6.1.1.</span> <span class="toc-text">配置步骤：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E9%97%AD-DHCP"><span class="toc-number">6.2.</span> <span class="toc-text">2. 关闭 DHCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99-%E5%8F%AF%E9%80%89%EF%BC%8C%E4%B8%8D%E6%8E%A8%E8%8D%90"><span class="toc-number">6.3.</span> <span class="toc-text">3. 关闭防火墙 (可选，不推荐)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%87%8D%E8%A6%81-%E4%B8%BB%E8%B7%AF%E7%94%B1%E7%9A%84%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1-ARP-%E5%8A%AB%E6%8C%81"><span class="toc-number">6.4.</span> <span class="toc-text">4. [重要] 主路由的静态路由&#x2F;ARP 劫持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86%E6%8F%92%E4%BB%B6%E8%AE%BE%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">七、科学上网&#x2F;透明代理插件设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">7.0.1.</span> <span class="toc-text">安装步骤：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-number">8.</span> <span class="toc-text">八、常见问题排查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-iStoreOS-%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2%EF%BC%9F"><span class="toc-number">8.1.</span> <span class="toc-text">1. 无法访问 iStoreOS 管理界面？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E7%BD%91%E8%AE%BE%E5%A4%87%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E4%B8%8D%E7%94%9F%E6%95%88%EF%BC%9F"><span class="toc-number">8.2.</span> <span class="toc-text">2. 内网设备科学上网不生效？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%97%81%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%E5%BD%B1%E5%93%8D%E4%B8%BB%E8%B7%AF%E7%94%B1%E9%80%9F%E5%BA%A6%E6%88%96%E7%A8%B3%E5%AE%9A%E6%80%A7%EF%BC%9F"><span class="toc-number">8.3.</span> <span class="toc-text">3. 旁路由模式影响主路由速度或稳定性？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E6%8B%93%E5%B1%95%E9%98%85%E8%AF%BB"><span class="toc-number">9.</span> <span class="toc-text">九、拓展阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9%E5%85%A8%E9%83%A8%E8%AE%BE%E5%A4%87%E8%87%AA%E5%8A%A8%E7%BB%8F%E8%BF%87%E6%97%81%E8%B7%AF%E7%94%B1"><span class="toc-number">9.1.</span> <span class="toc-text">补充：如何让全部设备自动经过旁路由</span></a></li></ol></li></ol></div></div><div class="post-content"><p>下面是详细的【树莓派 4B 安装 iStoreOS (结合OpenWrt) 并配置为旁路由】的完整教程。这个过程包含系统烧录、基础设置、网络配置及旁路由流量劫持（透明代理）等内容，适合新手操作。</p>
+<hr>
+<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p><strong>需要的硬件：</strong></p>
+<ol>
+<li>树莓派 4B（建议 2GB&#x2F;4GB&#x2F;8GB 均可）</li>
+<li>microSD 卡（建议 16G 以上，速度不低于 class10）</li>
+<li>microSD 读卡器</li>
+<li>网线（树莓派建议有线连接主路由，下述会说明原因）</li>
+<li>电脑一台</li>
+</ol>
+<p><strong>软件准备：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://fw.koolcenter.com/iStoreOS/rpi4/">官方镜像下载地址：https://fw.koolcenter.com/iStoreOS/rpi4/</a></li>
+<li>【可选】balenaEtcher&#x2F;Win32DiskImager&#x2F;Rufus 烧录工具</li>
+<li>SSH 工具：Xshell&#x2F;Xftp&#x2F;Windows自带终端等</li>
+</ul>
+<p><strong>网络拓扑示例</strong></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">主路由 (<span class="number">192.168.123.1</span>) </span><br><span class="line">    |</span><br><span class="line">    └── 有线连接 ── 树莓派旁路由 (<span class="number">192.168.123.2</span>)</span><br><span class="line">    |</span><br><span class="line">    └── 其他设备 (<span class="number">192.168.123</span>.x)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="二、镜像烧写"><a href="#二、镜像烧写" class="headerlink" title="二、镜像烧写"></a>二、镜像烧写</h2><ol>
+<li><p><strong>下载最新 iStoreOS 镜像（树莓派4B专用，*.img.gz）</strong><br>进入上述镜像下载界面，下载符合自己Pi型号的 img.gz 文件（例如 <code>istoreos-xxxx-raspberrypi-rpi4-squashfs.img.gz</code>）。</p>
+</li>
+<li><p><strong>解压镜像文件</strong><br>获得 <code>.img</code> 文件。</p>
+</li>
+<li><p><strong>插入 TF 卡，使用 balenaEtcher 或 Rufus 烧写 img 镜像到 SD 卡中</strong>  </p>
+<ul>
+<li>软件选择源文件、选择目标设备，点击“烧录”即可。</li>
+<li>烧录完成后直接拔出即可使用。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="三、树莓派硬件连接及首次启动"><a href="#三、树莓派硬件连接及首次启动" class="headerlink" title="三、树莓派硬件连接及首次启动"></a>三、树莓派硬件连接及首次启动</h2><ol>
+<li><strong>插入烧录好的 microSD 卡到树莓派</strong></li>
+<li><strong>有线 LAN 接口通过网线连接到主路由的 LAN 口</strong></li>
+<li><strong>插电开机，等待30-60s 进入系统</strong>  <ul>
+<li>通常灯开始正常闪烁，树莓派已经启动完毕</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="四、访问-iStoreOS-的控制页面"><a href="#四、访问-iStoreOS-的控制页面" class="headerlink" title="四、访问 iStoreOS 的控制页面"></a>四、访问 iStoreOS 的控制页面</h2><ol>
+<li><strong>如何找到树莓派分配到的 IP？</strong><ul>
+<li>主路由后台查看 DHCP 分配的设备列表</li>
+<li>扫描局域网（手机用 Fing、电脑用 <code>arp -a</code>）</li>
+</ul>
+</li>
+<li><strong>浏览器打开 <code>http://&lt;树莓派的IP&gt;</code></strong>，我这里是 <a target="_blank" rel="noopener" href="http://192.168.123.2/">http://192.168.123.2</a><ul>
+<li>默认账号：<code>root</code></li>
+<li>默认密码（提前查阅下载页说明，一般可能为空或者是<code>password</code>，首次登录建议立刻修改密码）</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="五、基本设置"><a href="#五、基本设置" class="headerlink" title="五、基本设置"></a>五、基本设置</h2><ol>
+<li><strong>修改 Web 管理密码</strong></li>
+<li><strong>根据需要修改主机名、时区等</strong></li>
+<li><strong>升级到最新的软件源&amp;包（建议）</strong></li>
+</ol>
+<hr>
+<h2 id="六、配置旁路由"><a href="#六、配置旁路由" class="headerlink" title="六、配置旁路由"></a>六、配置旁路由</h2><p>以<strong>单线旁路由</strong>方式为例，原理是树莓派仅用LAN口与主路由连接，所有LAN接口不再管理，只处理流量转发与透明代理。</p>
+<h3 id="1-网口设置"><a href="#1-网口设置" class="headerlink" title="1. 网口设置"></a>1. 网口设置</h3><h4 id="配置步骤："><a href="#配置步骤：" class="headerlink" title="配置步骤："></a>配置步骤：</h4><ul>
+<li><p>进入<code>网络向导</code>→<code>配置为旁路由</code></p>
+<p><img src="https://s2.loli.net/2025/08/11/Q3EA8uygGCXxJLf.png"></p>
+</li>
+<li><p>选择<code>手动配置</code>，进入到配置旁路由网络，<strong>保存配置</strong></p>
+<p><img src="https://s2.loli.net/2025/08/11/oB7S1CGqaUcerfF.png"></p>
+</li>
+<li><p>回到首页，进入<code>网络</code>→<code>接口</code>，删除多余网络接口，只留下一个<code>lan</code></p>
+<p><img src="https://s2.loli.net/2025/08/11/lj2BhcDE4SXPUmJ.png"></p>
+</li>
+</ul>
+<h3 id="2-关闭-DHCP"><a href="#2-关闭-DHCP" class="headerlink" title="2. 关闭 DHCP"></a>2. 关闭 DHCP</h3><ul>
+<li>旁路由下，主路由负责给整个局域网分配 IP，旁路由不需要开 DHCP 服务。</li>
+<li>在 iStoreOS 的 <code>网络-&gt;DHCP/DNS</code> 页面，把“启动DHCP”选项关闭。</li>
+</ul>
+<h3 id="3-关闭防火墙-可选，不推荐"><a href="#3-关闭防火墙-可选，不推荐" class="headerlink" title="3. 关闭防火墙 (可选，不推荐)"></a>3. 关闭防火墙 (可选，不推荐)</h3><ul>
+<li>通常旁路由只做透明代理（如科学上网），如无端口映射需求可关闭防火墙以更简化调试。</li>
+<li>也可以保留默认即可，保持安全。</li>
+</ul>
+<h3 id="4-重要-主路由的静态路由-ARP-劫持"><a href="#4-重要-主路由的静态路由-ARP-劫持" class="headerlink" title="4. [重要] 主路由的静态路由&#x2F;ARP 劫持"></a>4. [<strong>重要</strong>] 主路由的静态路由&#x2F;ARP 劫持</h3><p>让指定设备流量经过旁路由，常见方法有：</p>
+<ul>
+<li><strong>修改主机的网关指向旁路由</strong><br>修改需要走代理的机器的网关为树莓派的IP。例如PC的“网关”手动写成树莓派的IP</li>
+<li><strong>主路由支持静态路由&#x2F;网关分发</strong>  <ul>
+<li>在主路由后台查找到“静态路由”或“DHCP 选项”功能，让某些IP走树莓派作网关</li>
+</ul>
+</li>
+<li><strong>ARP 劫持（网关欺骗）</strong><br>有些旁路由固件提供了 “DHCP劫持&#x2F;网关劫持&#x2F;ARP欺骗” 功能，可一键实现“透明”旁路由，原理是让所有设备以为树莓派就是主路由的网关</li>
+</ul>
+<p><strong>iStoreOS实现ARP劫持：</strong></p>
+<ul>
+<li>进入iStoreOS管理界面，找到服务中“旁路由”或“代理工具箱”等插件</li>
+<li>启用 ARP 劫持选项，并填写你主路由的网关IP（通常如 192.168.1.1）</li>
+<li>启用即可</li>
+</ul>
+<hr>
+<h2 id="七、科学上网-透明代理插件设置"><a href="#七、科学上网-透明代理插件设置" class="headerlink" title="七、科学上网&#x2F;透明代理插件设置"></a>七、科学上网&#x2F;透明代理插件设置</h2><p>iStoreOS 自带 iStore 软件中心，可是没有自带passwall  ，需要下载包手动安装。</p>
+<ul>
+<li>进入 <a target="_blank" rel="noopener" href="https://github.com/AUK9527/Are-u-ok%EF%BC%8C%E6%90%9C%E7%B4%A2%E5%B9%B6%E5%AE%89%E8%A3%85%E4%BD%A0%E5%B8%B8%E7%94%A8%E7%9A%84%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%8F%92%E4%BB%B6">https://github.com/AUK9527/Are-u-ok，搜索并安装你常用的科学上网插件</a></li>
+<li>上传你自己的机场&#x2F;订阅配置</li>
+<li>启用透明代理（IPTABLES&#x2F;绕过大陆模式等）</li>
+<li>测试外网是否可用（可用 nslookup、ping 等命令）</li>
+</ul>
+<p><img src="https://s2.loli.net/2025/08/11/TfjcoV6DG8p7RZL.png"></p>
+<ul>
+<li>选择<a target="_blank" rel="noopener" href="https://github.com/AUK9527/Are-u-ok/tree/main/apps">aarch64</a>平台</li>
+</ul>
+<p>常用梯子软件包 <a target="_blank" rel="noopener" href="https://github.com/bcseputetto/Are-u-ok/releases/tag/iStoreOS_24.10">https://github.com/bcseputetto/Are-u-ok/releases/tag/iStoreOS_24.10</a></p>
+<p>下载 <a target="_blank" rel="noopener" href="https://github.com/bcseputetto/Are-u-ok/releases/download/iStoreOS_24.10/PassWall_25.8.5_aarch64_a72_all_sdk_24.10.run">PassWall_25.8.5_aarch64_a72_all_sdk_24.10.run</a></p>
+<h4 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h4><ul>
+<li>下载 .run 文件， 打开<code>iStore</code>，选择<code>手动安装</code>，点击选择上传或者直接拖放文件即可自动安装</li>
+</ul>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250811163727927.png" alt="image-20250811163727927"></p>
+<ul>
+<li><p>安装完成后，进入<code>服务</code> -&gt; <code>PassWall</code> 进行配置</p>
+<p><img src="https://s2.loli.net/2025/08/11/kZ54lyOGcFWAdps.png"></p>
+</li>
+<li><p>配置防火墙，进入<code>网络 </code> -&gt; <code>防火墙</code> </p>
+<p>在常规设置里，入站数据，出站数据，转发这三个选项都选择<strong>接受</strong></p>
+<p><img src="https://s2.loli.net/2025/08/11/BVe1IowMYZfuWa7.png"></p>
+</li>
+<li><p>对需要科学上网的设备，手动设置网络</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">设备网络配置：</span><br><span class="line">┌────────────────────────────┐</span><br><span class="line">│ IP: <span class="number">192.168.123.100</span> (自动)  │</span><br><span class="line">│ 子网掩码: <span class="number">255.255.255.0</span>     │</span><br><span class="line">│ 网关: <span class="number">192.168.123.2</span>        │  ← 指向旁路由</span><br><span class="line">│ DNS: <span class="number">192.168.123.2</span>         │  ← 或<span class="number">8.8.8.8</span></span><br><span class="line">└────────────────────────────┘</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="八、常见问题排查"><a href="#八、常见问题排查" class="headerlink" title="八、常见问题排查"></a>八、常见问题排查</h2><h3 id="1-无法访问-iStoreOS-管理界面？"><a href="#1-无法访问-iStoreOS-管理界面？" class="headerlink" title="1. 无法访问 iStoreOS 管理界面？"></a>1. 无法访问 iStoreOS 管理界面？</h3><ul>
+<li>确认实际插了 LAN 口，且电脑和树莓派处于同一网段</li>
+<li>确认主路由可以查到树莓派分配的 IP</li>
+<li>树莓派 IP 没有跟主路由冲突</li>
+<li>可以尝试用 nmap、arp -a 扫描网络</li>
+</ul>
+<h3 id="2-内网设备科学上网不生效？"><a href="#2-内网设备科学上网不生效？" class="headerlink" title="2. 内网设备科学上网不生效？"></a>2. 内网设备科学上网不生效？</h3><ul>
+<li>检查对应插件的透明代理开关是否打开</li>
+<li>检查路由表&#x2F;网关填写有无生效</li>
+<li>检查防火墙、本机 DNS 是否被污染</li>
+</ul>
+<h3 id="3-旁路由模式影响主路由速度或稳定性？"><a href="#3-旁路由模式影响主路由速度或稳定性？" class="headerlink" title="3. 旁路由模式影响主路由速度或稳定性？"></a>3. 旁路由模式影响主路由速度或稳定性？</h3><ul>
+<li>建议旁路由只用于科学上网，其他本地通讯还是走主路由直通</li>
+</ul>
+<hr>
+<h2 id="九、拓展阅读"><a href="#九、拓展阅读" class="headerlink" title="九、拓展阅读"></a>九、拓展阅读</h2><ul>
+<li><strong>树莓派 OpenWrt 论坛</strong>：<a target="_blank" rel="noopener" href="https://openwrt.org/toh/raspberry_pi">https://openwrt.org/toh/raspberry_pi</a></li>
+<li><strong>iStoreOS 官方Wiki和QQ群</strong>：详见官网说明</li>
+</ul>
+<hr>
+<p>如遇特殊问题，可以贴截图、具体报错，我可以帮你进一步分析。</p>
+<hr>
+<h3 id="补充：如何让全部设备自动经过旁路由"><a href="#补充：如何让全部设备自动经过旁路由" class="headerlink" title="补充：如何让全部设备自动经过旁路由"></a>补充：如何让全部设备自动经过旁路由</h3><p>如主路由支持“修改 DHCP 网关”：</p>
+<ul>
+<li><p>网络 → DHCP 服务器 → 高级设置 → 网关 填写 旁路由IP，保存</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">┌─ 旁路由配置 ─────────────────┐</span><br><span class="line">│ ☑ 启用旁路由模式              │</span><br><span class="line">│ 主路由<span class="built_in">IP</span>: <span class="number">192</span>.<span class="number">168</span>.<span class="number">123</span>.<span class="number">1</span>      │</span><br><span class="line">│ 旁路由<span class="built_in">IP</span>: <span class="number">192</span>.<span class="number">168</span>.<span class="number">123</span>.<span class="number">2</span>      │</span><br><span class="line">│ ☑ 启用网关劫持               │</span><br><span class="line">└─────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>或添加路由器的“静态路由”，把目标0.0.0.0&#x2F;0指向旁路由</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ARP 劫持设置：</span></span><br><span class="line"><span class="attribute">┌────────────────────────────┐</span></span><br><span class="line"><span class="attribute">│ ☑ 启用 ARP 劫持            │</span></span><br><span class="line"><span class="attribute">│ 主路由网关</span><span class="punctuation">:</span> <span class="string">192.168.123.1   │</span></span><br><span class="line"><span class="attribute">│ 劫持网段</span><span class="punctuation">:</span> <span class="string">192.168.123.0/24  │</span></span><br><span class="line"><span class="attribute">│ 例外设备</span><span class="punctuation">:</span> <span class="string">(留空)            │</span></span><br><span class="line">└────────────────────────────┘</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>如主路由不支持，则只能用 ARP 劫持或给每台设备手动改“网关”。</p>
+<hr>
+<p><strong>总结</strong><br>树莓派4B安装iStoreOS做旁路由非常适合家庭场景，软硬件兼容好，1-2小时可快速搭建。核心步骤是<strong>SD卡烧录→连接网络→接口配置→关闭DHCP→开启透明代理&#x2F;ARP劫持</strong>，任何节点遇到问题欢迎留言补充。</p>
+</div><div class="post-copyright"><script type="text/javascript" src="/blog/js/copyright.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copyright.css?v=1.0.0"><p><span>本文标题：</span>树莓派 4B 安装 iStoreOS (OpenWrt) 并配置为旁路由</p><p><span>文章作者：</span>xmaihh</p><p><span>发布时间：</span>2025-08-11</p><p><span>最后更新：</span>2025-08-11</p><p><span>原始链接：</span><a href="/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/">https://xmaihh.github.io/blog/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://xmaihh.github.io/blog/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/"></i></span></p><p><span>版权声明：</span>采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">[CC BY-NC-SA 4.0许可协议]</a>进行许可</p></div><br><script type="text/javascript" src="/blog/js/share.js?v=1.0.0" async></script><a class="article-share-link" data-url="https://xmaihh.github.io/blog/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/" data-id="cme8afx2z00ban46sd2mb7b9v" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD2klEQVR42u3ay24bQQwEQP3/TzuXHBIksrpJytCh9mTI2sfUGmiTw8cjPr7+OGbf/P6T78/697fPzn32neMDBw4cOHDEC8gvnd/s+yvPKJ+d++w6yRpx4MCBA8ctx+wGeey1y95HbBK6OHDgwIHjcziS79+emxzJNXHgwIEDx+dwJIuZcRws4+o6OHDgwIHjiCNpDiaFWb5ZtYnJZIPq7b1SHDhw4MDR5V1RYn3+z2+Z78CBAwcOHOVU2KwB1zYB81Dfj1C8WBcOHDhw4DiKiHZMYQ9xFfn7cu4/V8CBAwcOHGuOzYZT3hZsh942Yw3Jqyqagzhw4MCBo+RIgqfdHMoR88W3ReAqVnHgwIEDx4hjFml54dSWWLNXkr+wFy8SBw4cOHCsOfLBtX3x1o7K5YvJaYq748CBAweONUcbhMlF21CcNQrbDbN6GwwHDhw4cCw49oXQpiycbRTNorr+u8CBAwcOHCOCPMBmwxAzsrxsOyjwcODAgQPHEUebRLMSrh1NmAVt2xb86/s4cODAgWPNkUfgakRgsS2UfJIfw0IOBw4cOHCMOM52rkYlYh6os7KzQMGBAwcOHKccG6a8xGpDfRPMSTzjwIEDB449xyyE8rPatl0dh6dDGzhw4MCB44ojH4beP/RsnHrW/ms/x4EDBw4cVxz5wEHyiG1ytUXgbJwiuhcOHDhw4PgRjk1pd7WYfPxuNqKBAwcOHDhuOa6ad5sxu/z6m9GKF3fBgQMHDhxHHMkJbZHWBvasRTh7PU/XjgMHDhw4jjjaZbe3aRt/+TPMRjGiEg4HDhw4cCw48jJshjIjnm0dzVqKv3/GgQMHDhxHHLMlzQbaHm872tZk3SvFgQMHDhxp3h0E4fDGR8tLrp88Jw4cOHDgeB9HvjmULHg2ZrcfvBu+Hhw4cODAccTRDqXdbkG9u8lYbHHhwIEDB441RzvW3IZcHqVtJLfjfXUhhwMHDhw4FhztRlQ7WJCXeW2gztqX0R8BDhw4cOAoOfYNtXYraNPam0EMZyJw4MCBA8eCIw/dJCBnm1VJWTUrDot/EXDgwIEDx5pjf4nNMjbZNxuYi1qZOHDgwIFjwfFVHpvRhHwkIi/b2rLwxX1x4MCBA8eaY9NGnH1nP5C3Ke3aF4YDBw4cOGYcbZjlZ22CsC3VzoIWBw4cOHAcceRBONuOmjXvHm87Xmw74cCBAweOH+HYjya021SzfwKSzbODoMWBAwcOHEc1y/vG6fYbTgfjFDhw4MCB44jjtjmYPGgevftV5JtSOHDgwIFjzzEL43aAoC6ljkYuDqIXBw4cOHCkHL8Ax9e5zKCEIRUAAAAASUVORK5CYII=">分享</a><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul></div><div class="post-nav"><a class="next" href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></div><div class="nofancybox" id="vcomment"></div><script src="https://unpkg.com/valine/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'WyoZPeMWzhLWRYAeA5ueZwiI-MdYXbMMI',
+  appKey:'2n4nqRtMlbjNwRNodC3rPRQI',
+  serverURLs:'https://wyozpemw.api.lncldglobal.com',
+  placeholder:'Just so so',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/blog/img/avatar.svg"/></a><p>亲自部署 亲自指挥</p><a class="info-icon" href="https://github.com/xmaihh" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/blog/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/Android/" style="font-size: 15px;">Android</a> <a href="/blog/tags/ADB/" style="font-size: 15px;">ADB</a> <a href="/blog/tags/ANR/" style="font-size: 15px;">ANR</a> <a href="/blog/tags/BLE/" style="font-size: 15px;">BLE</a> <a href="/blog/tags/Lottie/" style="font-size: 15px;">Lottie</a> <a href="/blog/tags/OTA/" style="font-size: 15px;">OTA</a> <a href="/blog/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/blog/tags/Logcat/" style="font-size: 15px;">Logcat</a> <a href="/blog/tags/AndroidStudio/" style="font-size: 15px;">AndroidStudio</a> <a href="/blog/tags/Jni/" style="font-size: 15px;">Jni</a> <a href="/blog/tags/Serialport/" style="font-size: 15px;">Serialport</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/BT/" style="font-size: 15px;">BT</a> <a href="/blog/tags/RS232/" style="font-size: 15px;">RS232</a> <a href="/blog/tags/Archlinux/" style="font-size: 15px;">Archlinux</a> <a href="/blog/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/blog/tags/ArkUI/" style="font-size: 15px;">ArkUI</a> <a href="/blog/tags/Harmony/" style="font-size: 15px;">Harmony</a> <a href="/blog/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/blog/tags/Cloudflare/" style="font-size: 15px;">Cloudflare</a> <a href="/blog/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blog/tags/docker-compose/" style="font-size: 15px;">docker-compose</a> <a href="/blog/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/blog/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/blog/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/blog/tags/Frp/" style="font-size: 15px;">Frp</a> <a href="/blog/tags/Github-Actions/" style="font-size: 15px;">Github Actions</a> <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/CI-CD/" style="font-size: 15px;">CI/CD</a> <a href="/blog/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/blog/tags/Portainer/" style="font-size: 15px;">Portainer</a> <a href="/blog/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/blog/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/blog/tags/ArchLinux/" style="font-size: 15px;">ArchLinux</a> <a href="/blog/tags/Pixel8/" style="font-size: 15px;">Pixel8</a> <a href="/blog/tags/Magisk/" style="font-size: 15px;">Magisk</a> <a href="/blog/tags/Python/" style="font-size: 15px;">Python</a> <a href="/blog/tags/RecyclerView/" style="font-size: 15px;">RecyclerView</a> <a href="/blog/tags/Gdrive/" style="font-size: 15px;">Gdrive</a> <a href="/blog/tags/ZeroTier/" style="font-size: 15px;">ZeroTier</a> <a href="/blog/tags/Watchdog/" style="font-size: 15px;">Watchdog</a> <a href="/blog/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/blog/tags/Git/" style="font-size: 15px;">Git</a> <a href="/blog/tags/Github/" style="font-size: 15px;">Github</a> <a href="/blog/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/blog/tags/Proxy/" style="font-size: 15px;">Proxy</a> <a href="/blog/tags/Sqlite/" style="font-size: 15px;">Sqlite</a> <a href="/blog/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/blog/tags/Tailscale/" style="font-size: 15px;">Tailscale</a> <a href="/blog/tags/weixin/" style="font-size: 15px;">weixin</a> <a href="/blog/tags/Openwrt/" style="font-size: 15px;">Openwrt</a> <a href="/blog/tags/npm/" style="font-size: 15px;">npm</a> <a href="/blog/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/blog/tags/DoH/" style="font-size: 15px;">DoH</a> <a href="/blog/tags/Design-pattern/" style="font-size: 15px;">Design pattern</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 15px;">Raspberry Pi</a> <a href="/blog/tags/VLC/" style="font-size: 15px;">VLC</a> <a href="/blog/tags/CRC/" style="font-size: 15px;">CRC</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/">树莓派 4B 安装 iStoreOS (OpenWrt) 并配置为旁路由</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">让Follow认证我的Hexo博客订阅源</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">Portainer重置admin登录密码</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">华硕路由器修改Hosts</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">Flutter使用intl_generator在Windows下报错Cannot open file, path = 'l10n-arb/intl_*.arb' (OS Error: 文件名、目录名或卷标语法不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">在Hexo中使用PlantUML</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">Flutter各个平台的构建产物</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://quincyjiang.github.io/" title="瘟疫青年" target="_blank">瘟疫青年</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/blog/." rel="nofollow">小麦.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/blog/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/blog/css/search.css?v=1.0.0"><script type="text/javascript" src="/blog/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/blog/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="100,99,98" opacity="0.7" zIndex="-1" count="150" src="https://unpkg.com/canvas-nest.js/dist/canvas-nest.js"></script><script type="text/javascript" src="/blog/js/love.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/blog/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/smartresize.js?v=1.0.0"></script></div></body></html>

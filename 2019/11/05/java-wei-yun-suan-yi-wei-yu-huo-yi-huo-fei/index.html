@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Java位运算(移位、与、或、异或、非) | 小麦</title><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/blog/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/blog/atom.xml"><script src="https://www.googletagmanager.com/gtag/js?id=G-R3NLYDC8PK" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R3NLYDC8PK');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "n85h4t74i7");
+</script><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Java位运算(移位、与、或、异或、非)</h1><a id="logo" href="/blog/.">小麦</a><p class="description">人生的大起大落来得太突然，搞得我直想尿尿...</p></div><div id="nav-menu"><a class="current" href="/blog/."><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/history/"><i class="fa fa-book"> 历史</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Java位运算(移位、与、或、异或、非)</h1><div class="post-meta">2019-11-05<span> | </span><span class="category"><a href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.1k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/blog/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/#vcomment"><span class="valine-comment-count" data-xid="/blog/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/"></span><span> 条评论</span></a><div class="post-content"><p>Java的位运算符：左移（&lt;&lt;）、右移（&gt;&gt;）、无符号右移（&gt;&gt;&gt;）、与（&amp;）、异或（|）、非（~）<br>除了 非(~) 是一元操作符外，其他都是二元操作符。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>运算</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+<td>空位补0,被移除的高位丢失</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+<td>被移位的二进制最高位是0,右移后，空缺位补0,最高位是1,最高位补1</td>
+</tr>
+<tr>
+<td>&gt;&gt;&gt;</td>
+<td>无符号右移</td>
+<td>被移位的二进制无论是０或者是１，空缺位都是用０补</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>与运算</td>
+<td>任何二进制位和0进行&amp;运算，结果都是0，和１进行&amp;运算，都是原值</td>
+</tr>
+<tr>
+<td>l</td>
+<td>或运算</td>
+<td>任何二进制位和０进行或运算，结果都是原值，和1进行或运算，都是1</td>
+</tr>
+<tr>
+<td>^</td>
+<td>异或运算</td>
+<td>任何相同二进制位进行异或运算，结果都是０，不同二进制位进行异或运算，结果都是１</td>
+</tr>
+<tr>
+<td>~</td>
+<td>非运算</td>
+<td>反转操作数的二进制位，即0变成1，1变成0</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>左移(&lt;&lt;)</p>
+<p>​    示例1: 将５左移２位</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.code;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="number">5</span> &lt;&lt; <span class="number">2</span>);<span class="comment">//运行结果是20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>java</code>中，整数默认就是<code>int</code>类型32位，首先将５转为二进制表示:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0000 0000 0000 0000 0000 0000 0000 0101      然后左移2位后，低位补0</span><br><span class="line"></span><br><span class="line">0000 0000 0000 0000 0000 0000 0001 0100      换算成10进制为20</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>右移(&gt;&gt;)</p>
+<p>​    示例2: 将５右移２位</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">5</span>&gt;&gt;<span class="number">2</span>);<span class="comment">//运行结果是1</span></span><br></pre></td></tr></table></figure>
+
+<p>还是先将５转为二进制表示:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0000 0000 0000 0000 0000 0000 0000 0101      然后右移2位，高位补0</span><br><span class="line"></span><br><span class="line">0000 0000 0000 0000 0000 0000 0000 0001      换算成10进制为１</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>无符号右移(&gt;&gt;&gt;)</p>
+<p>​    示例3: 分别将５右移3位、将-５右移３位、将-5无符号右移３位</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">5</span>&gt;&gt;<span class="number">3</span>);<span class="comment">//结果是0</span></span><br><span class="line">System.out.println(-<span class="number">5</span>&gt;&gt;<span class="number">3</span>);<span class="comment">//结果是-1</span></span><br><span class="line">System.out.println(-<span class="number">5</span>&gt;&gt;&gt;<span class="number">3</span>);<span class="comment">//结果是536870911</span></span><br></pre></td></tr></table></figure>
+<p>还是来看看位移过程:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5换算成二进制： 0000 0000 0000 0000 0000 0000 0000 0101</span><br><span class="line">5右移3位后结果为0，0的二进制为： 0000 0000 0000 0000 0000 0000 0000 0000</span><br><span class="line"></span><br><span class="line">-5换算成二进制： 1111 1111 1111 1111 1111 1111 1111 1011</span><br><span class="line">-5右移3位后结果为-1，-1的二进制为： 1111 1111 1111 1111 1111 1111 1111 1111</span><br><span class="line">-5无符号右移3位后的结果 536870911 换算成二进制： 0001 1111 1111 1111 1111 1111 1111 1111</span><br></pre></td></tr></table></figure></li>
+</ol>
+<blockquote>
+<p>正数右移，高位用0补，负数右移，高位用1补，当负数使用无符号右移时，用0进行部位(自然而然的，就由负数变成了正数了)</p>
+</blockquote>
+<ol start="4">
+<li><p>与(&amp;)</p>
+<p>​    示例4: 5&amp;3 进行与运算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">5</span> &amp; <span class="number">3</span>);<span class="comment">//结果为1</span></span><br></pre></td></tr></table></figure>
+<p>转换为二进制比较:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5转换为二进制：0000 0000 0000 0000 0000 0000 0000 0101</span><br><span class="line">3转换为二进制：0000 0000 0000 0000 0000 0000 0000 0011</span><br><span class="line"></span><br><span class="line">1转换为二进制：0000 0000 0000 0000 0000 0000 0000 0001</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>与(&amp;)第一个操作数的的第n位于第二个操作数的第n位如果都是1，那么结果的第n为也为1，否则为0</p>
+</blockquote>
+</li>
+<li><p>或(|)</p>
+<p>​    示例5: 5|3 进行或运算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">5</span> | <span class="number">3</span>);<span class="comment">//结果为7</span></span><br></pre></td></tr></table></figure>
+<p>转换为二进制比较:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5转换为二进制：0000 0000 0000 0000 0000 0000 0000 0101</span><br><span class="line">3转换为二进制：0000 0000 0000 0000 0000 0000 0000 0011</span><br><span class="line"></span><br><span class="line">7转换为二进制：0000 0000 0000 0000 0000 0000 0000 0111</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>或(|)第一个操作数的的第n位于第二个操作数的第n位 只要有一个是1，那么结果的第n为也为1，否则为0</p>
+</blockquote>
+</li>
+<li><p>异或(^)</p>
+<p>​    示例6: 5^3 进行异或运算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">5</span> ^ <span class="number">3</span>);<span class="comment">//结果为6</span></span><br></pre></td></tr></table></figure>
+<p>转换为二进制比较:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">5转换为二进制：0000 0000 0000 0000 0000 0000 0000 0101</span><br><span class="line">3转换为二进制：0000 0000 0000 0000 0000 0000 0000 0011</span><br><span class="line"></span><br><span class="line">6转换为二进制：0000 0000 0000 0000 0000 0000 0000 0110</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>异或(^)第一个操作数的的第n位于第二个操作数的第n位 相反，那么结果的第n为也为1，否则为0</p>
+</blockquote>
+</li>
+<li><p>非(~)</p>
+<p>​    示例7: ~5 进行非运算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(~<span class="number">5</span>);<span class="comment">//结果为-6</span></span><br></pre></td></tr></table></figure>
+<p>转换为二进制比较:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5转换为二进制：0000 0000 0000 0000 0000 0000 0000 0101</span><br><span class="line">-6转换为二进制：1111 1111 1111 1111 1111 1111 1111 1010</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>非：操作数的第n位为1，那么结果的第n位为0，反之。</p>
+</blockquote>
+</li>
+</ol>
+<p>位运算操作符衍生而来的有：</p>
+<ul>
+<li><p>&amp;&#x3D; 按位与赋值</p>
+</li>
+<li><p>|&#x3D; 按位或赋值</p>
+</li>
+<li><p>^&#x3D; 按位非赋值</p>
+</li>
+<li><p>&gt;&gt;&#x3D; 右移赋值</p>
+</li>
+<li><p>&#x3D; 无符号右移赋值</p>
+</li>
+<li><p>&lt;&lt;&#x3D; 赋值左移</p>
+</li>
+</ul>
+<p>和 +&#x3D; 一个概念。</p>
+<p>示例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span></span><br><span class="line">a &amp;= <span class="number">3</span>; <span class="comment">//此时等同于　a = a&amp;3　即　ａ = 5＆３; </span></span><br><span class="line">System.out.println(a);<span class="comment">//结果是1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaochunyong/article/details/7748713">Java 位运算</a></p>
+</div><div class="post-copyright"><script type="text/javascript" src="/blog/js/copyright.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copyright.css?v=1.0.0"><p><span>本文标题：</span>Java位运算(移位、与、或、异或、非)</p><p><span>文章作者：</span>xmaihh</p><p><span>发布时间：</span>2019-11-05</p><p><span>最后更新：</span>2019-11-05</p><p><span>原始链接：</span><a href="/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/">https://xmaihh.github.io/blog/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://xmaihh.github.io/blog/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/"></i></span></p><p><span>版权声明：</span>采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">[CC BY-NC-SA 4.0许可协议]</a>进行许可</p></div><br><script type="text/javascript" src="/blog/js/share.js?v=1.0.0" async></script><a class="article-share-link" data-url="https://xmaihh.github.io/blog/2019/11/05/java-wei-yun-suan-yi-wei-yu-huo-yi-huo-fei/" data-id="cme8afx0u004ln46s98pbbvdq" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3awW7cMAwE0Pz/T6dATz10nRlSyqbo8ynwLtZ6PkgMOR8f8fX5+0r+/vPO83deXclzD194eHh4o6U/P6xlPN9/dSfH5y8IDw8P7x5vdhi0y33et5NdvX2VeHh4eO/lJY9pFzE7TvDw8PD+FV5eXief5r+Ah4eH9zN5+T//+VGRt3Sf77TtYDw8PLzbvLMDsO/5+23zPTw8vP+e93noyrf+TbuhXhUeHh7eBV7eMtg0CNrwQY6MDgw8PDy8o7yENBt65fGCTeH+xR08PDy8b+HlQ6Zky85L4XZglgSz8PDw8O7xZi2A2eA/aWScim3h4eHh3eDtB135K9jEFGaxAzw8PLwbvNlAaxNIzRe9OVS+mO/h4eHhLXiz6GcbMN1/ZzbbwsPDw3sXbx+ryrf75CDJW7p4eHh493htQyFvB7dNinw9wwAWHh4e3iHe7N/+urQtJ1NtQznKR+Dh4eGtebMQwGw6vxmzDQ8YPDw8vAu89pGz8X89sgpea52MwMPDwzvEy0vn2cPa0nlWpr98lXh4eHhv4m1aFe2iN4O0v/wOHh4e3gXefqA1W1x7/LThreIkwcPDw1vw2pZBi0lGXPtNHw8PD+82bzb4nzULZiVyG4ddLRQPDw/vo8rMZ/msBaZd7ubTOrSKh4eHt9hF26K5/eap4yFpjuDh4eHd42228rZozq+20fzyRePh4eFd5rVjqlnkdPbKho0SPDw8vKO8zWb9XP62vDbeOsyU4eHh4a15sw13UwSfanmcajrj4eHhzXjJYZCXv6eaDm386+Uv4+Hh4V3jtVt522LIqbOwAh4eHt5P5u3DB+3W34YSon4wHh4e3rfwNkdF3hpuQ6tFDhcPDw/vKC8pc9vecDKmmrGLshsPDw/vAm+Y1RqFq9rRVx4RODbfw8PDw3vi/QKUpw0BSjAhAgAAAABJRU5ErkJggg==">分享</a><div class="tags"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li></ul></div><div class="post-nav"><a class="pre" href="/blog/2019/12/11/java-zhong-double-zhuan-int-lei-xing-an-si-she-wu-ru-qu-zheng/">Java中double转int类型按四舍五入取整</a><a class="next" href="/blog/2019/10/20/xiao-cheng-xu-kai-fa-de-nei-rong-an-quan-shen-he/">小程序开发的内容安全审核</a></div><div class="nofancybox" id="vcomment"></div><script src="https://unpkg.com/valine/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'WyoZPeMWzhLWRYAeA5ueZwiI-MdYXbMMI',
+  appKey:'2n4nqRtMlbjNwRNodC3rPRQI',
+  serverURLs:'https://wyozpemw.api.lncldglobal.com',
+  placeholder:'Just so so',
+  avatar:'robohash',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/blog/img/avatar.svg"/></a><p>亲自部署 亲自指挥</p><a class="info-icon" href="https://github.com/xmaihh" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/blog/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/Android/" style="font-size: 15px;">Android</a> <a href="/blog/tags/ADB/" style="font-size: 15px;">ADB</a> <a href="/blog/tags/ANR/" style="font-size: 15px;">ANR</a> <a href="/blog/tags/BLE/" style="font-size: 15px;">BLE</a> <a href="/blog/tags/Lottie/" style="font-size: 15px;">Lottie</a> <a href="/blog/tags/OTA/" style="font-size: 15px;">OTA</a> <a href="/blog/tags/SDK/" style="font-size: 15px;">SDK</a> <a href="/blog/tags/Logcat/" style="font-size: 15px;">Logcat</a> <a href="/blog/tags/AndroidStudio/" style="font-size: 15px;">AndroidStudio</a> <a href="/blog/tags/Jni/" style="font-size: 15px;">Jni</a> <a href="/blog/tags/Serialport/" style="font-size: 15px;">Serialport</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/BT/" style="font-size: 15px;">BT</a> <a href="/blog/tags/RS232/" style="font-size: 15px;">RS232</a> <a href="/blog/tags/Archlinux/" style="font-size: 15px;">Archlinux</a> <a href="/blog/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/blog/tags/ArkUI/" style="font-size: 15px;">ArkUI</a> <a href="/blog/tags/Harmony/" style="font-size: 15px;">Harmony</a> <a href="/blog/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/blog/tags/Cloudflare/" style="font-size: 15px;">Cloudflare</a> <a href="/blog/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blog/tags/docker-compose/" style="font-size: 15px;">docker-compose</a> <a href="/blog/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/blog/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/blog/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/blog/tags/Frp/" style="font-size: 15px;">Frp</a> <a href="/blog/tags/Github-Actions/" style="font-size: 15px;">Github Actions</a> <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/CI-CD/" style="font-size: 15px;">CI/CD</a> <a href="/blog/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/blog/tags/Portainer/" style="font-size: 15px;">Portainer</a> <a href="/blog/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/blog/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/blog/tags/ArchLinux/" style="font-size: 15px;">ArchLinux</a> <a href="/blog/tags/Pixel8/" style="font-size: 15px;">Pixel8</a> <a href="/blog/tags/Magisk/" style="font-size: 15px;">Magisk</a> <a href="/blog/tags/Python/" style="font-size: 15px;">Python</a> <a href="/blog/tags/RecyclerView/" style="font-size: 15px;">RecyclerView</a> <a href="/blog/tags/Gdrive/" style="font-size: 15px;">Gdrive</a> <a href="/blog/tags/ZeroTier/" style="font-size: 15px;">ZeroTier</a> <a href="/blog/tags/Watchdog/" style="font-size: 15px;">Watchdog</a> <a href="/blog/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/blog/tags/Git/" style="font-size: 15px;">Git</a> <a href="/blog/tags/Github/" style="font-size: 15px;">Github</a> <a href="/blog/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/blog/tags/Proxy/" style="font-size: 15px;">Proxy</a> <a href="/blog/tags/Sqlite/" style="font-size: 15px;">Sqlite</a> <a href="/blog/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/blog/tags/Tailscale/" style="font-size: 15px;">Tailscale</a> <a href="/blog/tags/weixin/" style="font-size: 15px;">weixin</a> <a href="/blog/tags/Openwrt/" style="font-size: 15px;">Openwrt</a> <a href="/blog/tags/npm/" style="font-size: 15px;">npm</a> <a href="/blog/tags/macOS/" style="font-size: 15px;">macOS</a> <a href="/blog/tags/DoH/" style="font-size: 15px;">DoH</a> <a href="/blog/tags/Design-pattern/" style="font-size: 15px;">Design pattern</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 15px;">Raspberry Pi</a> <a href="/blog/tags/VLC/" style="font-size: 15px;">VLC</a> <a href="/blog/tags/CRC/" style="font-size: 15px;">CRC</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2025/08/11/shu-mei-pai-4b-an-zhuang-istoreos-openwrt-bing-pei-zhi-wei-pang-lu-you/">树莓派 4B 安装 iStoreOS (OpenWrt) 并配置为旁路由</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/17/hexo-bo-ke-qi-yong-websub/">Hexo博客启用 WebSub</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/10/16/rang-follow-ren-zheng-wo-de-hexo-bo-ke-ding-yue-yuan/">让Follow认证我的Hexo博客订阅源</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/09/10/portainer-chong-zhi-admin-deng-lu-mi-ma/">Portainer重置admin登录密码</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/08/02/hua-shuo-lu-you-qi-xiu-gai-hosts/">华硕路由器修改Hosts</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/30/flutter-shi-yong-intl-generator-zai-windows-xia-bao-cuo-cannot-open-file-path-l10n-arb-intl-arb-os-error-wen-jian-ming-mu-lu-ming-huo-juan-biao-yu-fa-bu-zheng-que/">Flutter使用intl_generator在Windows下报错Cannot open file, path = 'l10n-arb/intl_*.arb' (OS Error: 文件名、目录名或卷标语法不正确</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/zai-hexo-zhong-shi-yong-plantuml/">在Hexo中使用PlantUML</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/26/yong-yu-gou-jian-he-fa-bu-flutter-ying-yong-cheng-xu-de-github-actions-gong-zuo-liu-cheng/">用于构建和发布 Flutter 应用程序的GitHub Actions 工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/25/flutter-ge-ge-ping-tai-de-gou-jian-chan-wu/">Flutter各个平台的构建产物</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2024/07/24/flutter-she-zhi-app-ban-ben/">Flutter设置App版本</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://quincyjiang.github.io/" title="瘟疫青年" target="_blank">瘟疫青年</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/blog/." rel="nofollow">小麦.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/blog/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/blog/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/blog/css/search.css?v=1.0.0"><script type="text/javascript" src="/blog/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/blog/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="100,99,98" opacity="0.7" zIndex="-1" count="150" src="https://unpkg.com/canvas-nest.js/dist/canvas-nest.js"></script><script type="text/javascript" src="/blog/js/love.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/blog/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/blog/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/blog/js/smartresize.js?v=1.0.0"></script></div></body></html>
